@@ -12,3 +12,18 @@ C:\Users\User\Documents\00-IMPORTANT\01-SCHOOL\Winter 2025\GameProgramming\Numbe
 C:\Users\User\Documents\00-IMPORTANT\01-SCHOOL\Winter 2025\GameProgramming\NumberCruncher\NumberCruncherServer\NumberCruncherServer\obj\Debug\net8.0\NumberCruncherServer.pdb
 C:\Users\User\Documents\00-IMPORTANT\01-SCHOOL\Winter 2025\GameProgramming\NumberCruncher\NumberCruncherServer\NumberCruncherServer\obj\Debug\net8.0\NumberCruncherServer.genruntimeconfig.cache
 C:\Users\User\Documents\00-IMPORTANT\01-SCHOOL\Winter 2025\GameProgramming\NumberCruncher\NumberCruncherServer\NumberCruncherServer\obj\Debug\net8.0\ref\NumberCruncherServer.dll
+C:\Users\jarof\Source\Repos\NumberCruncher\NumberCruncherServer\NumberCruncherServer\bin\Debug\net8.0\NumberCruncherServer.exe
+C:\Users\jarof\Source\Repos\NumberCruncher\NumberCruncherServer\NumberCruncherServer\bin\Debug\net8.0\NumberCruncherServer.deps.json
+C:\Users\jarof\Source\Repos\NumberCruncher\NumberCruncherServer\NumberCruncherServer\bin\Debug\net8.0\NumberCruncherServer.runtimeconfig.json
+C:\Users\jarof\Source\Repos\NumberCruncher\NumberCruncherServer\NumberCruncherServer\bin\Debug\net8.0\NumberCruncherServer.dll
+C:\Users\jarof\Source\Repos\NumberCruncher\NumberCruncherServer\NumberCruncherServer\bin\Debug\net8.0\NumberCruncherServer.pdb
+C:\Users\jarof\Source\Repos\NumberCruncher\NumberCruncherServer\NumberCruncherServer\obj\Debug\net8.0\NumberCruncherServer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jarof\Source\Repos\NumberCruncher\NumberCruncherServer\NumberCruncherServer\obj\Debug\net8.0\NumberCruncherServer.AssemblyInfoInputs.cache
+C:\Users\jarof\Source\Repos\NumberCruncher\NumberCruncherServer\NumberCruncherServer\obj\Debug\net8.0\NumberCruncherServer.AssemblyInfo.cs
+C:\Users\jarof\Source\Repos\NumberCruncher\NumberCruncherServer\NumberCruncherServer\obj\Debug\net8.0\NumberCruncherServer.csproj.CoreCompileInputs.cache
+C:\Users\jarof\Source\Repos\NumberCruncher\NumberCruncherServer\NumberCruncherServer\obj\Debug\net8.0\NumberCruncherServer.sourcelink.json
+C:\Users\jarof\Source\Repos\NumberCruncher\NumberCruncherServer\NumberCruncherServer\obj\Debug\net8.0\NumberCruncherServer.dll
+C:\Users\jarof\Source\Repos\NumberCruncher\NumberCruncherServer\NumberCruncherServer\obj\Debug\net8.0\refint\NumberCruncherServer.dll
+C:\Users\jarof\Source\Repos\NumberCruncher\NumberCruncherServer\NumberCruncherServer\obj\Debug\net8.0\NumberCruncherServer.pdb
+C:\Users\jarof\Source\Repos\NumberCruncher\NumberCruncherServer\NumberCruncherServer\obj\Debug\net8.0\NumberCruncherServer.genruntimeconfig.cache
+C:\Users\jarof\Source\Repos\NumberCruncher\NumberCruncherServer\NumberCruncherServer\obj\Debug\net8.0\ref\NumberCruncherServer.dll

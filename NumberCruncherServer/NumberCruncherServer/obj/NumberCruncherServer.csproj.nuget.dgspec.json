@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherServer\\NumberCruncherServer\\NumberCruncherServer.csproj": {}
+    "C:\\Users\\jarof\\source\\repos\\NumberCruncher\\NumberCruncherServer\\NumberCruncherServer\\NumberCruncherServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherServer\\NumberCruncherServer\\NumberCruncherServer.csproj": {
+    "C:\\Users\\jarof\\source\\repos\\NumberCruncher\\NumberCruncherServer\\NumberCruncherServer\\NumberCruncherServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherServer\\NumberCruncherServer\\NumberCruncherServer.csproj",
+        "projectUniqueName": "C:\\Users\\jarof\\source\\repos\\NumberCruncher\\NumberCruncherServer\\NumberCruncherServer\\NumberCruncherServer.csproj",
         "projectName": "NumberCruncherServer",
-        "projectPath": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherServer\\NumberCruncherServer\\NumberCruncherServer.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherServer\\NumberCruncherServer\\obj\\",
+        "projectPath": "C:\\Users\\jarof\\source\\repos\\NumberCruncher\\NumberCruncherServer\\NumberCruncherServer\\NumberCruncherServer.csproj",
+        "packagesPath": "C:\\Users\\jarof\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jarof\\source\\repos\\NumberCruncher\\NumberCruncherServer\\NumberCruncherServer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jarof\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -65,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
