@@ -7,30 +7,14 @@
   "targets": {
     ".NETCoreApp,Version=v8.0": {
       "NumberCruncherClient/1.0.0": {
-        "dependencies": {
-          "NumberCruncherServer": "1.0.0"
-        },
         "runtime": {
           "NumberCruncherClient.dll": {}
-        }
-      },
-      "NumberCruncherServer/1.0.0": {
-        "runtime": {
-          "NumberCruncherServer.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
         }
       }
     }
   },
   "libraries": {
     "NumberCruncherClient/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "NumberCruncherServer/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

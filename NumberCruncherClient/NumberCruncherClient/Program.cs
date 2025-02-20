@@ -2,15 +2,18 @@ namespace NumberCruncherClient
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
+
+            // Show the splash screen before the main form.
+            using (SplashScreen splash = new SplashScreen())
+            {
+                splash.ShowDialog();
+            }
+
+            // After the splash screen closes, run the main form.
             Application.Run(new MainForm());
         }
     }
