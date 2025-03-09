@@ -48,12 +48,15 @@ namespace NumberCruncherClient
 
             NumberCruncherGame game = new NumberCruncherGame();
             game.Player.setInitials(initials);
-
             game.Difficulty = difficulty;
 
-            MainForm mainScreen = new MainForm(game);
+            // Pass difficulty to the MainScreen
+            MainForm mainScreen = new MainForm(game, difficulty);
             mainScreen.Show();
+
+            // Hide the PlayerSetupForm
             this.Hide();
         }
+
     }
 }
