@@ -78,7 +78,11 @@ namespace NumberCruncherClient
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Close(); // Closes the player view
+            // Closes the Main Screen Form and returns to the previous "screen" 
+            PlayerSetupForm playerSetupForm = new PlayerSetupForm();
+            playerSetupForm.Show();
+            this.Close();
+
         }
     }
 }
