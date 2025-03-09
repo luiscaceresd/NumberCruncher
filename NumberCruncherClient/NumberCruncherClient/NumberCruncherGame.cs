@@ -79,14 +79,14 @@ namespace NumberCruncherClient
             }
 
             // Process guesses for each track.
-            for (int i = 0; i < tracks.Length; i++)
+            for (int index = 0; index < tracks.Length; index++)
             {
-                Track track = tracks[i];
+                Track track = tracks[index];
                 int attemptsUsed = 0;
                 bool correct = false;
 
                 // Process each guess until either the correct guess is found or attempts run out.
-                foreach (int guess in guessesPerTrack[i])
+                foreach (int guess in guessesPerTrack[index])
                 {
                     attemptsUsed++;
                     if (track.CheckGuess(guess))

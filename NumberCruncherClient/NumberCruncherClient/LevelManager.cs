@@ -86,11 +86,11 @@ namespace NumberCruncherClient
             tracks = new Track[numberOfTracks];
 
             // Create and initialize each track.
-            for (int i = 0; i < numberOfTracks; i++)
+            for (int index = 0; index < numberOfTracks; index++)
             {
-                tracks[i] = new Track(1, rangeMax, allowedAttemptsBase);
-                int mode = tracks[i].generateMode();
-                tracks[i].setMode(mode);
+                tracks[index] = new Track(1, rangeMax, allowedAttemptsBase);
+                int mode = tracks[index].generateMode();
+                tracks[index].setMode(mode);
             }
         }
     }

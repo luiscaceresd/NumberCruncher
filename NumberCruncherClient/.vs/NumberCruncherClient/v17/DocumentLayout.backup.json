@@ -3,8 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\jarof\\source\\repos\\NumberCruncher\\NumberCruncherClient\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\jarof\\source\\repos\\numbercruncher\\numbercruncherclient\\numbercruncherclient\\mainscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\mainscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\jarof\\source\\repos\\numbercruncher\\numbercruncherclient\\numbercruncherclient\\numbercrunchergame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\numbercrunchergame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\jarof\\source\\repos\\numbercruncher\\numbercruncherclient\\numbercruncherclient\\mainscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\mainscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\jarof\\source\\repos\\numbercruncher\\numbercruncherclient\\numbercruncherclient\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\jarof\\source\\repos\\numbercruncher\\numbercruncherclient\\numbercruncherclient\\gamestatemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\gamestatemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,7 +54,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "MainScreen.cs [Design]",
               "DocumentMoniker": "C:\\Users\\jarof\\source\\repos\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\MainScreen.cs",
               "RelativeDocumentMoniker": "NumberCruncherClient\\MainScreen.cs",
@@ -47,6 +63,58 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-09T18:35:26.943Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NumberCruncherGame.cs",
+              "DocumentMoniker": "C:\\Users\\jarof\\source\\repos\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\NumberCruncherGame.cs",
+              "RelativeDocumentMoniker": "NumberCruncherClient\\NumberCruncherGame.cs",
+              "ToolTip": "C:\\Users\\jarof\\source\\repos\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\NumberCruncherGame.cs",
+              "RelativeToolTip": "NumberCruncherClient\\NumberCruncherGame.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAwGEAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T18:44:41.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainScreen.cs",
+              "DocumentMoniker": "C:\\Users\\jarof\\source\\repos\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\MainScreen.cs",
+              "RelativeDocumentMoniker": "NumberCruncherClient\\MainScreen.cs",
+              "ToolTip": "C:\\Users\\jarof\\source\\repos\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\MainScreen.cs",
+              "RelativeToolTip": "NumberCruncherClient\\MainScreen.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAgwD4AAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T18:43:05.861Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LevelManager.cs",
+              "DocumentMoniker": "C:\\Users\\jarof\\source\\repos\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\LevelManager.cs",
+              "RelativeDocumentMoniker": "NumberCruncherClient\\LevelManager.cs",
+              "ToolTip": "C:\\Users\\jarof\\source\\repos\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\LevelManager.cs",
+              "RelativeToolTip": "NumberCruncherClient\\LevelManager.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAkwEUAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T18:44:50.299Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GameStateManager.cs",
+              "DocumentMoniker": "C:\\Users\\jarof\\source\\repos\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\GameStateManager.cs",
+              "RelativeDocumentMoniker": "NumberCruncherClient\\GameStateManager.cs",
+              "ToolTip": "C:\\Users\\jarof\\source\\repos\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\GameStateManager.cs",
+              "RelativeToolTip": "NumberCruncherClient\\GameStateManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T18:44:49.171Z",
+              "EditorCaption": ""
             }
           ]
         }

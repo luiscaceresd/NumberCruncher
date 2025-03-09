@@ -5,8 +5,7 @@ namespace NumberCruncherClient
 {
     public partial class MainForm : Form
     {
-        private NumberCruncherGame game; // Remove nullable (?) and ensure it's initialized
-       
+        private NumberCruncherGame game; 
         private Difficulty selectedDifficulty;
 
         // Constructor accepting a NumberCruncherGame instance
@@ -35,11 +34,21 @@ namespace NumberCruncherClient
                 _ => 0,
             };
 
+            int allowedAttempts = difficulty switch
+            {
+                Difficulty.EASY => 5,
+                Difficulty.MODERATE => 7,
+                Difficulty.DIFFICULT => 11,
+                _ => 0,
+            };
+
             // Explicitly reference each GroupBox track by name
             GroupBox[] trackBoxes =
             {
                 track1, track2, track3, track4, track5, track6, track7
             };
+
+            Label[] guessLabels = { lblGuesses1, lblGuesses2, lblGuesses3, lblGuesses4, lblGuesses5, lblGuesses6, lblGuesses7 };
 
             // Hide all tracks first
             foreach (var track in trackBoxes)
@@ -48,9 +57,10 @@ namespace NumberCruncherClient
             }
 
             // Show only the required number of tracks
-            for (int i = 0; i < trackCount; i++)
+            for (int index = 0; index < trackCount; index++)
             {
-                trackBoxes[i].Visible = true;
+                trackBoxes[index].Visible = true;
+                guessLabels[index].Text = $"Guesses: {allowedAttempts}";
             }
         }
 
