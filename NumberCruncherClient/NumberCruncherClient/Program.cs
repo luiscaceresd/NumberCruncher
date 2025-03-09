@@ -7,14 +7,14 @@ namespace NumberCruncherClient
         {
             ApplicationConfiguration.Initialize();
 
-            // Show the splash screen before the main form.
+            // Show the splash screen first
             using (SplashScreen splash = new SplashScreen())
             {
                 splash.ShowDialog();
             }
 
-            // After the splash screen closes, run the main form.
-            Application.Run(new MainForm());
+            // After splash screen, show PlayerSetup instead of MainForm
+            Application.Run(new PlayerSetupForm());
         }
     }
 }

@@ -26,27 +26,27 @@ namespace NumberCruncherClient
         /// <summary>
         /// Gets the current level number.
         /// </summary>
-        public int getLevelNumber() { return levelNumber; }
+        public int GetLevelNumber() { return levelNumber; }
 
         /// <summary>
         /// Sets the current level number.
         /// </summary>
-        public void setLevelNumber(int level) { levelNumber = level; }
+        public void SetLevelNumber(int level) { levelNumber = level; }
 
         /// <summary>
         /// Gets the tracks for the current level.
         /// </summary>
-        public Track[] getTracks() { return tracks; }
+        public Track[] GetTracks() { return tracks; }
 
         /// <summary>
         /// Sets the tracks for the current level.
         /// </summary>
-        public void setTracks(Track[] tracks) { this.tracks = tracks; }
+        public void SetTracks(Track[] tracks) { this.tracks = tracks; }
 
         /// <summary>
         /// Increases the level number by one.
         /// </summary>
-        public void increaseLevel()
+        public void IncreaseLevel()
         {
             levelNumber++;
         }
@@ -55,7 +55,7 @@ namespace NumberCruncherClient
         /// Sets up the tracks for the current level based on the chosen difficulty.
         /// </summary>
         /// <param name="difficulty">The selected game difficulty.</param>
-        public void setupTracks(Difficulty difficulty)
+        public void SetupTracks(Difficulty difficulty)
         {
             int numberOfTracks = 0;
             int baseRange = 0;

@@ -37,11 +37,11 @@
             // 
             label1.AutoSize = true;
             label1.BorderStyle = BorderStyle.Fixed3D;
-            label1.Font = new Font("Komika Axis", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Stencil", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(81, 145);
+            label1.Location = new Point(60, 186);
             label1.Name = "label1";
-            label1.Size = new Size(657, 62);
+            label1.Size = new Size(800, 58);
             label1.TabIndex = 0;
             label1.Text = "WELCOME TO NUMBER CRUNCHER";
             // 
@@ -52,10 +52,11 @@
             // 
             // SplashScreen
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(806, 338);
+            ClientSize = new Size(921, 451);
             Controls.Add(label1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "SplashScreen";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SplashScreen";

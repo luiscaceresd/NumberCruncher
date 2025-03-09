@@ -43,12 +43,18 @@ namespace NumberCruncherClient
         }
 
         /// <summary>
+        /// Gets the number of tracks in the game.
+        /// This is derived from the LevelManager's tracks.
+        /// </summary>
+        public int TrackCount => levelManager.GetTracks().Length;
+
+        /// <summary>
         /// Initializes the game state for a new game.
         /// The client should set player data and difficulty before calling this.
         /// </summary>
         public void startGame()
         {
-            levelManager.setupTracks(difficulty);
+            levelManager.SetupTracks(difficulty);
         }
 
         /// <summary>
@@ -64,7 +70,7 @@ namespace NumberCruncherClient
         public int ProcessLevel(int[][] guessesPerTrack)
         {
             int totalSpareGuesses = 0;
-            Track[] tracks = levelManager.getTracks();
+            Track[] tracks = levelManager.GetTracks();
 
             // Ensure the number of provided guess arrays matches the number of tracks.
             if (guessesPerTrack.Length != tracks.Length)
@@ -83,12 +89,12 @@ namespace NumberCruncherClient
                 foreach (int guess in guessesPerTrack[i])
                 {
                     attemptsUsed++;
-                    if (track.checkGuess(guess))
+                    if (track.CheckGuess(guess))
                     {
                         correct = true;
                         break;
                     }
-                    if (attemptsUsed >= track.getAllowedAttempts())
+                    if (attemptsUsed >= track.GetAllowedAttempts())
                     {
                         break;
                     }
@@ -97,7 +103,7 @@ namespace NumberCruncherClient
                 // If guessed correctly, calculate spare guesses.
                 if (correct)
                 {
-                    int spare = track.getAllowedAttempts() - attemptsUsed;
+                    int spare = track.GetAllowedAttempts() - attemptsUsed;
                     totalSpareGuesses += spare;
                 }
             }
@@ -115,8 +121,8 @@ namespace NumberCruncherClient
         /// </summary>
         public void nextLevel()
         {
-            levelManager.increaseLevel();
-            levelManager.setupTracks(difficulty);
+            levelManager.IncreaseLevel();
+            levelManager.SetupTracks(difficulty);
         }
     }
 }

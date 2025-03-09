@@ -21,17 +21,11 @@ C:\Users\jarof\OneDrive\Documents\Projects\NumberCruncher-main\NumberCruncherCli
 C:\Users\jarof\OneDrive\Documents\Projects\NumberCruncher-main\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\NumberCruncherClient.pdb
 C:\Users\jarof\OneDrive\Documents\Projects\NumberCruncher-main\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\NumberCruncherClient.genruntimeconfig.cache
 C:\Users\jarof\OneDrive\Documents\Projects\NumberCruncher-main\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\ref\NumberCruncherClient.dll
-C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\bin\Debug\net8.0-windows\NumberCruncherServer.deps.json
-C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\bin\Debug\net8.0-windows\NumberCruncherServer.runtimeconfig.json
-C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\bin\Debug\net8.0-windows\NumberCruncherServer.exe
 C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\bin\Debug\net8.0-windows\NumberCruncherClient.exe
 C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\bin\Debug\net8.0-windows\NumberCruncherClient.deps.json
 C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\bin\Debug\net8.0-windows\NumberCruncherClient.runtimeconfig.json
 C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\bin\Debug\net8.0-windows\NumberCruncherClient.dll
 C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\bin\Debug\net8.0-windows\NumberCruncherClient.pdb
-C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\bin\Debug\net8.0-windows\NumberCruncherServer.dll
-C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\bin\Debug\net8.0-windows\NumberCruncherServer.pdb
-C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\NumberCruncherClient.csproj.AssemblyReference.cache
 C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\NumberCruncherClient.MainForm.resources
 C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\NumberCruncherClient.csproj.GenerateResource.cache
 C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\NumberCruncherClient.GeneratedMSBuildEditorConfig.editorconfig
@@ -39,7 +33,6 @@ C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherCl
 C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\NumberCruncherClient.AssemblyInfo.cs
 C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\NumberCruncherClient.csproj.CoreCompileInputs.cache
 C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\NumberCruncherClient.sourcelink.json
-C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\NumberCr.B87EE5F0.Up2Date
 C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\NumberCruncherClient.dll
 C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\refint\NumberCruncherClient.dll
 C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\NumberCruncherClient.pdb
@@ -63,3 +56,6 @@ C:\Users\User\Documents\00-IMPORTANT\01-SCHOOL\Winter 2025\GameProgramming\Numbe
 C:\Users\User\Documents\00-IMPORTANT\01-SCHOOL\Winter 2025\GameProgramming\NumberCruncher\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\NumberCruncherClient.genruntimeconfig.cache
 C:\Users\User\Documents\00-IMPORTANT\01-SCHOOL\Winter 2025\GameProgramming\NumberCruncher\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\ref\NumberCruncherClient.dll
 C:\Users\User\Documents\00-IMPORTANT\01-SCHOOL\Winter 2025\GameProgramming\NumberCruncher\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\NumberCruncherClient.SplashScreen.resources
+C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\NumberCruncherClient.SplashScreen.resources
+C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\NumberCruncherClient.PlayerSetupForm.resources
+C:\Users\jarof\source\repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\NumberCruncherClient.Properties.Resources.resources

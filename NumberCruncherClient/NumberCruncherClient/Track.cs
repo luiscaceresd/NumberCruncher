@@ -6,7 +6,7 @@ namespace NumberCruncherClient
 {
     /// <summary>
     /// Represents a single track in the game.
-    /// A track generates 1000 random numbers and calculates a unique mode.
+    /// A track generates random numbers and calculates a unique mode.
     /// </summary>
     [Serializable]
     public class Track
@@ -35,17 +35,17 @@ namespace NumberCruncherClient
         /// <summary>
         /// Gets the array of random numbers.
         /// </summary>
-        public int[] getRandomNumbers() { return randomNumbers; }
+        public int[] GetRandomNumbers() { return randomNumbers; }
 
         /// <summary>
         /// Sets the array of random numbers.
         /// </summary>
-        public void setRandomNumbers(int[] nums) { randomNumbers = nums; }
+        public void SetRandomNumbers(int[] nums) { randomNumbers = nums; }
 
         /// <summary>
         /// Gets the mode (target number) for the track.
         /// </summary>
-        public int getMode() { return mode; }
+        public int GetMode() { return mode; }
 
         /// <summary>
         /// Sets the mode (target number) for the track.
@@ -55,15 +55,15 @@ namespace NumberCruncherClient
         /// <summary>
         /// Gets the number of allowed attempts for this track.
         /// </summary>
-        public int getAllowedAttempts() { return allowedAttempts; }
+        public int GetAllowedAttempts() { return allowedAttempts; }
 
         /// <summary>
         /// Sets the allowed attempts for this track.
         /// </summary>
-        public void setAllowedAttempts(int attempts) { allowedAttempts = attempts; }
+        public void SetAllowedAttempts(int attempts) { allowedAttempts = attempts; }
 
         /// <summary>
-        /// Generates 1000 random numbers and computes the unique mode.
+        /// Generates random numbers and computes a unique mode.
         /// Continues generating until a unique mode is found.
         /// </summary>
         /// <returns>The unique mode for this track.</returns>
@@ -109,10 +109,12 @@ namespace NumberCruncherClient
             return computedMode;
         }
 
+
+
         /// <summary>
         /// Checks if the given guess matches the track's mode.
         /// </summary>
-        public bool checkGuess(int guess)
+        public bool CheckGuess(int guess)
         {
             return guess == mode;
         }
@@ -122,7 +124,7 @@ namespace NumberCruncherClient
         /// Returns an upward arrow if the guess is too low,
         /// a downward arrow if too high, and a checkmark if correct.
         /// </summary>
-        public string getFeedback(int guess)
+        public string GetFeedback(int guess)
         {
             if (guess < mode)
                 return "↑";  // Too low.
