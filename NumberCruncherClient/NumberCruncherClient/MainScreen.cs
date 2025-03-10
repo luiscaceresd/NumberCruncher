@@ -7,6 +7,7 @@ namespace NumberCruncherClient
     {
         private NumberCruncherGame game; 
         private Difficulty selectedDifficulty;
+        private string randomNumberToDisplay;
 
         // Constructor accepting a NumberCruncherGame instance
         public MainForm(NumberCruncherGame game, Difficulty difficulty)
@@ -14,6 +15,10 @@ namespace NumberCruncherClient
             InitializeComponent();
             this.game = game; // Store game instance
             this.selectedDifficulty = difficulty;
+            randomNumberToDisplay = GenerateSpecialRandomNumber().ToString();
+            // Simply to adhere to section D of the specification, this is temporary and will be removed in later
+            // submissions of the assignment
+            txtGuess1.Text = randomNumberToDisplay;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -83,6 +88,43 @@ namespace NumberCruncherClient
             playerSetupForm.Show();
             this.Close();
 
+        }
+        // Generate an array of 1000 numbers within the range. and find the mode.
+        private int GenerateSpecialRandomNumber()
+        {
+            Random random = new Random();
+            int minRange = 1;
+            int maxRange = 1;
+            List<int> randomNumbers = new List<int>();
+            // fill the list with numbers within the range specified by the difficulty
+            switch (selectedDifficulty)
+            {
+                case Difficulty.EASY:
+                    // range of 1-10 and find the mode
+                    maxRange = 10;
+                    break;
+                case Difficulty.MODERATE:
+                    // range of 1-100 and find the mode
+                    maxRange = 100;
+                    break;
+                case Difficulty.DIFFICULT:
+                    // range of 1-1000 and find the mode
+                    maxRange = 1000;
+                    break;
+
+
+            }
+            // fill the list with random numbers from a range of 1-maxRange
+            for (int index = 0; index < 1000; index++)
+            {
+                randomNumbers.Add(random.Next(minRange, maxRange));
+            }
+            // find the mode in the list of random numbers (LINQ Solution)
+            int mode = randomNumbers.GroupBy(value => value)
+                .OrderByDescending(group => group.Count())
+                .First()
+                .Key;
+            return mode;
         }
     }
 }

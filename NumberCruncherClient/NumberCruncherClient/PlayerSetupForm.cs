@@ -54,6 +54,7 @@ namespace NumberCruncherClient
             MainForm mainScreen = new MainForm(game, difficulty);
             mainScreen.Show();
 
+
             // Hide the PlayerSetupForm
             this.Hide();
         }
