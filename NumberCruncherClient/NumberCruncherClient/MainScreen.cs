@@ -18,13 +18,11 @@ namespace NumberCruncherClient
             randomNumberToDisplay = GenerateSpecialRandomNumber().ToString();
             // Very Hacky implementation, Simply to adhere to section D of the specification, this is temporary and
             // will be removed in later submissions of the assignment
-            txtGuess1.Text = randomNumberToDisplay;
-            txtGuess2.Text = randomNumberToDisplay;
-            txtGuess3.Text = randomNumberToDisplay;
-            txtGuess4.Text = randomNumberToDisplay;
-            txtGuess5.Text = randomNumberToDisplay;
-            txtGuess6.Text = randomNumberToDisplay;
-            txtGuess7.Text = randomNumberToDisplay;
+            TextBox[] textBoxes = { txtGuess1, txtGuess2, txtGuess3, txtGuess4, txtGuess5, txtGuess6, txtGuess7 };
+            foreach (var textBox in textBoxes)
+            {
+                textBox.Text =  GenerateSpecialRandomNumber().ToString();
+            }
 
         }
 
