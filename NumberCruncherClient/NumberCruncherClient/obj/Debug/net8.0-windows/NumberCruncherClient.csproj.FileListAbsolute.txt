@@ -79,3 +79,5 @@ C:\Users\nojan\OneDrive\Bureau\NumberCruncher\NumberCruncher\NumberCruncherClien
 C:\Users\nojan\OneDrive\Bureau\NumberCruncher\NumberCruncher\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\NumberCruncherClient.pdb
 C:\Users\nojan\OneDrive\Bureau\NumberCruncher\NumberCruncher\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\NumberCruncherClient.genruntimeconfig.cache
 C:\Users\nojan\OneDrive\Bureau\NumberCruncher\NumberCruncher\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\ref\NumberCruncherClient.dll
+C:\Users\User\Documents\00-IMPORTANT\01-SCHOOL\Winter 2025\GameProgramming\NumberCruncher\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\NumberCruncherClient.PlayerSetupForm.resources
+C:\Users\User\Documents\00-IMPORTANT\01-SCHOOL\Winter 2025\GameProgramming\NumberCruncher\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\NumberCruncherClient.Properties.Resources.resources
