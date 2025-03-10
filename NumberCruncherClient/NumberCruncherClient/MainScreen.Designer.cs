@@ -32,42 +32,42 @@
             track7 = new GroupBox();
             lstHistory7 = new ListBox();
             pictureBox16 = new PictureBox();
-            textBox6 = new TextBox();
+            txtGuess7 = new TextBox();
             pictureBox17 = new PictureBox();
             lblGuesses7 = new Label();
             pictureBox18 = new PictureBox();
             track6 = new GroupBox();
             lstHistory6 = new ListBox();
             pictureBox13 = new PictureBox();
-            textBox5 = new TextBox();
+            txtGuess6 = new TextBox();
             pictureBox14 = new PictureBox();
             lblGuesses6 = new Label();
             pictureBox15 = new PictureBox();
             track5 = new GroupBox();
             lstHistory5 = new ListBox();
             pictureBox10 = new PictureBox();
-            textBox4 = new TextBox();
+            txtGuess5 = new TextBox();
             pictureBox11 = new PictureBox();
             lblGuesses5 = new Label();
             pictureBox12 = new PictureBox();
             track4 = new GroupBox();
             lstHistory4 = new ListBox();
             pictureBox7 = new PictureBox();
-            textBox3 = new TextBox();
+            txtGuess4 = new TextBox();
             pictureBox8 = new PictureBox();
             lblGuesses4 = new Label();
             pictureBox9 = new PictureBox();
             track3 = new GroupBox();
             lstHistory3 = new ListBox();
             pictureBox4 = new PictureBox();
-            textBox2 = new TextBox();
+            txtGuess3 = new TextBox();
             pictureBox5 = new PictureBox();
             lblGuesses3 = new Label();
             pictureBox6 = new PictureBox();
             track2 = new GroupBox();
             lstHistory2 = new ListBox();
             pictureBox1 = new PictureBox();
-            textBox1 = new TextBox();
+            txtGuess2 = new TextBox();
             pictureBox2 = new PictureBox();
             lblGuesses2 = new Label();
             pictureBox3 = new PictureBox();
@@ -132,7 +132,7 @@
             // 
             track7.Controls.Add(lstHistory7);
             track7.Controls.Add(pictureBox16);
-            track7.Controls.Add(textBox6);
+            track7.Controls.Add(txtGuess7);
             track7.Controls.Add(pictureBox17);
             track7.Controls.Add(lblGuesses7);
             track7.Controls.Add(pictureBox18);
@@ -158,12 +158,12 @@
             pictureBox16.TabIndex = 5;
             pictureBox16.TabStop = false;
             // 
-            // textBox6
+            // txtGuess7
             // 
-            textBox6.Location = new Point(6, 365);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(125, 27);
-            textBox6.TabIndex = 0;
+            txtGuess7.Location = new Point(6, 365);
+            txtGuess7.Name = "txtGuess7";
+            txtGuess7.Size = new Size(125, 27);
+            txtGuess7.TabIndex = 0;
             // 
             // pictureBox17
             // 
@@ -199,7 +199,7 @@
             // 
             track6.Controls.Add(lstHistory6);
             track6.Controls.Add(pictureBox13);
-            track6.Controls.Add(textBox5);
+            track6.Controls.Add(txtGuess6);
             track6.Controls.Add(pictureBox14);
             track6.Controls.Add(lblGuesses6);
             track6.Controls.Add(pictureBox15);
@@ -225,12 +225,12 @@
             pictureBox13.TabIndex = 5;
             pictureBox13.TabStop = false;
             // 
-            // textBox5
+            // txtGuess6
             // 
-            textBox5.Location = new Point(6, 365);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(125, 27);
-            textBox5.TabIndex = 0;
+            txtGuess6.Location = new Point(6, 365);
+            txtGuess6.Name = "txtGuess6";
+            txtGuess6.Size = new Size(125, 27);
+            txtGuess6.TabIndex = 0;
             // 
             // pictureBox14
             // 
@@ -266,7 +266,7 @@
             // 
             track5.Controls.Add(lstHistory5);
             track5.Controls.Add(pictureBox10);
-            track5.Controls.Add(textBox4);
+            track5.Controls.Add(txtGuess5);
             track5.Controls.Add(pictureBox11);
             track5.Controls.Add(lblGuesses5);
             track5.Controls.Add(pictureBox12);
@@ -292,12 +292,12 @@
             pictureBox10.TabIndex = 5;
             pictureBox10.TabStop = false;
             // 
-            // textBox4
+            // txtGuess5
             // 
-            textBox4.Location = new Point(6, 365);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(125, 27);
-            textBox4.TabIndex = 0;
+            txtGuess5.Location = new Point(6, 365);
+            txtGuess5.Name = "txtGuess5";
+            txtGuess5.Size = new Size(125, 27);
+            txtGuess5.TabIndex = 0;
             // 
             // pictureBox11
             // 
@@ -333,7 +333,7 @@
             // 
             track4.Controls.Add(lstHistory4);
             track4.Controls.Add(pictureBox7);
-            track4.Controls.Add(textBox3);
+            track4.Controls.Add(txtGuess4);
             track4.Controls.Add(pictureBox8);
             track4.Controls.Add(lblGuesses4);
             track4.Controls.Add(pictureBox9);
@@ -359,12 +359,12 @@
             pictureBox7.TabIndex = 5;
             pictureBox7.TabStop = false;
             // 
-            // textBox3
+            // txtGuess4
             // 
-            textBox3.Location = new Point(6, 365);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(125, 27);
-            textBox3.TabIndex = 0;
+            txtGuess4.Location = new Point(6, 365);
+            txtGuess4.Name = "txtGuess4";
+            txtGuess4.Size = new Size(125, 27);
+            txtGuess4.TabIndex = 0;
             // 
             // pictureBox8
             // 
@@ -400,7 +400,7 @@
             // 
             track3.Controls.Add(lstHistory3);
             track3.Controls.Add(pictureBox4);
-            track3.Controls.Add(textBox2);
+            track3.Controls.Add(txtGuess3);
             track3.Controls.Add(pictureBox5);
             track3.Controls.Add(lblGuesses3);
             track3.Controls.Add(pictureBox6);
@@ -426,12 +426,12 @@
             pictureBox4.TabIndex = 5;
             pictureBox4.TabStop = false;
             // 
-            // textBox2
+            // txtGuess3
             // 
-            textBox2.Location = new Point(6, 365);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(125, 27);
-            textBox2.TabIndex = 0;
+            txtGuess3.Location = new Point(6, 365);
+            txtGuess3.Name = "txtGuess3";
+            txtGuess3.Size = new Size(125, 27);
+            txtGuess3.TabIndex = 0;
             // 
             // pictureBox5
             // 
@@ -467,7 +467,7 @@
             // 
             track2.Controls.Add(lstHistory2);
             track2.Controls.Add(pictureBox1);
-            track2.Controls.Add(textBox1);
+            track2.Controls.Add(txtGuess2);
             track2.Controls.Add(pictureBox2);
             track2.Controls.Add(lblGuesses2);
             track2.Controls.Add(pictureBox3);
@@ -493,12 +493,12 @@
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
             // 
-            // textBox1
+            // txtGuess2
             // 
-            textBox1.Location = new Point(6, 365);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 27);
-            textBox1.TabIndex = 0;
+            txtGuess2.Location = new Point(6, 365);
+            txtGuess2.Name = "txtGuess2";
+            txtGuess2.Size = new Size(125, 27);
+            txtGuess2.TabIndex = 0;
             // 
             // pictureBox2
             // 
@@ -707,42 +707,42 @@
         private GroupBox track7;
         private ListBox lstHistory7;
         private PictureBox pictureBox16;
-        private TextBox textBox6;
+        private TextBox txtGuess7;
         private PictureBox pictureBox17;
         private Label lblGuesses7;
         private PictureBox pictureBox18;
         private GroupBox track6;
         private ListBox lstHistory6;
         private PictureBox pictureBox13;
-        private TextBox textBox5;
+        private TextBox txtGuess6;
         private PictureBox pictureBox14;
         private Label lblGuesses6;
         private PictureBox pictureBox15;
         private GroupBox track5;
         private ListBox lstHistory5;
         private PictureBox pictureBox10;
-        private TextBox textBox4;
+        private TextBox txtGuess5;
         private PictureBox pictureBox11;
         private Label lblGuesses5;
         private PictureBox pictureBox12;
         private GroupBox track4;
         private ListBox lstHistory4;
         private PictureBox pictureBox7;
-        private TextBox textBox3;
+        private TextBox txtGuess4;
         private PictureBox pictureBox8;
         private Label lblGuesses4;
         private PictureBox pictureBox9;
         private GroupBox track3;
         private ListBox lstHistory3;
         private PictureBox pictureBox4;
-        private TextBox textBox2;
+        private TextBox txtGuess3;
         private PictureBox pictureBox5;
         private Label lblGuesses3;
         private PictureBox pictureBox6;
         private GroupBox track2;
         private ListBox lstHistory2;
         private PictureBox pictureBox1;
-        private TextBox textBox1;
+        private TextBox txtGuess2;
         private PictureBox pictureBox2;
         private Label lblGuesses2;
         private PictureBox pictureBox3;

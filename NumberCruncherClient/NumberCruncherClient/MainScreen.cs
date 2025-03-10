@@ -16,9 +16,16 @@ namespace NumberCruncherClient
             this.game = game; // Store game instance
             this.selectedDifficulty = difficulty;
             randomNumberToDisplay = GenerateSpecialRandomNumber().ToString();
-            // Simply to adhere to section D of the specification, this is temporary and will be removed in later
-            // submissions of the assignment
+            // Very Hacky implementation, Simply to adhere to section D of the specification, this is temporary and
+            // will be removed in later submissions of the assignment
             txtGuess1.Text = randomNumberToDisplay;
+            txtGuess2.Text = randomNumberToDisplay;
+            txtGuess3.Text = randomNumberToDisplay;
+            txtGuess4.Text = randomNumberToDisplay;
+            txtGuess5.Text = randomNumberToDisplay;
+            txtGuess6.Text = randomNumberToDisplay;
+            txtGuess7.Text = randomNumberToDisplay;
+
         }
 
         private void MainForm_Load(object sender, EventArgs e)
