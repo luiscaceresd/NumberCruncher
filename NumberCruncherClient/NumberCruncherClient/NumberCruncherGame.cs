@@ -3,20 +3,33 @@
 namespace NumberCruncherClient
 {
     /// <summary>
-    /// Core class representing the NumberCruncher game.
-    /// Manages the player, levels, game state, and scoring.
+    /// Represents the core of the NumberCruncher game.
+    /// Manages the player, levels, game state, scoring, and game flow.
     /// </summary>
     [Serializable]
     public class NumberCruncherGame
     {
+        // The player object, containing initials, score, and levels completed.
         private Player player;
+
+        // Manages the levels and tracks for the game.
         private LevelManager levelManager;
+
+        // Handles saving and loading the game state.
         private GameStateManager gameStateManager;
+
+        // Calculates the score based on spare guesses.
         private Scorer scorer;
+
+        // The selected difficulty level for the game.
         private Difficulty difficulty;
 
+        // Tracks spare guesses to carry over to the next level.
+        private int spareGuessesForNextLevel = 0;
+
         /// <summary>
-        /// Default constructor that initializes all core components.
+        /// Initializes a new instance of the NumberCruncherGame class.
+        /// Sets up all necessary components for the game.
         /// </summary>
         public NumberCruncherGame()
         {
@@ -27,14 +40,12 @@ namespace NumberCruncherClient
         }
 
         /// <summary>
-        /// Provides access to the Player object.
-        /// The client should set player details (like initials) using this property.
+        /// Gets the player object.
         /// </summary>
         public Player Player => player;
 
         /// <summary>
-        /// Gets or sets the game difficulty.
-        /// The client should set this before starting the game.
+        /// Gets or sets the difficulty level of the game.
         /// </summary>
         public Difficulty Difficulty
         {
@@ -43,49 +54,41 @@ namespace NumberCruncherClient
         }
 
         /// <summary>
-        /// Gets the number of tracks in the game.
-        /// This is derived from the LevelManager's tracks.
+        /// Gets the number of tracks in the current level.
         /// </summary>
         public int TrackCount => levelManager.GetTracks().Length;
 
         /// <summary>
-        /// Initializes the game state for a new game.
-        /// The client should set player data and difficulty before calling this.
+        /// Starts the game by setting up the tracks for the first level.
         /// </summary>
         public void startGame()
         {
-            levelManager.SetupTracks(difficulty);
+            // Start with no extra attempts for the first level.
+            levelManager.SetupTracks(difficulty, 0);
         }
 
         /// <summary>
-        /// Processes a complete level.
-        /// The client passes a two-dimensional array (one array per track) of guesses.
-        /// Returns the total number of spare guesses accumulated in the level,
-        /// and updates the player's score and levels completed.
+        /// Processes a complete level based on the player's guesses for each track.
+        /// Calculates spare guesses, updates the score, and saves the game state.
         /// </summary>
-        /// <param name="guessesPerTrack">
-        /// An array where each element is an array of guesses corresponding to a track.
-        /// </param>
-        /// <returns>Total spare guesses for the level.</returns>
+        /// <param name="guessesPerTrack">An array of guess arrays, one for each track.</param>
+        /// <returns>The total spare guesses for the level.</returns>
         public int ProcessLevel(int[][] guessesPerTrack)
         {
             int totalSpareGuesses = 0;
             Track[] tracks = levelManager.GetTracks();
 
-            // Ensure the number of provided guess arrays matches the number of tracks.
             if (guessesPerTrack.Length != tracks.Length)
             {
                 throw new ArgumentException("Number of guess arrays must match the number of tracks.");
             }
 
-            // Process guesses for each track.
             for (int index = 0; index < tracks.Length; index++)
             {
                 Track track = tracks[index];
                 int attemptsUsed = 0;
                 bool correct = false;
 
-                // Process each guess until either the correct guess is found or attempts run out.
                 foreach (int guess in guessesPerTrack[index])
                 {
                     attemptsUsed++;
@@ -100,7 +103,6 @@ namespace NumberCruncherClient
                     }
                 }
 
-                // If guessed correctly, calculate spare guesses.
                 if (correct)
                 {
                     int spare = track.GetAllowedAttempts() - attemptsUsed;
@@ -108,21 +110,43 @@ namespace NumberCruncherClient
                 }
             }
 
-            // Calculate score for the level and update the player's state.
             int levelScore = scorer.calculateScore(totalSpareGuesses);
             player.updateScore(levelScore);
             player.setLevelsCompleted(player.getLevelsCompleted() + 1);
+            spareGuessesForNextLevel = totalSpareGuesses;
+
+            // Save the game state after completing the level.
+            gameStateManager.saveState(this);
 
             return totalSpareGuesses;
         }
 
         /// <summary>
-        /// Advances the game to the next level.
+        /// Advances the game to the next level, setting up new tracks with carried-over spare guesses.
         /// </summary>
         public void nextLevel()
         {
             levelManager.IncreaseLevel();
-            levelManager.SetupTracks(difficulty);
+            // Pass the spare guesses to increase allowed attempts in the next level.
+            levelManager.SetupTracks(difficulty, spareGuessesForNextLevel);
+        }
+
+        /// <summary>
+        /// Saves the current game state.
+        /// </summary>
+        public void SaveGame()
+        {
+            gameStateManager.saveState(this);
+        }
+
+        /// <summary>
+        /// Loads a saved game state.
+        /// </summary>
+        /// <returns>The loaded NumberCruncherGame instance, or null if loading fails.</returns>
+        public static NumberCruncherGame? LoadGame()
+        {
+            GameStateManager gsm = new GameStateManager();
+            return gsm.loadState() ?? null;
         }
     }
 }

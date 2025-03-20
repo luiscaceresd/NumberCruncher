@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace NumberCruncherClient
+﻿namespace NumberCruncherClient
 {
     /// <summary>
-    /// Enumeration representing the game difficulty levels.
+    /// Defines the difficulty levels for the NumberCruncher game.
     /// </summary>
     public enum Difficulty
     {

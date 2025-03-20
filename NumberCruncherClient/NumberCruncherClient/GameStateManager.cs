@@ -5,28 +5,27 @@ using System.Text.Json;
 namespace NumberCruncherClient
 {
     /// <summary>
-    /// Manages saving and loading the game state.
-    /// Uses System.Text.Json for serialization instead of the obsolete BinaryFormatter.
+    /// Manages the saving and loading of the game state using JSON serialization.
     /// </summary>
     public class GameStateManager
     {
+        // The file path where the game state is saved.
         private const string filePath = "gamestate.json";
 
         /// <summary>
         /// Saves the current game state to a JSON file.
         /// </summary>
+        /// <param name="game">The NumberCruncherGame instance to save.</param>
         public void saveState(NumberCruncherGame game)
         {
             try
             {
-                // Configure JsonSerializer options.
+                // Configure JSON serializer to include fields and indent for readability.
                 var options = new JsonSerializerOptions
                 {
                     WriteIndented = true,
                     IncludeFields = true,
                 };
-
-                // Serialize the game object to JSON.
                 string json = JsonSerializer.Serialize(game, options);
                 File.WriteAllText(filePath, json);
             }
@@ -37,9 +36,9 @@ namespace NumberCruncherClient
         }
 
         /// <summary>
-        /// Loads the game state from a JSON file.
-        /// Returns null if the file does not exist or an error occurs.
+        /// Loads the game state from the JSON file.
         /// </summary>
+        /// <returns>The loaded NumberCruncherGame instance, or null if the file doesn't exist or an error occurs.</returns>
         public NumberCruncherGame? loadState()
         {
             try

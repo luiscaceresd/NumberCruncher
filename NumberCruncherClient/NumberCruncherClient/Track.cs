@@ -5,66 +5,85 @@ using System.Linq;
 namespace NumberCruncherClient
 {
     /// <summary>
-    /// Represents a single track in the game.
-    /// A track generates random numbers and calculates a unique mode.
+    /// Represents a single track in the NumberCruncher game.
+    /// Each track generates a set of random numbers and calculates a unique mode (the number to guess).
+    /// Provides methods to check guesses and give feedback.
     /// </summary>
     [Serializable]
     public class Track
     {
+        // Array to hold the generated random numbers.
         private int[] randomNumbers;
+
+        // The mode of the random numbers, which is the target for the player to guess.
         private int mode;
+
+        // The number of attempts the player is allowed for this track.
         private int allowedAttempts;
+
+        // Minimum value for the random number range.
         private int rangeMin;
+
+        // Maximum value for the random number range.
         private int rangeMax;
 
-        // Shared random instance for generating numbers.
+        // Shared random instance to generate numbers consistently.
         private static Random random = new Random();
 
         /// <summary>
-        /// Initializes a new instance of Track with the specified range and allowed attempts.
+        /// Initializes a new instance of the Track class.
         /// </summary>
+        /// <param name="rangeMin">The minimum value for the random numbers.</param>
+        /// <param name="rangeMax">The maximum value for the random numbers.</param>
+        /// <param name="allowedAttempts">The number of attempts allowed for this track.</param>
         public Track(int rangeMin, int rangeMax, int allowedAttempts)
         {
             this.rangeMin = rangeMin;
             this.rangeMax = rangeMax;
             this.allowedAttempts = allowedAttempts;
-            // Initialize randomNumbers to an empty array.
+            // Start with an empty array; numbers will be generated later.
             randomNumbers = Array.Empty<int>();
         }
 
         /// <summary>
-        /// Gets the array of random numbers.
+        /// Gets the array of random numbers generated for this track.
         /// </summary>
-        public int[] GetRandomNumbers() { return randomNumbers; }
+        /// <returns>The array of random numbers.</returns>
+        public int[] GetRandomNumbers() => randomNumbers;
 
         /// <summary>
-        /// Sets the array of random numbers.
+        /// Sets the array of random numbers for this track.
         /// </summary>
-        public void SetRandomNumbers(int[] nums) { randomNumbers = nums; }
+        /// <param name="nums">The array of numbers to set.</param>
+        public void SetRandomNumbers(int[] nums) => randomNumbers = nums;
 
         /// <summary>
-        /// Gets the mode (target number) for the track.
+        /// Gets the mode (the number to guess) for this track.
         /// </summary>
-        public int GetMode() { return mode; }
+        /// <returns>The mode of the random numbers.</returns>
+        public int GetMode() => mode;
 
         /// <summary>
-        /// Sets the mode (target number) for the track.
+        /// Sets the mode for this track.
         /// </summary>
-        public void setMode(int mode) { this.mode = mode; }
+        /// <param name="mode">The mode to set.</param>
+        public void setMode(int mode) => this.mode = mode;
 
         /// <summary>
         /// Gets the number of allowed attempts for this track.
         /// </summary>
-        public int GetAllowedAttempts() { return allowedAttempts; }
+        /// <returns>The allowed attempts.</returns>
+        public int GetAllowedAttempts() => allowedAttempts;
 
         /// <summary>
-        /// Sets the allowed attempts for this track.
+        /// Sets the number of allowed attempts for this track.
         /// </summary>
-        public void SetAllowedAttempts(int attempts) { allowedAttempts = attempts; }
+        /// <param name="attempts">The number of attempts to set.</param>
+        public void SetAllowedAttempts(int attempts) => allowedAttempts = attempts;
 
         /// <summary>
-        /// Generates random numbers and computes a unique mode.
-        /// Continues generating until a unique mode is found.
+        /// Generates a set of random numbers and calculates a unique mode.
+        /// If multiple modes are found, the process repeats until a unique mode is determined.
         /// </summary>
         /// <returns>The unique mode for this track.</returns>
         public int generateMode()
@@ -72,6 +91,7 @@ namespace NumberCruncherClient
             bool uniqueModeFound = false;
             int computedMode = 0;
 
+            // Loop until a unique mode is found.
             while (!uniqueModeFound)
             {
                 randomNumbers = new int[1000];
@@ -81,7 +101,7 @@ namespace NumberCruncherClient
                     randomNumbers[i] = random.Next(rangeMin, rangeMax + 1);
                 }
 
-                // Count the frequency of each number.
+                // Count the frequency of each number using a dictionary.
                 Dictionary<int, int> frequency = new Dictionary<int, int>();
                 foreach (int num in randomNumbers)
                 {
@@ -91,47 +111,45 @@ namespace NumberCruncherClient
                         frequency[num] = 1;
                 }
 
-                // Find the highest frequency.
+                // Find the maximum frequency.
                 int maxFrequency = frequency.Values.Max();
 
-                // Get all numbers that occur with the maximum frequency.
+                // Get all numbers that have the maximum frequency.
                 var modes = frequency.Where(pair => pair.Value == maxFrequency)
                                      .Select(pair => pair.Key)
                                      .ToList();
 
-                // Accept only a unique mode.
+                // If there is exactly one mode, accept it.
                 if (modes.Count == 1)
                 {
                     uniqueModeFound = true;
                     computedMode = modes[0];
                 }
+                // If multiple modes are found, the loop will repeat to generate a new set.
             }
             return computedMode;
         }
 
-
+        /// <summary>
+        /// Checks if the player's guess matches the mode.
+        /// </summary>
+        /// <param name="guess">The player's guess.</param>
+        /// <returns>True if the guess is correct, false otherwise.</returns>
+        public bool CheckGuess(int guess) => guess == mode;
 
         /// <summary>
-        /// Checks if the given guess matches the track's mode.
+        /// Provides feedback on the player's guess.
         /// </summary>
-        public bool CheckGuess(int guess)
-        {
-            return guess == mode;
-        }
-
-        /// <summary>
-        /// Provides feedback based on the player's guess.
-        /// Returns an upward arrow if the guess is too low,
-        /// a downward arrow if too high, and a checkmark if correct.
-        /// </summary>
+        /// <param name="guess">The player's guess.</param>
+        /// <returns>"↑" if the guess is too low, "↓" if too high, "✔" if correct.</returns>
         public string GetFeedback(int guess)
         {
             if (guess < mode)
-                return "↑";  // Too low.
+                return "↑";  // Too low
             else if (guess > mode)
-                return "↓";  // Too high.
+                return "↓";  // Too high
             else
-                return "✔";  // Correct.
+                return "✔";  // Correct
         }
     }
 }

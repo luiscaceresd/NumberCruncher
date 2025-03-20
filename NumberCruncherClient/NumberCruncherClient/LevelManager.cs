@@ -3,92 +3,100 @@
 namespace NumberCruncherClient
 {
     /// <summary>
-    /// Manages game levels and tracks.
-    /// Sets up tracks based on the current level and chosen difficulty.
+    /// Manages the levels and tracks in the NumberCruncher game.
+    /// Sets up tracks based on the current level and difficulty, including extra attempts from spare guesses.
     /// </summary>
     [Serializable]
     public class LevelManager
     {
+        // The current level number.
         private int levelNumber;
+
+        // The array of tracks for the current level.
         private Track[] tracks;
 
         /// <summary>
-        /// Default constructor.
-        /// Initializes level number to 1 and creates an empty track array.
+        /// Initializes a new instance of the LevelManager class.
+        /// Starts at level 1 with no tracks.
         /// </summary>
         public LevelManager()
         {
             levelNumber = 1;
-            // Initialize tracks to an empty array to satisfy non-nullable field requirements.
             tracks = Array.Empty<Track>();
         }
 
         /// <summary>
         /// Gets the current level number.
         /// </summary>
-        public int GetLevelNumber() { return levelNumber; }
+        /// <returns>The current level number.</returns>
+        public int GetLevelNumber() => levelNumber;
 
         /// <summary>
         /// Sets the current level number.
         /// </summary>
-        public void SetLevelNumber(int level) { levelNumber = level; }
+        /// <param name="level">The level number to set.</param>
+        public void SetLevelNumber(int level) => levelNumber = level;
 
         /// <summary>
         /// Gets the tracks for the current level.
         /// </summary>
-        public Track[] GetTracks() { return tracks; }
+        /// <returns>The array of tracks.</returns>
+        public Track[] GetTracks() => tracks;
 
         /// <summary>
         /// Sets the tracks for the current level.
         /// </summary>
-        public void SetTracks(Track[] tracks) { this.tracks = tracks; }
+        /// <param name="tracks">The array of tracks to set.</param>
+        public void SetTracks(Track[] tracks) => this.tracks = tracks;
 
         /// <summary>
         /// Increases the level number by one.
         /// </summary>
-        public void IncreaseLevel()
-        {
-            levelNumber++;
-        }
+        public void IncreaseLevel() => levelNumber++;
 
         /// <summary>
-        /// Sets up the tracks for the current level based on the chosen difficulty.
+        /// Sets up the tracks for the current level based on the difficulty and extra attempts.
         /// </summary>
-        /// <param name="difficulty">The selected game difficulty.</param>
-        public void SetupTracks(Difficulty difficulty)
+        /// <param name="difficulty">The selected difficulty level.</param>
+        /// <param name="extraAttempts">The number of extra attempts to add to each track.</param>
+        public void SetupTracks(Difficulty difficulty, int extraAttempts)
         {
             int numberOfTracks = 0;
             int baseRange = 0;
             int allowedAttemptsBase = 0;
 
-            // Determine track parameters based on difficulty.
+            // Determine base parameters based on difficulty.
             switch (difficulty)
             {
                 case Difficulty.EASY:
                     numberOfTracks = 3;
-                    baseRange = 10;     // Range: 1..10
+                    baseRange = 10;
                     allowedAttemptsBase = 5;
                     break;
                 case Difficulty.MODERATE:
                     numberOfTracks = 5;
-                    baseRange = 100;    // Range: 1..100
+                    baseRange = 100;
                     allowedAttemptsBase = 7;
                     break;
                 case Difficulty.DIFFICULT:
                     numberOfTracks = 7;
-                    baseRange = 1000;   // Range: 1..1000
+                    baseRange = 1000;
                     allowedAttemptsBase = 11;
                     break;
             }
 
-            // Increase the range based on the level.
+            // Calculate the maximum range for the current level.
             int rangeMax = baseRange * (levelNumber == 0 ? 1 : levelNumber);
+
+            // Calculate allowed attempts, including extra attempts from spare guesses.
+            int allowedAttempts = allowedAttemptsBase + extraAttempts;
+
             tracks = new Track[numberOfTracks];
 
             // Create and initialize each track.
             for (int index = 0; index < numberOfTracks; index++)
             {
-                tracks[index] = new Track(1, rangeMax, allowedAttemptsBase);
+                tracks[index] = new Track(1, rangeMax, allowedAttempts);
                 int mode = tracks[index].generateMode();
                 tracks[index].setMode(mode);
             }
