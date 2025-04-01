@@ -1,15 +1,16 @@
 using System;
+using System.Linq;
+using System.Collections.Generic;
 using System.Windows.Forms;
-
+using NumberCruncherClient;
 
 namespace NumberCruncherClient
 {
     public partial class MainForm : Form
     {
-        private NumberCruncherGame game; 
+        private NumberCruncherGame game;
         private Difficulty selectedDifficulty;
-        private string randomNumberToDisplay;
-
+        private List<int> specialNumbers; // List to store special numbers for each track
 
         // Constructor accepting a NumberCruncherGame instance
         public MainForm(NumberCruncherGame game, Difficulty difficulty)
@@ -17,15 +18,22 @@ namespace NumberCruncherClient
             InitializeComponent();
             this.game = game; // Store game instance
             this.selectedDifficulty = difficulty;
-            randomNumberToDisplay = GenerateSpecialRandomNumber().ToString();
-            // Very Hacky implementation, Simply to adhere to section D of the specification, this is temporary and
-            // will be removed in later submissions of the assignment
+
+            // Initialize the specialNumbers list to store random numbers for each track
+            specialNumbers = new List<int>();
+
+            // Generate and store special numbers for each track (one per track)
+            for (int i = 0; i < 7; i++)
+            {
+                specialNumbers.Add(GenerateSpecialRandomNumber());
+            }
+
+            // Clear any existing guesses in the textboxes (just for a fresh start)
             TextBox[] textBoxes = { txtGuess1, txtGuess2, txtGuess3, txtGuess4, txtGuess5, txtGuess6, txtGuess7 };
             foreach (var textBox in textBoxes)
             {
-                textBox.Text =  GenerateSpecialRandomNumber().ToString();
+                textBox.Clear();
             }
-
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -33,11 +41,9 @@ namespace NumberCruncherClient
             UpdateTrackVisibility(selectedDifficulty);
         }
 
-
-
         private void UpdateTrackVisibility(Difficulty difficulty)
         {
-            // Determine the number of tracks to display
+            // Determine the number of tracks to display based on difficulty
             int trackCount = difficulty switch
             {
                 Difficulty.EASY => 3,
@@ -76,8 +82,6 @@ namespace NumberCruncherClient
             }
         }
 
-
-
         private void btnGuess_Click(object sender, EventArgs e)
         {
             // Array of guess input fields and corresponding track indicators
@@ -87,6 +91,7 @@ namespace NumberCruncherClient
             bool allCorrect = true;
             string debugMessage = "Track Results:\n";
             Track[] tracks = game.GetTracks();
+
             // Iterate over each Track instance directly
             for (int i = 0; i < tracks.Length; i++)
             {
@@ -94,8 +99,10 @@ namespace NumberCruncherClient
 
                 if (guessTextBoxes[i].Visible) // Check only visible tracks
                 {
-                    bool isCorrect = int.TryParse(guessTextBoxes[i].Text, out int userGuess) && track.CheckGuess(userGuess);
+                    int specialNumber = specialNumbers[i]; // Get the special number for this track
+                    bool isCorrect = int.TryParse(guessTextBoxes[i].Text, out int userGuess) && userGuess == specialNumber;
 
+                    // If the guess is correct, update the indicator with a green check
                     if (isCorrect)
                     {
                         trackIndicators[i].Image = Properties.Resources.Green_check; // Correct guess
@@ -103,8 +110,9 @@ namespace NumberCruncherClient
                     }
                     else
                     {
+                        // If incorrect, update the indicator with a red X
                         trackIndicators[i].Image = Properties.Resources.Red_X; // Incorrect guess
-                        debugMessage += $"Track {i + 1}: Incorrect (Mode: {track.GetMode()}, Guessed: {userGuess})\n";
+                        debugMessage += $"Track {i + 1}: Incorrect (Guessed: {userGuess})\n";
                         allCorrect = false;
                     }
                 }
@@ -117,6 +125,10 @@ namespace NumberCruncherClient
             if (allCorrect)
             {
                 MessageBox.Show("All tracks are correct! You win!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Some tracks are incorrect. Try again.", "Try Again", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -131,39 +143,37 @@ namespace NumberCruncherClient
             PlayerSetupForm playerSetupForm = new PlayerSetupForm();
             playerSetupForm.Show();
             this.Close();
-
         }
-        // Generate an array of 1000 numbers within the range. and find the mode.
+
+        // Generate a random special number based on difficulty
         private int GenerateSpecialRandomNumber()
         {
             Random random = new Random();
             int minRange = 1;
             int maxRange = 1;
             List<int> randomNumbers = new List<int>();
-            // fill the list with numbers within the range specified by the difficulty
+
+            // Set range based on difficulty
             switch (selectedDifficulty)
             {
                 case Difficulty.EASY:
-                    // range of 1-10 and find the mode
                     maxRange = 10;
                     break;
                 case Difficulty.MODERATE:
-                    // range of 1-100 and find the mode
                     maxRange = 100;
                     break;
                 case Difficulty.DIFFICULT:
-                    // range of 1-1000 and find the mode
                     maxRange = 1000;
                     break;
-
-
             }
-            // fill the list with random numbers from a range of 1-maxRange
+
+            // Fill the list with random numbers
             for (int index = 0; index < 1000; index++)
             {
                 randomNumbers.Add(random.Next(minRange, maxRange));
             }
-            // find the mode in the list of random numbers (LINQ Solution)
+
+            // Find and return the mode in the list of random numbers (most frequent number)
             int mode = randomNumbers.GroupBy(value => value)
                 .OrderByDescending(group => group.Count())
                 .First()
