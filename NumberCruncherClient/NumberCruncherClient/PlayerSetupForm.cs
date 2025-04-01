@@ -49,6 +49,7 @@ namespace NumberCruncherClient
             NumberCruncherGame game = new NumberCruncherGame();
             game.Player.setInitials(initials);
             game.Difficulty = difficulty;
+            game.startGame();
 
             // Pass difficulty to the MainScreen
             MainForm mainScreen = new MainForm(game, difficulty);

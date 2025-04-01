@@ -85,6 +85,7 @@ namespace NumberCruncherClient
             bool allCorrect = true;
             string debugMessage = "Track Results:\n";
             Track[] tracks = game.GetTracks();
+            MessageBox.Show($"Tracks loaded: {tracks.Length}");
 
             // Iterate over each Track instance directly
             for (int i = 0; i < tracks.Length; i++)
