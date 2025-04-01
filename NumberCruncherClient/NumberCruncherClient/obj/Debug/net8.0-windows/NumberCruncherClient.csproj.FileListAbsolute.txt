@@ -102,3 +102,4 @@ C:\Users\jarof\source\repos\NumberCruncherMain\NumberCruncherClient\NumberCrunch
 C:\Users\jarof\source\repos\NumberCruncherMain\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\NumberCruncherClient.pdb
 C:\Users\jarof\source\repos\NumberCruncherMain\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\NumberCruncherClient.genruntimeconfig.cache
 C:\Users\jarof\source\repos\NumberCruncherMain\NumberCruncherClient\NumberCruncherClient\obj\Debug\net8.0-windows\ref\NumberCruncherClient.dll
+C:\Users\nojan\OneDrive\Bureau\NumberCruncher\NumberCruncher\NumberCruncherClient\NumberCruncherClient\bin\Debug\net8.0-windows\NumberCruncherClient.dll.config

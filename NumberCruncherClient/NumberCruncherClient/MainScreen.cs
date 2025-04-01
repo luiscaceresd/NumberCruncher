@@ -10,7 +10,6 @@ namespace NumberCruncherClient
     {
         private NumberCruncherGame game;
         private Difficulty selectedDifficulty;
-        private List<int> specialNumbers; // List to store special numbers for each track
 
         // Constructor accepting a NumberCruncherGame instance
         public MainForm(NumberCruncherGame game, Difficulty difficulty)
@@ -20,13 +19,8 @@ namespace NumberCruncherClient
             this.selectedDifficulty = difficulty;
 
             // Initialize the specialNumbers list to store random numbers for each track
-            specialNumbers = new List<int>();
 
-            // Generate and store special numbers for each track (one per track)
-            for (int i = 0; i < 7; i++)
-            {
-                specialNumbers.Add(GenerateSpecialRandomNumber());
-            }
+            
 
             // Clear any existing guesses in the textboxes (just for a fresh start)
             TextBox[] textBoxes = { txtGuess1, txtGuess2, txtGuess3, txtGuess4, txtGuess5, txtGuess6, txtGuess7 };
@@ -99,8 +93,7 @@ namespace NumberCruncherClient
 
                 if (guessTextBoxes[i].Visible) // Check only visible tracks
                 {
-                    int specialNumber = specialNumbers[i]; // Get the special number for this track
-                    bool isCorrect = int.TryParse(guessTextBoxes[i].Text, out int userGuess) && userGuess == specialNumber;
+                    bool isCorrect = int.TryParse(guessTextBoxes[i].Text, out int userGuess) && track.CheckGuess(userGuess);
 
                     // If the guess is correct, update the indicator with a green check
                     if (isCorrect)
