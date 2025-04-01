@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 
+
 namespace NumberCruncherClient
 {
     public partial class MainForm : Form
@@ -8,6 +9,7 @@ namespace NumberCruncherClient
         private NumberCruncherGame game; 
         private Difficulty selectedDifficulty;
         private string randomNumberToDisplay;
+
 
         // Constructor accepting a NumberCruncherGame instance
         public MainForm(NumberCruncherGame game, Difficulty difficulty)
@@ -78,7 +80,44 @@ namespace NumberCruncherClient
 
         private void btnGuess_Click(object sender, EventArgs e)
         {
-            // Handle the Guess button click here
+            // Array of guess input fields and corresponding track indicators
+            TextBox[] guessTextBoxes = { txtGuess1, txtGuess2, txtGuess3, txtGuess4, txtGuess5, txtGuess6, txtGuess7 };
+            PictureBox[] trackIndicators = { picTrack1, picTrack2, picTrack3, picTrack4, picTrack5, picTrack6, picTrack7 };
+
+            bool allCorrect = true;
+            string debugMessage = "Track Results:\n";
+
+            // Iterate over each Track instance directly
+            for (int i = 0; i < game.Tracks.Length; i++)
+            {
+                Track track = game.Tracks[i]; // Directly access Track instance
+
+                if (guessTextBoxes[i].Visible) // Check only visible tracks
+                {
+                    bool isCorrect = int.TryParse(guessTextBoxes[i].Text, out int userGuess) && track.CheckGuess(userGuess);
+
+                    if (isCorrect)
+                    {
+                        trackIndicators[i].Image = Properties.Resources.Green_check; // Correct guess
+                        debugMessage += $"Track {i + 1}: Correct!\n";
+                    }
+                    else
+                    {
+                        trackIndicators[i].Image = Properties.Resources.Red_X; // Incorrect guess
+                        debugMessage += $"Track {i + 1}: Incorrect (Mode: {track.GetMode()}, Guessed: {userGuess})\n";
+                        allCorrect = false;
+                    }
+                }
+            }
+
+            // Show debugging info
+            MessageBox.Show(debugMessage, "Debug Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Check for win condition
+            if (allCorrect)
+            {
+                MessageBox.Show("All tracks are correct! You win!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)

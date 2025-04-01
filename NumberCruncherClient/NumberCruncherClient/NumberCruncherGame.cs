@@ -58,6 +58,8 @@ namespace NumberCruncherClient
         /// </summary>
         public int TrackCount => levelManager.GetTracks().Length;
 
+        public object Tracks { get; internal set; }
+
         /// <summary>
         /// Starts the game by setting up the tracks for the first level.
         /// </summary>

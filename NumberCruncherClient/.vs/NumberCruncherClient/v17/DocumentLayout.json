@@ -1,50 +1,54 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\",
+  "WorkspaceRootPath": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\user\\documents\\00-important\\01-school\\winter 2025\\gameprogramming\\numbercruncher\\numbercruncherclient\\numbercruncherclient\\numbercrunchergame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\numbercrunchergame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\user\\documents\\00-important\\01-school\\winter 2025\\gameprogramming\\numbercruncher\\numbercruncherclient\\numbercruncherclient\\gamestatemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\gamestatemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\user\\documents\\00-important\\01-school\\winter 2025\\gameprogramming\\numbercruncher\\numbercruncherclient\\numbercruncherclient\\scorer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\scorer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\user\\documents\\00-important\\01-school\\winter 2025\\gameprogramming\\numbercruncher\\numbercruncherclient\\numbercruncherclient\\track.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\jarof\\source\\repos\\numbercrunchermain\\numbercruncherclient\\numbercruncherclient\\track.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\track.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\user\\documents\\00-important\\01-school\\winter 2025\\gameprogramming\\numbercruncher\\numbercruncherclient\\numbercruncherclient\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\jarof\\source\\repos\\numbercrunchermain\\numbercruncherclient\\numbercruncherclient\\mainscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\mainscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\numbercruncherclient\\mainscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\mainscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\user\\documents\\00-important\\01-school\\winter 2025\\gameprogramming\\numbercruncher\\numbercruncherclient\\numbercruncherclient\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\jarof\\source\\repos\\numbercrunchermain\\numbercruncherclient\\numbercruncherclient\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\user\\documents\\00-important\\01-school\\winter 2025\\gameprogramming\\numbercruncher\\numbercruncherclient\\numbercruncherclient\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\user\\documents\\00-important\\01-school\\winter 2025\\gameprogramming\\numbercruncher\\numbercruncherclient\\numbercruncherclient\\difficulty.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\jarof\\source\\repos\\numbercrunchermain\\numbercruncherclient\\numbercruncherclient\\difficulty.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\difficulty.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\user\\documents\\00-important\\01-school\\winter 2025\\gameprogramming\\numbercruncher\\numbercruncherclient\\numbercruncherclient\\playersetupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\numbercruncherclient\\mainscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\mainscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\jarof\\source\\repos\\numbercrunchermain\\numbercruncherclient\\numbercruncherclient\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\jarof\\source\\repos\\numbercrunchermain\\numbercruncherclient\\numbercruncherclient\\properties\\resources.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
+      "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\properties\\resources.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\numbercruncherclient\\playersetupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\playersetupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\user\\documents\\00-important\\01-school\\winter 2025\\gameprogramming\\numbercruncher\\numbercruncherclient\\numbercruncherclient\\mainscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\mainscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\jarof\\source\\repos\\numbercrunchermain\\numbercruncherclient\\numbercruncherclient\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\jarof\\source\\repos\\numbercrunchermain\\numbercruncherclient\\numbercruncherclient\\numbercrunchergame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\numbercrunchergame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\jarof\\source\\repos\\numbercrunchermain\\numbercruncherclient\\numbercruncherclient\\scorer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\scorer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|c:\\users\\jarof\\source\\repos\\numbercrunchermain\\numbercruncherclient\\numbercruncherclient\\gamestatemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D8CF39C9-A62C-439C-A11C-10EE5249EA32}|NumberCruncherClient\\NumberCruncherClient.csproj|solutionrelative:numbercruncherclient\\gamestatemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,122 +58,148 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 9,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\Program.cs",
-              "RelativeDocumentMoniker": "NumberCruncherClient\\Program.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\Program.cs",
-              "RelativeToolTip": "NumberCruncherClient\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T00:30:36.235Z",
+              "DocumentIndex": 6,
+              "Title": "Resources.resx",
+              "DocumentMoniker": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\Properties\\Resources.resx",
+              "RelativeDocumentMoniker": "NumberCruncherClient\\Properties\\Resources.resx",
+              "ToolTip": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\Properties\\Resources.resx",
+              "RelativeToolTip": "NumberCruncherClient\\Properties\\Resources.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2025-03-31T03:16:46.222Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Scorer.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\Scorer.cs",
-              "RelativeDocumentMoniker": "NumberCruncherClient\\Scorer.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\Scorer.cs",
-              "RelativeToolTip": "NumberCruncherClient\\Scorer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\Program.cs",
+              "RelativeDocumentMoniker": "NumberCruncherClient\\Program.cs",
+              "ToolTip": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\Program.cs",
+              "RelativeToolTip": "NumberCruncherClient\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T00:30:25.145Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-20T00:30:36.235Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Scorer.cs",
+              "DocumentMoniker": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\Scorer.cs",
+              "RelativeDocumentMoniker": "NumberCruncherClient\\Scorer.cs",
+              "ToolTip": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\Scorer.cs",
+              "RelativeToolTip": "NumberCruncherClient\\Scorer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T00:30:25.145Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "NumberCruncherGame.cs",
+              "DocumentMoniker": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\NumberCruncherGame.cs",
+              "RelativeDocumentMoniker": "NumberCruncherClient\\NumberCruncherGame.cs",
+              "ToolTip": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\NumberCruncherGame.cs",
+              "RelativeToolTip": "NumberCruncherClient\\NumberCruncherGame.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAA5wGkAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T18:44:41.857Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "NumberCruncherGame.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\NumberCruncherGame.cs",
-              "RelativeDocumentMoniker": "NumberCruncherClient\\NumberCruncherGame.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\NumberCruncherGame.cs",
-              "RelativeToolTip": "NumberCruncherClient\\NumberCruncherGame.cs",
-              "ViewState": "AgIAAHcAAAAAAAAAAAAuwJEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T18:44:41.857Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "Track.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\Track.cs",
+              "DocumentMoniker": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\Track.cs",
               "RelativeDocumentMoniker": "NumberCruncherClient\\Track.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\Track.cs",
+              "ToolTip": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\Track.cs",
               "RelativeToolTip": "NumberCruncherClient\\Track.cs",
-              "ViewState": "AgIAAF4AAAAAAAAAAAAIwJoAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIcAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-20T00:28:31.151Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 11,
               "Title": "GameStateManager.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\GameStateManager.cs",
+              "DocumentMoniker": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\GameStateManager.cs",
               "RelativeDocumentMoniker": "NumberCruncherClient\\GameStateManager.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\GameStateManager.cs",
+              "ToolTip": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\GameStateManager.cs",
               "RelativeToolTip": "NumberCruncherClient\\GameStateManager.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAgwD4AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwD4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T18:44:49.171Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-09T18:44:49.171Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "MainScreen.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\MainScreen.cs",
-              "RelativeDocumentMoniker": "NumberCruncherClient\\MainScreen.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\MainScreen.cs [Design]",
-              "RelativeToolTip": "NumberCruncherClient\\MainScreen.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T18:35:26.943Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "Player.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\Player.cs",
+              "DocumentMoniker": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\Player.cs",
               "RelativeDocumentMoniker": "NumberCruncherClient\\Player.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\Player.cs",
+              "ToolTip": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\Player.cs",
               "RelativeToolTip": "NumberCruncherClient\\Player.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAIwEMAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAwCgAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T00:30:10.616Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-20T00:30:10.616Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 3,
               "Title": "Difficulty.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\Difficulty.cs",
+              "DocumentMoniker": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\Difficulty.cs",
               "RelativeDocumentMoniker": "NumberCruncherClient\\Difficulty.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\Difficulty.cs",
+              "ToolTip": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\Difficulty.cs",
               "RelativeToolTip": "NumberCruncherClient\\Difficulty.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T00:29:47.097Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-20T00:29:47.097Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "LevelManager.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\LevelManager.cs",
+              "DocumentMoniker": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\LevelManager.cs",
               "RelativeDocumentMoniker": "NumberCruncherClient\\LevelManager.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\LevelManager.cs",
+              "ToolTip": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\LevelManager.cs",
               "RelativeToolTip": "NumberCruncherClient\\LevelManager.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAIwGgAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAAAQwC0AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T18:44:50.299Z",
+              "WhenOpened": "2025-03-09T18:44:50.299Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainScreen.cs",
+              "DocumentMoniker": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\MainScreen.cs",
+              "RelativeDocumentMoniker": "NumberCruncherClient\\MainScreen.cs",
+              "ToolTip": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\MainScreen.cs",
+              "RelativeToolTip": "NumberCruncherClient\\MainScreen.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAgwF0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T18:43:05.861Z",
               "EditorCaption": ""
             },
             {
@@ -178,27 +208,25 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 7,
               "Title": "PlayerSetupForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\PlayerSetupForm.cs",
+              "DocumentMoniker": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\PlayerSetupForm.cs",
               "RelativeDocumentMoniker": "NumberCruncherClient\\PlayerSetupForm.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\PlayerSetupForm.cs [Design]",
+              "ToolTip": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\PlayerSetupForm.cs [Design]",
               "RelativeToolTip": "NumberCruncherClient\\PlayerSetupForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T03:36:44.454Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-03-10T03:36:44.454Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "MainScreen.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\MainScreen.cs",
+              "DocumentIndex": 4,
+              "Title": "MainScreen.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\MainScreen.cs",
               "RelativeDocumentMoniker": "NumberCruncherClient\\MainScreen.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\00-IMPORTANT\\01-SCHOOL\\Winter 2025\\GameProgramming\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\MainScreen.cs",
-              "RelativeToolTip": "NumberCruncherClient\\MainScreen.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAgwD4AAAA1AAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\jarof\\source\\repos\\NumberCruncherMain\\NumberCruncherClient\\NumberCruncherClient\\MainScreen.cs [Design]*",
+              "RelativeToolTip": "NumberCruncherClient\\MainScreen.cs [Design]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T18:43:05.861Z"
+              "WhenOpened": "2025-03-09T18:35:26.943Z"
             }
           ]
         }
