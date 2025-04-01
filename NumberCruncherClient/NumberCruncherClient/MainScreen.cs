@@ -86,11 +86,11 @@ namespace NumberCruncherClient
 
             bool allCorrect = true;
             string debugMessage = "Track Results:\n";
-
+            Track[] tracks = game.GetTracks();
             // Iterate over each Track instance directly
-            for (int i = 0; i < game.Tracks.Length; i++)
+            for (int i = 0; i < tracks.Length; i++)
             {
-                Track track = game.Tracks[i]; // Directly access Track instance
+                Track track = tracks[i]; // Directly access Track instance
 
                 if (guessTextBoxes[i].Visible) // Check only visible tracks
                 {
