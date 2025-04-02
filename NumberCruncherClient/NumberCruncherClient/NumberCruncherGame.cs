@@ -68,8 +68,8 @@ namespace NumberCruncherClient
             currentMaxRange = difficulty switch
             {
                 Difficulty.EASY => 10,
-                Difficulty.MEDIUM => 100,
-                Difficulty.HARD => 1000,
+                Difficulty.MODERATE => 100,
+                Difficulty.DIFFICULT => 1000,
                 _ => 10
             };
 
@@ -139,8 +139,29 @@ namespace NumberCruncherClient
         public void nextLevel()
         {
             levelManager.IncreaseLevel();
-            // Pass the spare guesses to increase allowed attempts in the next level.
-            levelManager.SetupTracks(difficulty, spareGuessesForNextLevel);
+            switch (difficulty)
+            {
+                case Difficulty.EASY:
+                    currentMaxRange += 10;
+                    if (currentMaxRange >= 100)
+                    {
+                        difficulty = Difficulty.MODERATE;
+                        currentMaxRange = 100;
+                    }
+                    break;
+                case Difficulty.MODERATE:
+                    currentMaxRange += 100;
+                    if (currentMaxRange >= 1000)
+                    {
+                        difficulty = Difficulty.DIFFICULT;
+                        currentMaxRange = 1000;
+                    }
+                    break;
+                case Difficulty.DIFFICULT:
+                    currentMaxRange += 1000;
+                    break;
+            }
+            levelManager.SetupTracks(difficulty, spareGuessesForNextLevel, currentMaxRange);
         }
 
         /// <summary>
