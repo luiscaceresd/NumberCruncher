@@ -77,6 +77,8 @@
             btnExit = new Button();
             label1 = new Label();
             lblScore = new Label();
+            lblDifficulty = new Label();
+            lblRange = new Label();
             panelTracks.SuspendLayout();
             track7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picTrack7).BeginInit();
@@ -554,7 +556,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(12, 483);
+            label1.Location = new Point(12, 512);
             label1.Name = "label1";
             label1.Size = new Size(95, 27);
             label1.TabIndex = 12;
@@ -564,17 +566,39 @@
             // 
             lblScore.AutoSize = true;
             lblScore.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblScore.Location = new Point(113, 483);
+            lblScore.Location = new Point(113, 512);
             lblScore.Name = "lblScore";
             lblScore.Size = new Size(26, 27);
             lblScore.TabIndex = 13;
             lblScore.Text = "0";
             // 
+            // lblDifficulty
+            // 
+            lblDifficulty.AutoSize = true;
+            lblDifficulty.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDifficulty.Location = new Point(12, 456);
+            lblDifficulty.Name = "lblDifficulty";
+            lblDifficulty.Size = new Size(158, 27);
+            lblDifficulty.TabIndex = 14;
+            lblDifficulty.Text = "Difficulty:";
+            // 
+            // lblRange
+            // 
+            lblRange.AutoSize = true;
+            lblRange.Font = new Font("Stencil", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblRange.Location = new Point(408, 521);
+            lblRange.Name = "lblRange";
+            lblRange.Size = new Size(104, 18);
+            lblRange.TabIndex = 15;
+            lblRange.Text = "Max Range:";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1302, 522);
+            ClientSize = new Size(1302, 548);
+            Controls.Add(lblRange);
+            Controls.Add(lblDifficulty);
             Controls.Add(lblScore);
             Controls.Add(label1);
             Controls.Add(btnExit);
@@ -662,6 +686,8 @@
         private Label lblFeedback2;
         private Label label1;
         private Label lblScore;
+        private Label lblDifficulty;
+        private Label lblRange;
     }
 
 

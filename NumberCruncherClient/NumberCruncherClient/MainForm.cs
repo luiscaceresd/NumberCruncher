@@ -10,6 +10,7 @@ namespace NumberCruncherClient
         private NumberCruncherGame game; 
         private Difficulty selectedDifficulty;
         private int[] trackLives = new int[7];
+        private int currentMaxRange => game.GetCurrentMaxRange();
 
         // Constructor accepting a NumberCruncherGame instance
         public MainForm(NumberCruncherGame game, Difficulty difficulty)
@@ -47,6 +48,9 @@ namespace NumberCruncherClient
             {
                 trackLives[index] = startingLives;
             }
+            lblDifficulty.Text = $"Difficulty: {selectedDifficulty}";
+            lblScore.Text = $"Score : {game.Player.getScore()}";
+            lblRange.Text = $"Range: 1 - {currentMaxRange}";
         }
 
 
@@ -153,9 +157,16 @@ namespace NumberCruncherClient
                                 guessTextBoxes[i].Enabled = false;
                                 feedbackLabels[i].Text = " | Out of Lives";
                                 debugMessage.AppendLine($"Track {i + 1}: Out of Lives - Game Over");
-                                MessageBox.Show("Game Over! you ran out of lives on the track", "Game Over", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                this.Close();
-                                return;
+                                DialogResult result = MessageBox.Show("Game Over! you ran out of lives on the track / Would you like to start over?", "Game Over", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                if (result == DialogResult.Yes)
+                                {
+                                    PlayerSetupForm playerSetupForm = new PlayerSetupForm();
+                                    playerSetupForm.Show();
+                                }
+
+
+                                Application.Exit();
+                                
                             }
                             trackIndicators[i].Image = redX;
                             debugMessage.AppendLine($"Track {i + 1}: Incorrect (Guessed: {userGuess})");
@@ -202,6 +213,8 @@ namespace NumberCruncherClient
                     "Level Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 lblScore.Text = $"Score : {game.Player.getScore()}";
+                lblRange.Text = $"Range: 1 - {currentMaxRange}";
+                lblDifficulty.Text = $"Difficulty: {game.Difficulty}";
 
                 ReloadForNextLevel();
             }
@@ -226,7 +239,7 @@ namespace NumberCruncherClient
 
             Track[] newTracks = game.GetTracks();
 
-            TextBox[] textBoxes = { txtGuess1, txtGuess2, txtGuess3, txtGuess4, txtGuess4, txtGuess5, txtGuess6, txtGuess7 };
+            TextBox[] textBoxes = { txtGuess1, txtGuess2, txtGuess3, txtGuess4, txtGuess5, txtGuess6, txtGuess7, };
             PictureBox[] indicators = { picTrack1, picTrack2, picTrack3, picTrack4, picTrack5, picTrack6, picTrack7 };
             ListBox[] histories = { lstHistory1, lstHistory2, lstHistory3, lstHistory4, lstHistory5, lstHistory6, lstHistory7 };
             Label[] feedbacks = { lblFeedback1, lblFeedback2, lblFeedback3, lblFeedback4, lblFeedback5, lblFeedback6, lblFeedback7 };
@@ -251,7 +264,8 @@ namespace NumberCruncherClient
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // Handle the Save button click here
+            game.SaveGame();
+            MessageBox.Show("Game Saved Successfully!", "Game Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnExit_Click(object sender, EventArgs e)

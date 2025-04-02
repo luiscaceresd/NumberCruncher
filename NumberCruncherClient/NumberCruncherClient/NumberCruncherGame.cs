@@ -29,6 +29,9 @@ namespace NumberCruncherClient
 
         private int currentMaxRange;
 
+        public int GetCurrentMaxRange() => currentMaxRange;
+
+
         /// <summary>
         /// Initializes a new instance of the NumberCruncherGame class.
         /// Sets up all necessary components for the game.
@@ -181,5 +184,7 @@ namespace NumberCruncherClient
             GameStateManager gsm = new GameStateManager();
             return gsm.loadState() ?? null;
         }
+
+        
     }
 }
