@@ -9,7 +9,7 @@ namespace NumberCruncherClient
     {
         private NumberCruncherGame game; 
         private Difficulty selectedDifficulty;
-        
+        private int[] trackLives = new int[7];
 
         // Constructor accepting a NumberCruncherGame instance
         public MainForm(NumberCruncherGame game, Difficulty difficulty)
@@ -34,6 +34,19 @@ namespace NumberCruncherClient
         private void MainForm_Load(object sender, EventArgs e)
         {
             UpdateTrackVisibility(selectedDifficulty);
+            // Allocation of Initial lives
+            int startingLives = selectedDifficulty switch
+            {
+                Difficulty.EASY => 5,
+                Difficulty.MODERATE => 7,
+                Difficulty.DIFFICULT => 11,
+                _ => 0
+            };
+            // assigning starting lives to every active track
+            for (int index = 0; index < game.GetTracks().Length; index++)
+            {
+                trackLives[index] = startingLives;
+            }
         }
 
 
@@ -88,6 +101,7 @@ namespace NumberCruncherClient
             PictureBox[] trackIndicators = { picTrack1, picTrack2, picTrack3, picTrack4, picTrack5, picTrack6, picTrack7 };
             ListBox[] lstHistories = { lstHistory1, lstHistory2, lstHistory3, lstHistory4, lstHistory5, lstHistory6, lstHistory7 };
             Label[] feedbackLabels = { lblFeedback1, lblFeedback2, lblFeedback3, lblFeedback4, lblFeedback5, lblFeedback6, lblFeedback7 };
+            Label[] guessLabels = { lblGuesses1, lblGuesses2, lblGuesses3, lblGuesses4, lblGuesses5, lblGuesses6, lblGuesses7 };
 
             bool allCorrect = true;
             StringBuilder debugMessage = new StringBuilder("Track Results:\n");
@@ -111,7 +125,10 @@ namespace NumberCruncherClient
                     if (int.TryParse(guessTextBoxes[i].Text, out int userGuess))
                     {
                         bool isCorrect = track.CheckGuess(userGuess);
+
                         string feedback = track.GetFeedback(userGuess); // Get feedback
+
+
 
                         // Store the guess in the track's history ListBox
                         lstHistories[i].Items.Add(userGuess);
@@ -122,10 +139,24 @@ namespace NumberCruncherClient
                         if (isCorrect)
                         {
                             trackIndicators[i].Image = greenCheck;
+                            guessTextBoxes[i].Enabled = false;
                             debugMessage.AppendLine($"Track {i + 1}: Correct!");
                         }
                         else
                         {
+                            trackLives[i]--;
+                            guessLabels[i].Text = $"Guesses = {trackLives[i]}";
+
+                            if (trackLives[i] <= 0 && !isCorrect)
+                            {
+                                trackIndicators[i].Image = redX;
+                                guessTextBoxes[i].Enabled = false;
+                                feedbackLabels[i].Text = " | Out of Lives";
+                                debugMessage.AppendLine($"Track {i + 1}: Out of Lives - Game Over");
+                                MessageBox.Show("Game Over! you ran out of lives on the track", "Game Over", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.Close();
+                                return;
+                            }
                             trackIndicators[i].Image = redX;
                             debugMessage.AppendLine($"Track {i + 1}: Incorrect (Guessed: {userGuess})");
                             allCorrect = false;
@@ -146,6 +177,32 @@ namespace NumberCruncherClient
 
             // Display debugging info in lblResult
             lblResult.Text = debugMessage.ToString();
+
+            bool allTracksFinished = true;
+            // validate that we truly have won on all tracks.
+            for (int index = 0; index < tracks.Length; index++)
+            {
+                if (guessTextBoxes[index].Enabled)
+                {
+                    allTracksFinished = false;
+                    break;
+                }
+            }
+
+            if (allTracksFinished)
+            {
+                int[][] guessesPerTrack = lstHistories
+                    .Select(lst => lst.Items.Cast<int>().ToArray())
+                    .ToArray();
+
+                int spare = game.ProcessLevel(guessesPerTrack);
+                game.nextLevel();
+
+                MessageBox.Show($"Level Complete! you earned {spare * 10} points (+bonus if applicable)",
+                    "Level Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                lblScore.Text = $"Score : {game.Player.getScore()}";
+            }
 
             // Check for win condition
             lblResult.Text += allCorrect ? "\nAll tracks are correct! You win!" : "\nSome tracks are incorrect. Try again.";

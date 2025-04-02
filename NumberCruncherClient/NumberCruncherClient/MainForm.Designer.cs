@@ -75,6 +75,8 @@
             btnGuess = new Button();
             btnSave = new Button();
             btnExit = new Button();
+            label1 = new Label();
+            lblScore = new Label();
             panelTracks.SuspendLayout();
             track7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picTrack7).BeginInit();
@@ -548,11 +550,33 @@
             btnExit.UseVisualStyleBackColor = true;
             btnExit.Click += btnExit_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(12, 483);
+            label1.Name = "label1";
+            label1.Size = new Size(95, 27);
+            label1.TabIndex = 12;
+            label1.Text = "Score:";
+            // 
+            // lblScore
+            // 
+            lblScore.AutoSize = true;
+            lblScore.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblScore.Location = new Point(113, 483);
+            lblScore.Name = "lblScore";
+            lblScore.Size = new Size(26, 27);
+            lblScore.TabIndex = 13;
+            lblScore.Text = "0";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1302, 522);
+            Controls.Add(lblScore);
+            Controls.Add(label1);
             Controls.Add(btnExit);
             Controls.Add(btnSave);
             Controls.Add(btnGuess);
@@ -585,6 +609,7 @@
             track1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picTrack1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -635,6 +660,8 @@
         private Label lblFeedback4;
         private Label lblFeedback3;
         private Label lblFeedback2;
+        private Label label1;
+        private Label lblScore;
     }
 
 
