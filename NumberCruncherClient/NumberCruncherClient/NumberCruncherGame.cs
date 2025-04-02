@@ -56,7 +56,7 @@ namespace NumberCruncherClient
         /// <summary>
         /// Gets the number of tracks in the current level.
         /// </summary>
-        public int TrackCount => levelManager.GetTracks().Length;
+        public Track[] GetTracks() => levelManager.GetTracks();
 
         /// <summary>
         /// Starts the game by setting up the tracks for the first level.

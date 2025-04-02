@@ -137,6 +137,15 @@ namespace NumberCruncherClient
         /// <returns>True if the guess is correct, false otherwise.</returns>
         public bool CheckGuess(int guess) => guess == mode;
 
+        public int CorrectNumber { get; private set; } // The correct number for this track
+
+        public Track(int correctNumber)
+        {
+            CorrectNumber = correctNumber;
+        }
+
+        
+
         /// <summary>
         /// Provides feedback on the player's guess.
         /// </summary>

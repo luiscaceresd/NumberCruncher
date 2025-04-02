@@ -1,4 +1,6 @@
 using System;
+using System.Drawing.Imaging;
+using System.Text;
 using System.Windows.Forms;
 
 namespace NumberCruncherClient
@@ -7,7 +9,7 @@ namespace NumberCruncherClient
     {
         private NumberCruncherGame game; 
         private Difficulty selectedDifficulty;
-        private string randomNumberToDisplay;
+        
 
         // Constructor accepting a NumberCruncherGame instance
         public MainForm(NumberCruncherGame game, Difficulty difficulty)
@@ -15,13 +17,16 @@ namespace NumberCruncherClient
             InitializeComponent();
             this.game = game; // Store game instance
             this.selectedDifficulty = difficulty;
-            randomNumberToDisplay = GenerateSpecialRandomNumber().ToString();
-            // Very Hacky implementation, Simply to adhere to section D of the specification, this is temporary and
-            // will be removed in later submissions of the assignment
+
+            // Initialize the specialNumbers list to store random numbers for each track
+
+
+
+            // Clear any existing guesses in the textboxes (just for a fresh start)
             TextBox[] textBoxes = { txtGuess1, txtGuess2, txtGuess3, txtGuess4, txtGuess5, txtGuess6, txtGuess7 };
             foreach (var textBox in textBoxes)
             {
-                textBox.Text =  GenerateSpecialRandomNumber().ToString();
+                textBox.Clear();
             }
 
         }
@@ -35,7 +40,7 @@ namespace NumberCruncherClient
 
         private void UpdateTrackVisibility(Difficulty difficulty)
         {
-            // Determine the number of tracks to display
+            // Determine the number of tracks to display based on difficulty
             int trackCount = difficulty switch
             {
                 Difficulty.EASY => 3,
@@ -78,8 +83,76 @@ namespace NumberCruncherClient
 
         private void btnGuess_Click(object sender, EventArgs e)
         {
-            // Handle the Guess button click here
+            // Array of guess input fields, track indicators, history list boxes, and feedback labels
+            TextBox[] guessTextBoxes = { txtGuess1, txtGuess2, txtGuess3, txtGuess4, txtGuess5, txtGuess6, txtGuess7 };
+            PictureBox[] trackIndicators = { picTrack1, picTrack2, picTrack3, picTrack4, picTrack5, picTrack6, picTrack7 };
+            ListBox[] lstHistories = { lstHistory1, lstHistory2, lstHistory3, lstHistory4, lstHistory5, lstHistory6, lstHistory7 };
+            Label[] feedbackLabels = { lblFeedback1, lblFeedback2, lblFeedback3, lblFeedback4, lblFeedback5, lblFeedback6, lblFeedback7 };
+
+            bool allCorrect = true;
+            StringBuilder debugMessage = new StringBuilder("Track Results:\n");
+            Track[] tracks = game.GetTracks();
+
+            // Load images
+            Image greenCheck = Properties.Resources.GreenCheck;
+            Image redX = Properties.Resources.RedX;
+            Image blank = Properties.Resources.Blank;
+
+            // Clear previous debug messages
+            lblResult.Text = "";
+
+            // Iterate over each Track instance directly
+            for (int i = 0; i < tracks.Length; i++)
+            {
+                Track track = tracks[i]; // Directly access Track instance
+
+                if (guessTextBoxes[i].Visible) // Check only visible tracks
+                {
+                    if (int.TryParse(guessTextBoxes[i].Text, out int userGuess))
+                    {
+                        bool isCorrect = track.CheckGuess(userGuess);
+                        string feedback = track.GetFeedback(userGuess); // Get feedback
+
+                        // Store the guess in the track's history ListBox
+                        lstHistories[i].Items.Add(userGuess);
+
+                        // Display feedback in the corresponding label
+                        feedbackLabels[i].Text = feedback;
+
+                        if (isCorrect)
+                        {
+                            trackIndicators[i].Image = greenCheck;
+                            debugMessage.AppendLine($"Track {i + 1}: Correct!");
+                        }
+                        else
+                        {
+                            trackIndicators[i].Image = redX;
+                            debugMessage.AppendLine($"Track {i + 1}: Incorrect (Guessed: {userGuess})");
+                            allCorrect = false;
+                        }
+                    }
+                    else
+                    {
+                        feedbackLabels[i].Text = "Invalid"; // Indicate invalid input
+                        debugMessage.AppendLine($"Track {i + 1}: Invalid Input");
+                    }
+                }
+                else
+                {
+                    trackIndicators[i].Image = blank;
+                    feedbackLabels[i].Text = ""; // Clear feedback for inactive tracks
+                }
+            }
+
+            // Display debugging info in lblResult
+            lblResult.Text = debugMessage.ToString();
+
+            // Check for win condition
+            lblResult.Text += allCorrect ? "\nAll tracks are correct! You win!" : "\nSome tracks are incorrect. Try again.";
         }
+
+        // Utility function to adjust image opacity
+       
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -101,30 +174,28 @@ namespace NumberCruncherClient
             int minRange = 1;
             int maxRange = 1;
             List<int> randomNumbers = new List<int>();
-            // fill the list with numbers within the range specified by the difficulty
+
+            // Set range based on difficulty
             switch (selectedDifficulty)
             {
                 case Difficulty.EASY:
-                    // range of 1-10 and find the mode
                     maxRange = 10;
                     break;
                 case Difficulty.MODERATE:
-                    // range of 1-100 and find the mode
                     maxRange = 100;
                     break;
                 case Difficulty.DIFFICULT:
-                    // range of 1-1000 and find the mode
                     maxRange = 1000;
                     break;
-
-
             }
-            // fill the list with random numbers from a range of 1-maxRange
+
+            // Fill the list with random numbers
             for (int index = 0; index < 1000; index++)
             {
                 randomNumbers.Add(random.Next(minRange, maxRange));
             }
-            // find the mode in the list of random numbers (LINQ Solution)
+
+            // Find and return the mode in the list of random numbers (most frequent number)
             int mode = randomNumbers.GroupBy(value => value)
                 .OrderByDescending(group => group.Count())
                 .First()
