@@ -27,6 +27,8 @@ namespace NumberCruncherClient
         // Tracks spare guesses to carry over to the next level.
         private int spareGuessesForNextLevel = 0;
 
+        private int currentMaxRange;
+
         /// <summary>
         /// Initializes a new instance of the NumberCruncherGame class.
         /// Sets up all necessary components for the game.
@@ -63,8 +65,18 @@ namespace NumberCruncherClient
         /// </summary>
         public void startGame()
         {
+            currentMaxRange = difficulty switch
+            {
+                Difficulty.EASY => 10,
+                Difficulty.MEDIUM => 100,
+                Difficulty.HARD => 1000,
+                _ => 10
+            };
+
+
             // Start with no extra attempts for the first level.
-            levelManager.SetupTracks(difficulty, 0);
+            levelManager.SetupTracks(difficulty, 0, currentMaxRange);
+
         }
 
         /// <summary>

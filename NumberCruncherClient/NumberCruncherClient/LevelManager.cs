@@ -59,10 +59,9 @@ namespace NumberCruncherClient
         /// </summary>
         /// <param name="difficulty">The selected difficulty level.</param>
         /// <param name="extraAttempts">The number of extra attempts to add to each track.</param>
-        public void SetupTracks(Difficulty difficulty, int extraAttempts)
+        public void SetupTracks(Difficulty difficulty, int extraAttempts, int currentMaxRange)
         {
             int numberOfTracks = 0;
-            int baseRange = 0;
             int allowedAttemptsBase = 0;
 
             // Determine base parameters based on difficulty.
@@ -70,33 +69,28 @@ namespace NumberCruncherClient
             {
                 case Difficulty.EASY:
                     numberOfTracks = 3;
-                    baseRange = 10;
                     allowedAttemptsBase = 5;
                     break;
                 case Difficulty.MODERATE:
                     numberOfTracks = 5;
-                    baseRange = 100;
                     allowedAttemptsBase = 7;
                     break;
                 case Difficulty.DIFFICULT:
                     numberOfTracks = 7;
-                    baseRange = 1000;
                     allowedAttemptsBase = 11;
                     break;
             }
-
+      
             // Calculate the maximum range for the current level.
-            int rangeMax = baseRange * (levelNumber == 0 ? 1 : levelNumber);
 
             // Calculate allowed attempts, including extra attempts from spare guesses.
             int allowedAttempts = allowedAttemptsBase + extraAttempts;
-
             tracks = new Track[numberOfTracks];
 
             // Create and initialize each track.
             for (int index = 0; index < numberOfTracks; index++)
             {
-                tracks[index] = new Track(1, rangeMax, allowedAttempts);
+                tracks[index] = new Track(1, currentMaxRange, allowedAttempts);
                 int mode = tracks[index].generateMode();
                 tracks[index].setMode(mode);
             }
