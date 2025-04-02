@@ -12,6 +12,7 @@ namespace NumberCruncherClient
     [Serializable]
     public class Track
     {
+
         // Array to hold the generated random numbers.
         private int[] randomNumbers;
 
