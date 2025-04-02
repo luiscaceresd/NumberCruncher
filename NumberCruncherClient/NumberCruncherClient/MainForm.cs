@@ -202,6 +202,8 @@ namespace NumberCruncherClient
                     "Level Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 lblScore.Text = $"Score : {game.Player.getScore()}";
+
+                ReloadForNextLevel();
             }
 
             // Check for win condition
@@ -210,6 +212,42 @@ namespace NumberCruncherClient
 
         // Utility function to adjust image opacity
        
+        private void ReloadForNextLevel()
+        {
+            UpdateTrackVisibility(selectedDifficulty);
+
+            int newStartingLives = selectedDifficulty switch
+            {
+                Difficulty.EASY => 5,
+                Difficulty.MODERATE => 7,
+                Difficulty.DIFFICULT => 11,
+                _ => 0
+            };
+
+            Track[] newTracks = game.GetTracks();
+
+            TextBox[] textBoxes = { txtGuess1, txtGuess2, txtGuess3, txtGuess4, txtGuess4, txtGuess5, txtGuess6, txtGuess7 };
+            PictureBox[] indicators = { picTrack1, picTrack2, picTrack3, picTrack4, picTrack5, picTrack6, picTrack7 };
+            ListBox[] histories = { lstHistory1, lstHistory2, lstHistory3, lstHistory4, lstHistory5, lstHistory6, lstHistory7 };
+            Label[] feedbacks = { lblFeedback1, lblFeedback2, lblFeedback3, lblFeedback4, lblFeedback5, lblFeedback6, lblFeedback7 };
+            Label[] guessLabels = { lblGuesses1, lblGuesses2, lblGuesses3, lblGuesses4, lblGuesses5, lblGuesses6, lblGuesses7 };
+
+            for (int index = 0; index < newTracks.Length; index++)
+            {
+                trackLives[index] = newStartingLives;
+
+                textBoxes[index].Enabled = true;
+                textBoxes[index].Clear();
+                indicators[index].Image = Properties.Resources.Blank;
+                histories[index].Items.Clear();
+                feedbacks[index].Text = "";
+                guessLabels[index].Text = $"Guesses: {newStartingLives}";
+
+
+            }
+            lblResult.Text = "";
+
+        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
