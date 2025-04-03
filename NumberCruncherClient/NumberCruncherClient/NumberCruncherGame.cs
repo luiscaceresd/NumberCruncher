@@ -95,7 +95,6 @@ namespace NumberCruncherClient
                 throw new ArgumentNullException(nameof(guessesPerTrack), "Guesses array cannot be null.");
             }
 
-            // Get only the active tracks based on difficulty
             Track[] allTracks = levelManager.GetTracks();
             int activeTrackCount = difficulty switch
             {
@@ -105,16 +104,11 @@ namespace NumberCruncherClient
                 _ => 3
             };
 
-            // Filter guesses based on active track count
             int[][] filteredGuesses = guessesPerTrack.Take(activeTrackCount).ToArray();
 
-            // Debugging log
-            Console.WriteLine($"Active tracks: {activeTrackCount}, Guesses provided: {filteredGuesses.Length}");
-
-            // Get the active tracks based on difficulty
+            // Get active tracks
             Track[] activeTracks = allTracks.Take(activeTrackCount).ToArray();
 
-            // Ensure the number of guesses matches the number of active tracks
             if (filteredGuesses.Length != activeTracks.Length)
             {
                 throw new ArgumentException($"Number of guess arrays must match the number of active tracks. Expected {activeTracks.Length}, but got {filteredGuesses.Length}.");
@@ -156,13 +150,18 @@ namespace NumberCruncherClient
                 }
             }
 
-            // Debugging log
-            Console.WriteLine($"Total spare guesses: {totalSpareGuesses}");
-
             int levelScore = scorer.calculateScore(totalSpareGuesses);
             player.updateScore(levelScore);
             player.setLevelsCompleted(player.getLevelsCompleted() + 1);
             spareGuessesForNextLevel = totalSpareGuesses;
+
+            // Check for game completion or winning condition
+            if (player.getLevelsCompleted() >= levelManager.GetLevelNumber()) // Assuming this is how you know when the game ends.
+            {
+                // Handle game over condition, display results, or transition to game over state.
+                Console.WriteLine("Congratulations! You've completed the game.");
+                return 0;
+            }
 
             // Save the game state after completing the level.
             gameStateManager.saveState(this);

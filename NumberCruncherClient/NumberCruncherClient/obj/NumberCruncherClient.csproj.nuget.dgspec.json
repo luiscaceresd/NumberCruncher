@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jarof\\Source\\Repos\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\NumberCruncherClient.csproj": {}
+    "C:\\Users\\jarof\\source\\repos\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\NumberCruncherClient.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jarof\\Source\\Repos\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\NumberCruncherClient.csproj": {
+    "C:\\Users\\jarof\\source\\repos\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\NumberCruncherClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jarof\\Source\\Repos\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\NumberCruncherClient.csproj",
+        "projectUniqueName": "C:\\Users\\jarof\\source\\repos\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\NumberCruncherClient.csproj",
         "projectName": "NumberCruncherClient",
-        "projectPath": "C:\\Users\\jarof\\Source\\Repos\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\NumberCruncherClient.csproj",
+        "projectPath": "C:\\Users\\jarof\\source\\repos\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\NumberCruncherClient.csproj",
         "packagesPath": "C:\\Users\\jarof\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jarof\\Source\\Repos\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\obj\\",
+        "outputPath": "C:\\Users\\jarof\\source\\repos\\NumberCruncher\\NumberCruncherClient\\NumberCruncherClient\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
