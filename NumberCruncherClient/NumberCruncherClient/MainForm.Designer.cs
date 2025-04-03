@@ -78,6 +78,7 @@
             lblScore = new Label();
             lblDifficulty = new Label();
             lblRange = new Label();
+            label1 = new Label();
             panelTracks.SuspendLayout();
             track7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picTrack7).BeginInit();
@@ -543,7 +544,7 @@
             // btnExit
             // 
             btnExit.Font = new Font("Stencil", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnExit.Location = new Point(964, 461);
+            btnExit.Location = new Point(892, 461);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(142, 49);
             btnExit.TabIndex = 2;
@@ -555,7 +556,7 @@
             // 
             lblScore.AutoSize = true;
             lblScore.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblScore.Location = new Point(12, 512);
+            lblScore.Location = new Point(12, 507);
             lblScore.Name = "lblScore";
             lblScore.Size = new Size(26, 27);
             lblScore.TabIndex = 13;
@@ -581,11 +582,21 @@
             lblRange.TabIndex = 15;
             lblRange.Text = "Max Range:";
             // 
+            // label1
+            // 
+            label1.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(1096, 448);
+            label1.Name = "label1";
+            label1.Size = new Size(154, 86);
+            label1.TabIndex = 16;
+            label1.Text = "Up Arrow = Correct answer is Higher. \r\n\r\nDown Arrow = Correct answer is Lower.";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1302, 548);
+            Controls.Add(label1);
             Controls.Add(lblRange);
             Controls.Add(lblDifficulty);
             Controls.Add(lblScore);
@@ -675,6 +686,7 @@
         private Label lblScore;
         private Label lblDifficulty;
         private Label lblRange;
+        private Label label1;
     }
 
 
