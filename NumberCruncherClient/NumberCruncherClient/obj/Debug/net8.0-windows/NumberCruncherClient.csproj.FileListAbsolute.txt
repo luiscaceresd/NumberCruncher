@@ -84,3 +84,4 @@ C:\Users\jarof\Source\Repos\NumberCruncher\NumberCruncherClient\NumberCruncherCl
 C:\Users\jarof\Source\Repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\bin\Debug\net8.0-windows\Resources\Blank.png
 C:\Users\jarof\Source\Repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\bin\Debug\net8.0-windows\Resources\GreenCheck.png
 C:\Users\jarof\Source\Repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\bin\Debug\net8.0-windows\Resources\RedX.png
+C:\Users\jarof\Source\Repos\NumberCruncher\NumberCruncherClient\NumberCruncherClient\bin\Debug\net8.0-windows\NumberCruncherClient.dll.config

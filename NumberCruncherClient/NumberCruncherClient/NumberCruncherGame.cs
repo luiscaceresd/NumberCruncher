@@ -90,21 +90,52 @@ namespace NumberCruncherClient
         /// <returns>The total spare guesses for the level.</returns>
         public int ProcessLevel(int[][] guessesPerTrack)
         {
-            int totalSpareGuesses = 0;
-            Track[] tracks = levelManager.GetTracks();
-
-            if (guessesPerTrack.Length != tracks.Length)
+            if (guessesPerTrack == null)
             {
-                throw new ArgumentException("Number of guess arrays must match the number of tracks.");
+                throw new ArgumentNullException(nameof(guessesPerTrack), "Guesses array cannot be null.");
             }
 
-            for (int index = 0; index < tracks.Length; index++)
+            // Get only the active tracks based on difficulty
+            Track[] allTracks = levelManager.GetTracks();
+            int activeTrackCount = difficulty switch
             {
-                Track track = tracks[index];
+                Difficulty.EASY => 3,
+                Difficulty.MODERATE => 5,
+                Difficulty.DIFFICULT => 7,
+                _ => 3
+            };
+
+            // Filter guesses based on active track count
+            int[][] filteredGuesses = guessesPerTrack.Take(activeTrackCount).ToArray();
+
+            // Debugging log
+            Console.WriteLine($"Active tracks: {activeTrackCount}, Guesses provided: {filteredGuesses.Length}");
+
+            // Get the active tracks based on difficulty
+            Track[] activeTracks = allTracks.Take(activeTrackCount).ToArray();
+
+            // Ensure the number of guesses matches the number of active tracks
+            if (filteredGuesses.Length != activeTracks.Length)
+            {
+                throw new ArgumentException($"Number of guess arrays must match the number of active tracks. Expected {activeTracks.Length}, but got {filteredGuesses.Length}.");
+            }
+
+            int totalSpareGuesses = 0;
+
+            for (int index = 0; index < activeTracks.Length; index++)
+            {
+                Track track = activeTracks[index];
+
+                if (filteredGuesses[index] == null || filteredGuesses[index].Length == 0)
+                {
+                    Console.WriteLine($"Warning: Track {index} has no guesses. Defaulting to max attempts.");
+                    continue; // Skip processing this track
+                }
+
                 int attemptsUsed = 0;
                 bool correct = false;
 
-                foreach (int guess in guessesPerTrack[index])
+                foreach (int guess in filteredGuesses[index])
                 {
                     attemptsUsed++;
                     if (track.CheckGuess(guess))
@@ -124,6 +155,9 @@ namespace NumberCruncherClient
                     totalSpareGuesses += spare;
                 }
             }
+
+            // Debugging log
+            Console.WriteLine($"Total spare guesses: {totalSpareGuesses}");
 
             int levelScore = scorer.calculateScore(totalSpareGuesses);
             player.updateScore(levelScore);
