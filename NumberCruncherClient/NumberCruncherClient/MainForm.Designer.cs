@@ -75,7 +75,6 @@
             btnGuess = new Button();
             btnSave = new Button();
             btnExit = new Button();
-            label1 = new Label();
             lblScore = new Label();
             lblDifficulty = new Label();
             lblRange = new Label();
@@ -552,21 +551,11 @@
             btnExit.UseVisualStyleBackColor = true;
             btnExit.Click += btnExit_Click;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(12, 512);
-            label1.Name = "label1";
-            label1.Size = new Size(95, 27);
-            label1.TabIndex = 12;
-            label1.Text = "Score:";
-            // 
             // lblScore
             // 
             lblScore.AutoSize = true;
             lblScore.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblScore.Location = new Point(113, 512);
+            lblScore.Location = new Point(12, 512);
             lblScore.Name = "lblScore";
             lblScore.Size = new Size(26, 27);
             lblScore.TabIndex = 13;
@@ -586,7 +575,7 @@
             // 
             lblRange.AutoSize = true;
             lblRange.Font = new Font("Stencil", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblRange.Location = new Point(720, 476);
+            lblRange.Location = new Point(743, 476);
             lblRange.Name = "lblRange";
             lblRange.Size = new Size(104, 18);
             lblRange.TabIndex = 15;
@@ -600,7 +589,6 @@
             Controls.Add(lblRange);
             Controls.Add(lblDifficulty);
             Controls.Add(lblScore);
-            Controls.Add(label1);
             Controls.Add(btnExit);
             Controls.Add(btnSave);
             Controls.Add(btnGuess);
@@ -684,7 +672,6 @@
         private Label lblFeedback4;
         private Label lblFeedback3;
         private Label lblFeedback2;
-        private Label label1;
         private Label lblScore;
         private Label lblDifficulty;
         private Label lblRange;

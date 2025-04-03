@@ -19,10 +19,6 @@ namespace NumberCruncherClient
             this.game = game; // Store game instance
             this.selectedDifficulty = difficulty;
 
-            // Initialize the specialNumbers list to store random numbers for each track
-
-
-
             // Clear any existing guesses in the textboxes (just for a fresh start)
             TextBox[] textBoxes = { txtGuess1, txtGuess2, txtGuess3, txtGuess4, txtGuess5, txtGuess6, txtGuess7 };
             foreach (var textBox in textBoxes)
@@ -97,6 +93,7 @@ namespace NumberCruncherClient
         }
 
 
+        private Dictionary<int, int> correctGuesses = new Dictionary<int, int>();
 
         private void btnGuess_Click(object sender, EventArgs e)
         {
@@ -144,12 +141,18 @@ namespace NumberCruncherClient
                         {
                             trackIndicators[i].Image = greenCheck;
                             guessTextBoxes[i].Enabled = false;
-                            debugMessage.AppendLine($"Track {i + 1}: Correct!");
+
+                            // Store correct guess for this track
+                            if (!correctGuesses.ContainsKey(i))
+                            {
+                                correctGuesses[i] = userGuess;
+                            }
                         }
+
                         else
                         {
                             trackLives[i]--;
-                            guessLabels[i].Text = $"Guesses = {trackLives[i]}";
+                            guessLabels[i].Text = $"Guesses: {trackLives[i]}";
 
                             if (trackLives[i] <= 0 && !isCorrect)
                             {
@@ -238,7 +241,7 @@ namespace NumberCruncherClient
         {
             UpdateTrackVisibility(selectedDifficulty);
 
-            int newStartingLives = selectedDifficulty switch
+            int baseStartingLives = selectedDifficulty switch
             {
                 Difficulty.EASY => 5,
                 Difficulty.MODERATE => 7,
@@ -248,25 +251,25 @@ namespace NumberCruncherClient
 
             Track[] newTracks = game.GetTracks();
 
-            TextBox[] textBoxes = { txtGuess1, txtGuess2, txtGuess3, txtGuess4, txtGuess5, txtGuess6, txtGuess7, };
+            TextBox[] textBoxes = { txtGuess1, txtGuess2, txtGuess3, txtGuess4, txtGuess5, txtGuess6, txtGuess7 };
             PictureBox[] indicators = { picTrack1, picTrack2, picTrack3, picTrack4, picTrack5, picTrack6, picTrack7 };
             ListBox[] histories = { lstHistory1, lstHistory2, lstHistory3, lstHistory4, lstHistory5, lstHistory6, lstHistory7 };
-            Label[] feedbacks = { lblFeedback1, lblFeedback2, lblFeedback3, lblFeedback4, lblFeedback5, lblFeedback6, lblFeedback7 };
             Label[] guessLabels = { lblGuesses1, lblGuesses2, lblGuesses3, lblGuesses4, lblGuesses5, lblGuesses6, lblGuesses7 };
 
             for (int index = 0; index < newTracks.Length; index++)
             {
-                trackLives[index] = newStartingLives;
+                // Carry over remaining lives from the previous level, or use the base starting lives if first round
+                int previousLives = trackLives[index];
+                trackLives[index] = previousLives + baseStartingLives;
 
+                // Reset fields for the new level
                 textBoxes[index].Enabled = true;
                 textBoxes[index].Clear();
                 indicators[index].Image = Properties.Resources.Blank;
                 histories[index].Items.Clear();
-                feedbacks[index].Text = "";
-                guessLabels[index].Text = $"Guesses: {newStartingLives}";
-
-
+                guessLabels[index].Text = $"Guesses: {trackLives[index]}";  // Display updated guesses count
             }
+
             lblResult.Text = "";
 
         }
