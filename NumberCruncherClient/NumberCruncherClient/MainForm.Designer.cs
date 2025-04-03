@@ -525,7 +525,7 @@
             btnGuess.Location = new Point(406, 461);
             btnGuess.Name = "btnGuess";
             btnGuess.Size = new Size(142, 49);
-            btnGuess.TabIndex = 9;
+            btnGuess.TabIndex = 0;
             btnGuess.Text = "Guess";
             btnGuess.UseVisualStyleBackColor = true;
             btnGuess.Click += btnGuess_Click;
@@ -536,7 +536,7 @@
             btnSave.Location = new Point(554, 461);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(142, 49);
-            btnSave.TabIndex = 10;
+            btnSave.TabIndex = 1;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
@@ -547,7 +547,7 @@
             btnExit.Location = new Point(964, 461);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(142, 49);
-            btnExit.TabIndex = 11;
+            btnExit.TabIndex = 2;
             btnExit.Text = "Exit";
             btnExit.UseVisualStyleBackColor = true;
             btnExit.Click += btnExit_Click;
@@ -586,7 +586,7 @@
             // 
             lblRange.AutoSize = true;
             lblRange.Font = new Font("Stencil", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblRange.Location = new Point(408, 521);
+            lblRange.Location = new Point(720, 476);
             lblRange.Name = "lblRange";
             lblRange.Size = new Size(104, 18);
             lblRange.TabIndex = 15;

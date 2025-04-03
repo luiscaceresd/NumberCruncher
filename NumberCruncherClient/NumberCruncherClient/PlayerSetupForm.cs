@@ -25,7 +25,7 @@ namespace NumberCruncherClient
         private void btnEasy_Click(object sender, EventArgs e)
         {
             StartGame(Difficulty.EASY);
-            
+
         }
 
         private void btnModerate_Click(object sender, EventArgs e)
@@ -60,5 +60,9 @@ namespace NumberCruncherClient
             this.Hide();
         }
 
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

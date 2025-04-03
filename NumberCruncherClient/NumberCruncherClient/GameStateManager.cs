@@ -9,8 +9,11 @@ namespace NumberCruncherClient
     /// </summary>
     public class GameStateManager
     {
-        // The file path where the game state is saved.
-        private const string filePath = "gamestate.json";
+        // Store game state in a safe location (AppData)
+        private static readonly string filePath = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            "NumberCruncherGame", "gamestate.json"
+        );
 
         /// <summary>
         /// Saves the current game state to a JSON file.
