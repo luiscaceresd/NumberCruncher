@@ -139,12 +139,16 @@ namespace NumberCruncherClient
 
                         if (isCorrect)
                         {
-                            trackIndicators[i].Image = greenCheck;
-                            guessTextBoxes[i].Enabled = false;
-
-                            // Store correct guess for this track
+                            // Only deduct a guess if the track wasn't already completed
                             if (!correctGuesses.ContainsKey(i))
                             {
+                                trackLives[i]--; // Deduct a guess
+                                guessLabels[i].Text = $"Guesses: {trackLives[i]}"; // Update label to reflect new guess count
+
+                                trackIndicators[i].Image = greenCheck;
+                                guessTextBoxes[i].Enabled = false;
+
+                                // Store correct guess for this track
                                 correctGuesses[i] = userGuess;
                             }
                         }
