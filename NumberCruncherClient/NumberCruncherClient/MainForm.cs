@@ -217,8 +217,9 @@ namespace NumberCruncherClient
                 int spare = game.ProcessLevel(guessesPerTrack);
                 game.nextLevel();
 
-                MessageBox.Show($"Level Complete! you earned {spare * 10} points (+bonus if applicable)",
-                    "Level Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Level Complete! You now have {game.Player.getScore()} points.",
+                     "Level Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
                 lblScore.Text = $"Score : {game.Player.getScore()}";
                 lblRange.Text = $"Range: 1 - {currentMaxRange}";
