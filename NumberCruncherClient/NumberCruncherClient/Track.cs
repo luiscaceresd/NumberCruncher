@@ -159,7 +159,7 @@ namespace NumberCruncherClient
             else if (guess > mode)
                 return "↓";  // Too high
             else
-                return "✔";  // Correct
+                return "";  // Correct
         }
     }
 }

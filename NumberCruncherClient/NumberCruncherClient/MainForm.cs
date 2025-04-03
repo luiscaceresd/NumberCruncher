@@ -240,12 +240,12 @@ namespace NumberCruncherClient
         }
 
         // Utility function to adjust image opacity
-       
+
         private void ReloadForNextLevel()
         {
             UpdateTrackVisibility(selectedDifficulty);
 
-            int baseStartingLives = selectedDifficulty switch
+            int baseLives = selectedDifficulty switch
             {
                 Difficulty.EASY => 5,
                 Difficulty.MODERATE => 7,
@@ -262,21 +262,25 @@ namespace NumberCruncherClient
 
             for (int index = 0; index < newTracks.Length; index++)
             {
-                // Carry over remaining lives from the previous level, or use the base starting lives if first round
-                int previousLives = trackLives[index];
-                trackLives[index] = previousLives + baseStartingLives;
+                if (textBoxes[index].Visible) // Only reset visible tracks
+                {
+                    // Carry over remaining lives, but ensure it's not reset to the base value
+                    trackLives[index] += baseLives;
 
-                // Reset fields for the new level
-                textBoxes[index].Enabled = true;
-                textBoxes[index].Clear();
-                indicators[index].Image = Properties.Resources.Blank;
-                histories[index].Items.Clear();
-                guessLabels[index].Text = $"Guesses: {trackLives[index]}";  // Display updated guesses count
+                    // Reset fields for the new level
+                    textBoxes[index].Enabled = true;
+                    textBoxes[index].Clear();
+                    indicators[index].Image = Properties.Resources.Blank;
+                    histories[index].Items.Clear();
+                    guessLabels[index].Text = $"Guesses: {trackLives[index]}";  // Display updated guesses count
+                }
             }
 
             lblResult.Text = "";
-
+            correctGuesses.Clear(); // Reset the dictionary of correct guesses
         }
+
+
 
         private void btnSave_Click(object sender, EventArgs e)
         {
