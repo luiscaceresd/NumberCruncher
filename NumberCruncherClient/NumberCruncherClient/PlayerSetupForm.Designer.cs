@@ -35,11 +35,12 @@
             btnModerate = new Button();
             btnDifficult = new Button();
             btnQuit = new Button();
+            btnLoad = new Button();
             SuspendLayout();
             // 
             // txtInitials
             // 
-            txtInitials.Location = new Point(73, 93);
+            txtInitials.Location = new Point(73, 99);
             txtInitials.Name = "txtInitials";
             txtInitials.Size = new Size(151, 27);
             txtInitials.TabIndex = 0;
@@ -100,19 +101,31 @@
             // btnQuit
             // 
             btnQuit.Font = new Font("Stencil", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnQuit.Location = new Point(73, 280);
+            btnQuit.Location = new Point(73, 287);
             btnQuit.Name = "btnQuit";
-            btnQuit.Size = new Size(151, 40);
+            btnQuit.Size = new Size(151, 33);
             btnQuit.TabIndex = 4;
             btnQuit.Text = "Quit";
             btnQuit.UseVisualStyleBackColor = true;
             btnQuit.Click += btnQuit_Click;
+            // 
+            // btnLoad
+            // 
+            btnLoad.Font = new Font("Stencil", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLoad.Location = new Point(73, 251);
+            btnLoad.Name = "btnLoad";
+            btnLoad.Size = new Size(151, 30);
+            btnLoad.TabIndex = 9;
+            btnLoad.Text = "Load";
+            btnLoad.UseVisualStyleBackColor = true;
+            btnLoad.Click += btnLoad_Click;
             // 
             // PlayerSetupForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(623, 399);
+            Controls.Add(btnLoad);
             Controls.Add(btnQuit);
             Controls.Add(btnDifficult);
             Controls.Add(btnModerate);
@@ -137,5 +150,6 @@
         private Button btnModerate;
         private Button btnDifficult;
         private Button btnQuit;
+        private Button btnLoad;
     }
 }

@@ -21,20 +21,25 @@ namespace NumberCruncherClient
         /// <param name="game">The NumberCruncherGame instance to save.</param>
         public void saveState(NumberCruncherGame game)
         {
-            try
+            SaveFileDialog saveFileDialog = new SaveFileDialog
             {
-                // Configure JSON serializer to include fields and indent for readability.
-                var options = new JsonSerializerOptions
+                Filter = "JSON Files (*.json)|*.json",
+                Title = "Save Game State"
+            };
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
                 {
-                    WriteIndented = true,
-                    IncludeFields = true,
-                };
-                string json = JsonSerializer.Serialize(game, options);
-                File.WriteAllText(filePath, json);
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine("Error saving game state: " + ex.Message);
+                    var options = new JsonSerializerOptions { WriteIndented = true, IncludeFields = true };
+                    string json = JsonSerializer.Serialize(game, options);
+                    File.WriteAllText(saveFileDialog.FileName, json);
+                    MessageBox.Show("Game saved successfully!", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error saving game: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -44,23 +49,27 @@ namespace NumberCruncherClient
         /// <returns>The loaded NumberCruncherGame instance, or null if the file doesn't exist or an error occurs.</returns>
         public NumberCruncherGame? loadState()
         {
-            try
+            OpenFileDialog openFileDialog = new OpenFileDialog
             {
-                if (!File.Exists(filePath))
-                    return null;
+                Filter = "JSON Files (*.json)|*.json",
+                Title = "Load Game State"
+            };
 
-                string json = File.ReadAllText(filePath);
-                var options = new JsonSerializerOptions
-                {
-                    IncludeFields = true,
-                };
-                return JsonSerializer.Deserialize<NumberCruncherGame>(json, options);
-            }
-            catch (Exception ex)
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                Console.Error.WriteLine("Error loading game state: " + ex.Message);
-                return null;
+                try
+                {
+                    string json = File.ReadAllText(openFileDialog.FileName);
+                    var options = new JsonSerializerOptions { IncludeFields = true };
+                    return JsonSerializer.Deserialize<NumberCruncherGame>(json, options);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading game: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+
+            return null;
         }
     }
 }

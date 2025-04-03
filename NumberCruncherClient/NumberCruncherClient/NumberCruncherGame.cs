@@ -198,6 +198,7 @@ namespace NumberCruncherClient
                     break;
             }
             levelManager.SetupTracks(difficulty, spareGuessesForNextLevel, currentMaxRange);
+            
         }
 
         /// <summary>
