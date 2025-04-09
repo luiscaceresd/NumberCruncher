@@ -10,13 +10,13 @@ namespace NumberCruncherClient
     public class Player
     {
         // The player's initials.
-        private string initials = string.Empty;
+        public string initials { get; set; } = string.Empty;
 
         // The player's current score.
-        private int score;
+        public int score { get; set; }
 
         // The number of levels the player has completed.
-        private int levelsCompleted;
+        public int levelsCompleted { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the Player class.

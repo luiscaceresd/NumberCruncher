@@ -16,8 +16,10 @@ namespace NumberCruncherClient
         public MainForm(NumberCruncherGame game, Difficulty difficulty)
         {
             InitializeComponent();
+           
             this.game = game; // Store game instance
             this.selectedDifficulty = difficulty;
+            RestoreFromGameState();
 
             // Clear any existing guesses in the textboxes (just for a fresh start)
             TextBox[] textBoxes = { txtGuess1, txtGuess2, txtGuess3, txtGuess4, txtGuess5, txtGuess6, txtGuess7 };
@@ -126,6 +128,8 @@ namespace NumberCruncherClient
                     if (int.TryParse(guessTextBoxes[i].Text, out int userGuess))
                     {
                         bool isCorrect = track.CheckGuess(userGuess);
+                        // Store the guess in the track's history
+                        track.guessHistory.Add(userGuess); 
 
                         string feedback = track.GetFeedback(userGuess); // Get feedback
 
@@ -284,8 +288,8 @@ namespace NumberCruncherClient
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            game.SaveGame();
-            MessageBox.Show("Game Saved Successfully!", "Game Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            GameStateManager gsm = new GameStateManager();
+            gsm.saveStateWithDialog(game);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -331,5 +335,43 @@ namespace NumberCruncherClient
                 .Key;
             return mode;
         }
+        private void RestoreFromGameState()
+        {
+            Track[] tracks = game.GetTracks();
+            ListBox[] lstHistories = { lstHistory1, lstHistory2, lstHistory3, lstHistory4, lstHistory5, lstHistory6, lstHistory7 };
+            Label[] guessLabels = {lblGuesses1, lblGuesses2, lblGuesses3, lblGuesses4, lblGuesses5, lblGuesses6, lblGuesses7 };
+            PictureBox[] trackIndicators = { picTrack1, picTrack2, picTrack3, picTrack4, picTrack5, picTrack6, picTrack7 };
+            int lives = selectedDifficulty switch
+            {
+                Difficulty.EASY => 5,
+                Difficulty.MODERATE => 7,
+                Difficulty.DIFFICULT => 11,
+                _ => 0
+            };
+
+            for (int index = 0; index < tracks.Length; index++)
+            {
+                trackLives[index] = lives;
+
+                guessLabels[index].Text = $"Guesses : {trackLives[index]}";
+
+                foreach (int guess in tracks[index].guessHistory)
+                {
+                    lstHistories[index].Items.Add(guess);
+                }
+                if (tracks[index].guessHistory.Contains(tracks[index].GetMode()))
+                {
+                    trackIndicators[index].Image = Properties.Resources.GreenCheck;
+                    guessLabels[index].Text = $"Guesses : {trackLives[index]}";
+                    trackIndicators[index].Enabled = false;
+                }
+            }
+           
+
+            lblScore.Text = $"Score : {game.Player.getScore()}";
+            lblRange.Text = $"Range: 1 - {game.GetCurrentMaxRange()}";
+        }
     }
+
+
 }

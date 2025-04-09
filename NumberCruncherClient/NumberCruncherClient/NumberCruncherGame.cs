@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using Newtonsoft.Json;
 
 namespace NumberCruncherClient
 {
@@ -7,22 +9,24 @@ namespace NumberCruncherClient
     /// Manages the player, levels, game state, scoring, and game flow.
     /// </summary>
     [Serializable]
+    // we make these properties public with getters and setters so that we can serialize them,
+    // the JSON serializer will not see them otherwise
     public class NumberCruncherGame
     {
         // The player object, containing initials, score, and levels completed.
-        private Player player;
+        public Player player { get; set; }
 
         // Manages the levels and tracks for the game.
-        private LevelManager levelManager;
+        public LevelManager levelManager { get; set; }
 
         // Handles saving and loading the game state.
-        private GameStateManager gameStateManager;
+       [JsonIgnore] public GameStateManager gameStateManager { get; set; }
 
         // Calculates the score based on spare guesses.
-        private Scorer scorer;
+       [JsonIgnore]  public Scorer scorer { get; set; }
 
         // The selected difficulty level for the game.
-        private Difficulty difficulty;
+        public Difficulty difficulty { get; set; }
 
         // Tracks spare guesses to carry over to the next level.
         private int spareGuessesForNextLevel = 0;
@@ -215,10 +219,41 @@ namespace NumberCruncherClient
         /// <returns>The loaded NumberCruncherGame instance, or null if loading fails.</returns>
         public static NumberCruncherGame? LoadGame()
         {
-            GameStateManager gsm = new GameStateManager();
-            return gsm.loadState() ?? null;
+            string path = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                "NumberCruncherGame",
+                "gamestate.json"
+                );
+            if (!File.Exists(path)) return null;
+
+            string json = File.ReadAllText(path);
+            return JsonConvert.DeserializeObject<NumberCruncherGame>(json);
         }
 
-        
+        public static NumberCruncherGame? LoadGameWithDialog()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*",
+                Title = "Load Game State"
+            };
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    string json = File.ReadAllText(openFileDialog.FileName);
+                    return JsonConvert.DeserializeObject<NumberCruncherGame>(json);
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+            return null;
+
+        }
+
+
     }
 }

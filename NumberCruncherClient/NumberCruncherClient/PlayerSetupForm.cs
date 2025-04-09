@@ -67,16 +67,16 @@ namespace NumberCruncherClient
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            GameStateManager stateManager = new GameStateManager();
-            NumberCruncherGame? loadedGame = stateManager.loadState();
-
-            if (loadedGame != null)
+            NumberCruncherGame? loadedGame = NumberCruncherGame.LoadGameWithDialog();
+            if(loadedGame == null)
             {
-                // Start the game with the loaded state
-                MainForm mainScreen = new MainForm(loadedGame, loadedGame.Difficulty);
-                mainScreen.Show();
-                this.Hide();
+                MessageBox.Show("Invalid Save Game, Please select a Valid Number Cruncher Save Game.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+            MainForm mainForm = new MainForm(loadedGame, loadedGame.Difficulty);
+            mainForm.Show();
+            this.Hide();
         }
     }
 }

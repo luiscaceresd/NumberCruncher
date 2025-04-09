@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 
 namespace NumberCruncherClient
 {
@@ -14,22 +15,25 @@ namespace NumberCruncherClient
     {
 
         // Array to hold the generated random numbers.
-        private int[] randomNumbers;
+        public int[] randomNumbers { get; set; }
 
         // The mode of the random numbers, which is the target for the player to guess.
-        private int mode;
+        public int mode { get; set;}
 
         // The number of attempts the player is allowed for this track.
-        private int allowedAttempts;
+        private int allowedAttempts { get; set; }
 
         // Minimum value for the random number range.
-        private int rangeMin;
+        private int rangeMin { get; set; }
 
         // Maximum value for the random number range.
-        private int rangeMax;
+        private int rangeMax { get; set; }
 
         // Shared random instance to generate numbers consistently.
         private static Random random = new Random();
+
+        // List to store the player's guess history
+        public List<int> guessHistory { get; set; } = new List<int>(); 
 
         /// <summary>
         /// Initializes a new instance of the Track class.

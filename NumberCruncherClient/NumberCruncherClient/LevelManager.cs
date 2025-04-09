@@ -10,10 +10,10 @@ namespace NumberCruncherClient
     public class LevelManager
     {
         // The current level number.
-        private int levelNumber;
+        public int levelNumber { get; set; }
 
         // The array of tracks for the current level.
-        private Track[] tracks;
+        public Track[] tracks { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the LevelManager class.

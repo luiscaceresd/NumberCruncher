@@ -21,28 +21,37 @@ namespace NumberCruncherClient
         /// <param name="game">The NumberCruncherGame instance to save.</param>
         public void saveState(NumberCruncherGame game)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog
+            string directory  = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                "NumberCruncherGame"
+                );
+            Directory.CreateDirectory(directory);
+
+            string path = Path.Combine(directory, "gamestate.json");
+            string json = JsonSerializer.Serialize(game);
+
+            File.WriteAllText(path, json);
+        }
+
+
+        ///<summary>
+        /// Allows the User to make a Manual Save Game at his wishes
+        ///</summary>
+        /// <param name="game">The NumberCruncherGame Instance to Save</param>
+        public void saveStateWithDialog(NumberCruncherGame game)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog()
             {
                 Filter = "JSON Files (*.json)|*.json",
-                Title = "Save Game State"
+                Title = "Save Game State",
             };
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                try
-                {
-                    var options = new JsonSerializerOptions { WriteIndented = true, IncludeFields = true };
-                    string json = JsonSerializer.Serialize(game, options);
-                    File.WriteAllText(saveFileDialog.FileName, json);
-                    MessageBox.Show("Game saved successfully!", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error saving game: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                string json = JsonSerializer.Serialize(game);
+                File.WriteAllText(saveFileDialog.FileName, json);
             }
         }
-
         /// <summary>
         /// Loads the game state from the JSON file.
         /// </summary>
