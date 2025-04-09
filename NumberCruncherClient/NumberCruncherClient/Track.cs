@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Permissions;
 
+
 namespace NumberCruncherClient
 {
     /// <summary>
@@ -11,6 +12,7 @@ namespace NumberCruncherClient
     /// Provides methods to check guesses and give feedback.
     /// </summary>
     [Serializable]
+    // making these properties public for serialization to work
     public class Track
     {
 
@@ -21,13 +23,13 @@ namespace NumberCruncherClient
         public int mode { get; set;}
 
         // The number of attempts the player is allowed for this track.
-        private int allowedAttempts { get; set; }
+        public int allowedAttempts { get; set; }
 
         // Minimum value for the random number range.
-        private int rangeMin { get; set; }
+        public int rangeMin { get; set; }
 
         // Maximum value for the random number range.
-        private int rangeMax { get; set; }
+        public int rangeMax { get; set; }
 
         // Shared random instance to generate numbers consistently.
         private static Random random = new Random();
@@ -142,12 +144,7 @@ namespace NumberCruncherClient
         /// <returns>True if the guess is correct, false otherwise.</returns>
         public bool CheckGuess(int guess) => guess == mode;
 
-        public int CorrectNumber { get; private set; } // The correct number for this track
 
-        public Track(int correctNumber)
-        {
-            CorrectNumber = correctNumber;
-        }
 
         
 
