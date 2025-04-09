@@ -338,7 +338,6 @@ namespace NumberCruncherClient
         private void RestoreFromGameState()
         {
             Track[] tracks = game.GetTracks();
-            ListBox[] lstHistories = { lstHistory1, lstHistory2, lstHistory3, lstHistory4, lstHistory5, lstHistory6, lstHistory7 };
             Label[] guessLabels = {lblGuesses1, lblGuesses2, lblGuesses3, lblGuesses4, lblGuesses5, lblGuesses6, lblGuesses7 };
             PictureBox[] trackIndicators = { picTrack1, picTrack2, picTrack3, picTrack4, picTrack5, picTrack6, picTrack7 };
             int lives = selectedDifficulty switch
@@ -355,10 +354,7 @@ namespace NumberCruncherClient
 
                 guessLabels[index].Text = $"Guesses : {trackLives[index]}";
 
-                foreach (int guess in tracks[index].guessHistory)
-                {
-                    lstHistories[index].Items.Add(guess);
-                }
+                
                 if (tracks[index].guessHistory.Contains(tracks[index].GetMode()))
                 {
                     trackIndicators[index].Image = Properties.Resources.GreenCheck;

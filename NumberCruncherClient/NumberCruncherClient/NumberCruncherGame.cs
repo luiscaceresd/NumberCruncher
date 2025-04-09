@@ -20,18 +20,18 @@ namespace NumberCruncherClient
         public LevelManager levelManager { get; set; }
 
         // Handles saving and loading the game state.
-       [JsonIgnore] public GameStateManager gameStateManager { get; set; }
+        [JsonIgnore] public GameStateManager gameStateManager { get; set; }
 
         // Calculates the score based on spare guesses.
-       [JsonIgnore]  public Scorer scorer { get; set; }
+        [JsonIgnore] public Scorer scorer { get; set; }
 
         // The selected difficulty level for the game.
         public Difficulty difficulty { get; set; }
 
         // Tracks spare guesses to carry over to the next level.
-        private int spareGuessesForNextLevel = 0;
+        public int spareGuessesForNextLevel { get; set; } = 0;
 
-        private int currentMaxRange;
+        public int currentMaxRange { get; set; }
 
         public int GetCurrentMaxRange() => currentMaxRange;
 
@@ -202,6 +202,7 @@ namespace NumberCruncherClient
                     break;
             }
             levelManager.SetupTracks(difficulty, spareGuessesForNextLevel, currentMaxRange);
+            SaveGame();
             
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Permissions;
+using System.Text.Json.Serialization;
 
 
 namespace NumberCruncherClient
@@ -17,7 +18,7 @@ namespace NumberCruncherClient
     {
 
         // Array to hold the generated random numbers.
-        public int[] randomNumbers { get; set; }
+        [JsonIgnore] private int[] randomNumbers { get; set; }
 
         // The mode of the random numbers, which is the target for the player to guess.
         public int mode { get; set;}
