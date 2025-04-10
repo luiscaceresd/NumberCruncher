@@ -78,6 +78,7 @@
             lblDifficulty = new Label();
             lblRange = new Label();
             label1 = new Label();
+            btnSave = new Button();
             panelTracks.SuspendLayout();
             track7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picTrack7).BeginInit();
@@ -579,11 +580,22 @@
             label1.TabIndex = 16;
             label1.Text = "Up Arrow = Correct answer is Higher. \r\n\r\nDown Arrow = Correct answer is Lower.";
             // 
+            // btnSave
+            // 
+            btnSave.Font = new Font("Stencil", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSave.Location = new Point(375, 461);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(142, 49);
+            btnSave.TabIndex = 17;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1302, 548);
+            Controls.Add(btnSave);
             Controls.Add(label1);
             Controls.Add(lblRange);
             Controls.Add(lblDifficulty);
@@ -673,6 +685,7 @@
         private Label lblDifficulty;
         private Label lblRange;
         private Label label1;
+        private Button btnSave;
     }
 
 

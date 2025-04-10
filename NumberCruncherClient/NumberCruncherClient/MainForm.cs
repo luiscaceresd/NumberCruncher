@@ -7,7 +7,7 @@ namespace NumberCruncherClient
 {
     public partial class MainForm : Form
     {
-        private NumberCruncherGame game; 
+        private NumberCruncherGame game;
         private Difficulty selectedDifficulty;
         private int[] trackLives = new int[7];
         private int currentMaxRange => game.GetCurrentMaxRange();
@@ -16,7 +16,7 @@ namespace NumberCruncherClient
         public MainForm(NumberCruncherGame game, Difficulty difficulty)
         {
             InitializeComponent();
-           
+
             this.game = game; // Store game instance
             this.selectedDifficulty = difficulty;
             RestoreFromGameState();
@@ -129,7 +129,7 @@ namespace NumberCruncherClient
                     {
                         bool isCorrect = track.CheckGuess(userGuess);
                         // Store the guess in the track's history
-                        track.guessHistory.Add(userGuess); 
+                        track.guessHistory.Add(userGuess);
 
                         string feedback = track.GetFeedback(userGuess); // Get feedback
 
@@ -189,7 +189,7 @@ namespace NumberCruncherClient
                                     // Show PlayerSetupForm
                                     PlayerSetupForm playerSetupForm = new PlayerSetupForm();
                                     playerSetupForm.Show();
-                                    
+
 
                                     // Close the current MainForm
                                     this.Close();
@@ -350,7 +350,7 @@ namespace NumberCruncherClient
         private void RestoreFromGameState()
         {
             Track[] tracks = game.GetTracks();
-            Label[] guessLabels = {lblGuesses1, lblGuesses2, lblGuesses3, lblGuesses4, lblGuesses5, lblGuesses6, lblGuesses7 };
+            Label[] guessLabels = { lblGuesses1, lblGuesses2, lblGuesses3, lblGuesses4, lblGuesses5, lblGuesses6, lblGuesses7 };
             PictureBox[] trackIndicators = { picTrack1, picTrack2, picTrack3, picTrack4, picTrack5, picTrack6, picTrack7 };
             TextBox[] textBoxes = { txtGuess1, txtGuess2, txtGuess3, txtGuess4, txtGuess5, txtGuess6, txtGuess7 };
             ListBox[] histories = { lstHistory1, lstHistory2, lstHistory3, lstHistory4, lstHistory5, lstHistory6, lstHistory7 };
@@ -376,7 +376,7 @@ namespace NumberCruncherClient
 
                 guessLabels[index].Text = $"Guesses : {trackLives[index]}";
 
-                
+
                 if (tracks[index].guessHistory.Contains(tracks[index].GetMode()))
                 {
                     trackIndicators[index].Image = Properties.Resources.GreenCheck;
@@ -384,12 +384,13 @@ namespace NumberCruncherClient
                     trackIndicators[index].Enabled = false;
                 }
             }
-           
+
 
             lblScore.Text = $"Score : {game.Player.getScore()}";
             lblRange.Text = $"Range: 1 - {game.GetCurrentMaxRange()}";
             lblDifficulty.Text = $"Difficulty: {game.Difficulty}";
         }
+
     }
 
 
