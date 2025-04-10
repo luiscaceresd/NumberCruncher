@@ -23,6 +23,10 @@ namespace NumberCruncherClient
         // The number of attempts the player is allowed for this track.
         public int allowedAttempts { get; set; }
 
+        // Indicates if the track is complete (i.e., the player has guessed the mode).
+        public bool IsComplete { get; set; }
+
+
         // Minimum value for the random number range.
         public int rangeMin { get; set; }
 

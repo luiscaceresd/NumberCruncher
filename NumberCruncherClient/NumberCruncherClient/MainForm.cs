@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -41,10 +41,11 @@ namespace NumberCruncherClient
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error restoring game state: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error restoring game state: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            // Clear all guess inputs.
+            // Clear all guess input textboxes.
             TextBox[] guessTextBoxes = { txtGuess1, txtGuess2, txtGuess3, txtGuess4, txtGuess5, txtGuess6, txtGuess7 };
             foreach (var tb in guessTextBoxes)
             {
@@ -76,7 +77,9 @@ namespace NumberCruncherClient
                 for (int i = 0; i < tracks.Length; i++)
                 {
                     if (isResumedGame)
+                    {
                         remainingGuesses[i] = tracks[i].GetAllowedAttempts();
+                    }
                     else
                     {
                         remainingGuesses[i] = defaultAttempts;
@@ -89,13 +92,14 @@ namespace NumberCruncherClient
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error during form load: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error during form load: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         /// <summary>
         /// Updates track panel visibility and guess count labels based on difficulty.
-        /// When the range increases and difficulty changes, more tracks will be shown.
+        /// When the difficulty (and range) increases, more track panels are unhidden.
         /// </summary>
         private void UpdateTrackVisibility(Difficulty difficulty)
         {
@@ -143,10 +147,10 @@ namespace NumberCruncherClient
 
         /// <summary>
         /// Handles the Guess button click.
-        /// Validates input on each visible and enabled track,
-        /// deducts one attempt for every guess (correct or incorrect),
+        /// Validates inputs on each visible and enabled track,
+        /// deducts one attempt for every guess (whether correct or incorrect),
         /// and finalizes a track when a guess is made.
-        /// If all visible tracks are correct, the level is completed.
+        /// If all visible tracks are complete and correct, processes level completion.
         /// </summary>
         private void btnGuess_Click(object sender, EventArgs e)
         {
@@ -158,11 +162,11 @@ namespace NumberCruncherClient
                 Label[] feedbackLabels = { lblFeedback1, lblFeedback2, lblFeedback3, lblFeedback4, lblFeedback5, lblFeedback6, lblFeedback7 };
                 Label[] guessCountLabels = { lblGuesses1, lblGuesses2, lblGuesses3, lblGuesses4, lblGuesses5, lblGuesses6, lblGuesses7 };
 
-                // Validate inputs for visible and enabled tracks.
+                // Validate input for visible and enabled tracks.
                 for (int i = 0; i < guessTextBoxes.Length; i++)
                 {
                     if (!guessTextBoxes[i].Visible || !guessTextBoxes[i].Enabled)
-                        continue;  // Skip controls for unused tracks.
+                        continue;
 
                     string input = guessTextBoxes[i].Text.Trim();
                     if (string.IsNullOrEmpty(input))
@@ -186,14 +190,14 @@ namespace NumberCruncherClient
                 StringBuilder debugInfo = new StringBuilder("Track Results:\n");
                 Track[] tracks = currentGame.GetTracks();
 
-                // Load indicator images.
+                // Load images for indicators.
                 Image imgGreenCheck = Properties.Resources.GreenCheck;
                 Image imgRedX = Properties.Resources.RedX;
                 Image imgBlank = Properties.Resources.Blank;
 
-                lblResult.Text = string.Empty; // Clear debug text.
+                lblResult.Text = string.Empty; // Clear previous debug text.
 
-                // Process guesses for each visible and enabled track.
+                // Process each visible and enabled track.
                 for (int i = 0; i < tracks.Length; i++)
                 {
                     if (!guessTextBoxes[i].Visible || !guessTextBoxes[i].Enabled)
@@ -207,7 +211,7 @@ namespace NumberCruncherClient
                     currentTrack.SetAllowedAttempts(remainingGuesses[i]);
                     guessCountLabels[i].Text = $"Guesses: {remainingGuesses[i]}";
 
-                    // Record guess in history.
+                    // Record the guess.
                     currentTrack.guessHistory.Add(guessValue);
                     historyLists[i].Items.Add(guessValue);
 
@@ -215,16 +219,18 @@ namespace NumberCruncherClient
                     string feedback = currentTrack.GetFeedback(guessValue);
                     feedbackLabels[i].Text = feedback;
 
-                    // Check if the guess is correct.
+                    // If the guess is correct:
                     if (currentTrack.CheckGuess(guessValue))
                     {
                         indicatorPictures[i].Image = imgGreenCheck;
-                        guessTextBoxes[i].Enabled = false;  // Finalize the track.
+                        // Finalize the track.
+                        guessTextBoxes[i].Enabled = false;
                         completedTracks[i] = guessValue;
+                        currentTrack.IsComplete = true;
                     }
                     else
                     {
-                        // If incorrect and out of attempts, finalize the track.
+                        // If incorrect and no remaining attempts, finalize the track.
                         if (remainingGuesses[i] <= 0)
                         {
                             indicatorPictures[i].Image = imgRedX;
@@ -236,7 +242,7 @@ namespace NumberCruncherClient
                                 "Game Over! You've run out of lives on a track. Start over? (Your save file has been deleted)",
                                 "Game Over", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                            // Delete saved game file if exists.
+                            // Delete saved game file if it exists.
                             string savePath = Path.Combine(
                                 Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                                 "NumberCruncherGame",
@@ -264,7 +270,6 @@ namespace NumberCruncherClient
                     }
                 }
 
-                // Display debugging info.
                 lblResult.Text = debugInfo.ToString();
 
                 // Check if all visible tracks are finalized.
@@ -278,14 +283,15 @@ namespace NumberCruncherClient
                     }
                 }
 
-                // Process level completion if every visible track is finalized and all were correct.
+                // Process level completion only if every visible track is finalized and all were correct.
                 if (allFinalized && allTracksCorrect)
                 {
                     int[][] allGuesses = historyLists.Select(lb => lb.Items.Cast<int>().ToArray()).ToArray();
                     int spareGuesses = currentGame.ProcessLevel(allGuesses);
                     currentGame.nextLevel();
+                    // Refresh local difficulty variable to reflect level-up changes.
+                    selectedDifficulty = currentGame.Difficulty;
 
-                    // Notify the player; remind manual save.
                     MessageBox.Show(
                         $"Level Complete! Score: {currentGame.Player.getScore()} points. Remember, you can save your game by clicking the Save button.",
                         "Level Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -331,7 +337,8 @@ namespace NumberCruncherClient
 
         /// <summary>
         /// Resets UI elements for the next level.
-        /// Updates remaining guesses, clears inputs and history, and resets visual indicators.
+        /// Updates remaining guesses, clears inputs and history, resets visual indicators,
+        /// and resets each track's IsComplete flag.
         /// </summary>
         private void ReloadForNextLevel()
         {
@@ -356,7 +363,7 @@ namespace NumberCruncherClient
                 {
                     if (guessTextBoxes[i].Visible)
                     {
-                        // Add base attempts to remaining guesses.
+                        // Increase remaining guesses by the base attempt count.
                         remainingGuesses[i] += baseAttempts;
                         tracks[i].SetAllowedAttempts(remainingGuesses[i]);
 
@@ -365,6 +372,9 @@ namespace NumberCruncherClient
                         indicatorPictures[i].Image = Properties.Resources.Blank;
                         historyLists[i].Items.Clear();
                         guessCountLabels[i].Text = $"Guesses: {remainingGuesses[i]}";
+
+                        // Reset the track's IsComplete flag for the new level.
+                        tracks[i].IsComplete = false;
                     }
                 }
                 lblResult.Text = string.Empty;
@@ -394,7 +404,7 @@ namespace NumberCruncherClient
         }
 
         /// <summary>
-        /// Generates a special random number by computing the mode from 1000 random numbers in the current range.
+        /// Generates a special random number by computing the mode from 1000 random numbers within the current range.
         /// </summary>
         /// <returns>A unique mode within the current range.</returns>
         private int GenerateSpecialRandomNumber()
@@ -441,6 +451,7 @@ namespace NumberCruncherClient
         /// <summary>
         /// Restores UI state from the current game instance by populating guess history,
         /// resetting textboxes, and updating labels for score, range, and difficulty.
+        /// Also disables controls for tracks that have been completed.
         /// </summary>
         private void RestoreFromGameState()
         {
@@ -475,6 +486,13 @@ namespace NumberCruncherClient
                         historyLists[i].Items.Add(guess);
                     }
                     guessLabels[i].Text = $"Guesses: {remainingGuesses[i]}";
+
+                    // If a track was marked complete, disable its input and set the green indicator.
+                    if (tracks[i].IsComplete)
+                    {
+                        guessTextBoxes[i].Enabled = false;
+                        indicatorPictures[i].Image = Properties.Resources.GreenCheck;
+                    }
                 }
 
                 lblScore.Text = $"Score: {currentGame.Player.getScore()}";
