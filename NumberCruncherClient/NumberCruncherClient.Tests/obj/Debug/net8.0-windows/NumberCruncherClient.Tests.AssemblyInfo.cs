@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NumberCruncherClient.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e10de5d10a5617fb804b6cc021dd693bc980128c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+27d1811954099bddb7be69c468b757f201279fd0")]
 [assembly: System.Reflection.AssemblyProductAttribute("NumberCruncherClient.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NumberCruncherClient.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

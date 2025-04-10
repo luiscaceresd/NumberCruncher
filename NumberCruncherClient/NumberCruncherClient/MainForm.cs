@@ -9,23 +9,25 @@ using System.IO;
 namespace NumberCruncherClient
 {
     /// <summary>
-    /// The primary user interface for playing the NumberCruncher game.
-    /// Handles user inputs, guesses, validation and level progression.
+    /// The primary UI for playing NumberCruncher.
+    /// Handles user input, guess validation, level progression, and UI updates.
+    /// Autosave is removed; the user must press Save manually.
     /// </summary>
     public partial class MainForm : Form
     {
-        private NumberCruncherGame currentGame;     // The current game instance.
-        private Difficulty selectedDifficulty;      // Currently selected difficulty.
-        private int[] remainingGuesses;             // The remaining guess counts per track.
-
-        // Gets the current maximum number in the guessing range.
+        // Current game instance.
+        private NumberCruncherGame currentGame;
+        // The selected game difficulty.
+        private Difficulty selectedDifficulty;
+        // Array tracking remaining guesses per track (up to 7 tracks).
+        private int[] remainingGuesses;
+        // Shortcut to the current maximum allowed guess.
         private int CurrentMaxRange => currentGame.GetCurrentMaxRange();
 
         /// <summary>
-        /// Constructor to initialize the main form with a game and chosen difficulty.
+        /// Initializes MainForm with the specified game state and difficulty.
+        /// Attempts to restore saved UI state.
         /// </summary>
-        /// <param name="game">The current NumberCruncherGame instance.</param>
-        /// <param name="difficulty">The selected difficulty level.</param>
         public MainForm(NumberCruncherGame game, Difficulty difficulty)
         {
             InitializeComponent();
@@ -39,51 +41,44 @@ namespace NumberCruncherClient
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error restoring game state: " + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error restoring game state: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            // Clear guess inputs on startup.
+            // Clear all guess inputs.
             TextBox[] guessTextBoxes = { txtGuess1, txtGuess2, txtGuess3, txtGuess4, txtGuess5, txtGuess6, txtGuess7 };
-            foreach (var textBox in guessTextBoxes)
+            foreach (var tb in guessTextBoxes)
             {
-                textBox.Clear();
+                tb.Clear();
             }
         }
 
         /// <summary>
-        /// On form load, set up UI elements and initialize remaining guess counts.
+        /// On form load, update UI: track visibility and initialize remaining guesses.
+        /// Uses defaults for a new game or restores saved values.
         /// </summary>
         private void MainForm_Load(object sender, EventArgs e)
         {
             try
             {
                 UpdateTrackVisibility(selectedDifficulty);
-
-                // Default allowed attempts based on difficulty.
                 int defaultAttempts = selectedDifficulty switch
                 {
                     Difficulty.EASY => 5,
                     Difficulty.MODERATE => 7,
                     Difficulty.DIFFICULT => 11,
-                    _ => 0
+                    _ => 0,
                 };
 
                 Track[] tracks = currentGame.GetTracks();
-                // Determine if this is a resumed game (if guess history exists).
                 bool isResumedGame = tracks != null && tracks.Length > 0 &&
                                      tracks[0].guessHistory != null && tracks[0].guessHistory.Count > 0;
 
                 for (int i = 0; i < tracks.Length; i++)
                 {
                     if (isResumedGame)
-                    {
-                        // Use saved allowed attempts from the track.
                         remainingGuesses[i] = tracks[i].GetAllowedAttempts();
-                    }
                     else
                     {
-                        // Set new game values.
                         remainingGuesses[i] = defaultAttempts;
                         tracks[i].SetAllowedAttempts(defaultAttempts);
                     }
@@ -94,18 +89,16 @@ namespace NumberCruncherClient
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error during form load: " + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error during form load: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         /// <summary>
-        /// Updates which track boxes are visible and sets the displayed guess counts.
+        /// Updates track panel visibility and guess count labels based on difficulty.
+        /// When the range increases and difficulty changes, more tracks will be shown.
         /// </summary>
-        /// <param name="difficulty">The current difficulty level.</param>
         private void UpdateTrackVisibility(Difficulty difficulty)
         {
-            // Number of tracks based on difficulty.
             int trackCount = difficulty switch
             {
                 Difficulty.EASY => 3,
@@ -114,17 +107,14 @@ namespace NumberCruncherClient
                 _ => 0,
             };
 
-            // Get the group boxes containing track UI elements.
-            GroupBox[] trackGroupBoxes = { track1, track2, track3, track4, track5, track6, track7 };
+            GroupBox[] trackPanels = { track1, track2, track3, track4, track5, track6, track7 };
             Label[] guessCountLabels = { lblGuesses1, lblGuesses2, lblGuesses3, lblGuesses4, lblGuesses5, lblGuesses6, lblGuesses7 };
 
-            // Hide all tracks initially.
-            foreach (var groupBox in trackGroupBoxes)
+            foreach (var panel in trackPanels)
             {
-                groupBox.Visible = false;
+                panel.Visible = false;
             }
 
-            // Determine whether this is a resumed game.
             Track[] tracks = currentGame.GetTracks();
             int defaultAttempts = difficulty switch
             {
@@ -136,10 +126,9 @@ namespace NumberCruncherClient
             bool isResumed = tracks != null && tracks.Length > 0 &&
                              tracks[0].guessHistory != null && tracks[0].guessHistory.Count > 0;
 
-            // Set visibility and update labels.
             for (int i = 0; i < trackCount; i++)
             {
-                trackGroupBoxes[i].Visible = true;
+                trackPanels[i].Visible = true;
                 if (isResumed)
                     guessCountLabels[i].Text = $"Guesses: {tracks[i].GetAllowedAttempts()}";
                 else
@@ -148,47 +137,48 @@ namespace NumberCruncherClient
         }
 
         /// <summary>
-        /// Dictionary to track which tracks have been completed.
-        /// Key: track index, Value: the correct guess.
+        /// Dictionary tracking completed tracks (key: track index; value: correct guess).
         /// </summary>
         private Dictionary<int, int> completedTracks = new Dictionary<int, int>();
 
         /// <summary>
-        /// Handles the guess submission, including validating inputs, processing each track, and updating UI.
-        /// Validates that inputs are numeric and within the allowed range.
+        /// Handles the Guess button click.
+        /// Validates input on each visible and enabled track,
+        /// deducts one attempt for every guess (correct or incorrect),
+        /// and finalizes a track when a guess is made.
+        /// If all visible tracks are correct, the level is completed.
         /// </summary>
         private void btnGuess_Click(object sender, EventArgs e)
         {
             try
             {
-                // Retrieve arrays of UI controls.
                 TextBox[] guessTextBoxes = { txtGuess1, txtGuess2, txtGuess3, txtGuess4, txtGuess5, txtGuess6, txtGuess7 };
-                PictureBox[] trackIndicatorPics = { picTrack1, picTrack2, picTrack3, picTrack4, picTrack5, picTrack6, picTrack7 };
-                ListBox[] historyListBoxes = { lstHistory1, lstHistory2, lstHistory3, lstHistory4, lstHistory5, lstHistory6, lstHistory7 };
+                PictureBox[] indicatorPictures = { picTrack1, picTrack2, picTrack3, picTrack4, picTrack5, picTrack6, picTrack7 };
+                ListBox[] historyLists = { lstHistory1, lstHistory2, lstHistory3, lstHistory4, lstHistory5, lstHistory6, lstHistory7 };
                 Label[] feedbackLabels = { lblFeedback1, lblFeedback2, lblFeedback3, lblFeedback4, lblFeedback5, lblFeedback6, lblFeedback7 };
                 Label[] guessCountLabels = { lblGuesses1, lblGuesses2, lblGuesses3, lblGuesses4, lblGuesses5, lblGuesses6, lblGuesses7 };
 
-                // Pre-validate each visible track input.
+                // Validate inputs for visible and enabled tracks.
                 for (int i = 0; i < guessTextBoxes.Length; i++)
                 {
-                    if (guessTextBoxes[i].Visible)
+                    if (!guessTextBoxes[i].Visible || !guessTextBoxes[i].Enabled)
+                        continue;  // Skip controls for unused tracks.
+
+                    string input = guessTextBoxes[i].Text.Trim();
+                    if (string.IsNullOrEmpty(input))
                     {
-                        string input = guessTextBoxes[i].Text.Trim();
-                        if (string.IsNullOrEmpty(input))
-                        {
-                            MessageBox.Show($"Please enter a number for Track {i + 1}.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-                        if (!int.TryParse(input, out int numericGuess))
-                        {
-                            MessageBox.Show($"Track {i + 1} input is not numeric. Please enter a valid number.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-                        if (numericGuess < 1 || numericGuess > CurrentMaxRange)
-                        {
-                            MessageBox.Show($"Track {i + 1} guess must be between 1 and {CurrentMaxRange}.", "Out of Range", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
+                        MessageBox.Show($"Please enter a number for Track {i + 1}.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    if (!int.TryParse(input, out int numericGuess))
+                    {
+                        MessageBox.Show($"Track {i + 1} input must be numeric.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    if (numericGuess < 1 || numericGuess > CurrentMaxRange)
+                    {
+                        MessageBox.Show($"Track {i + 1} guess must be between 1 and {CurrentMaxRange}.", "Out of Range", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
                     }
                 }
 
@@ -196,120 +186,108 @@ namespace NumberCruncherClient
                 StringBuilder debugInfo = new StringBuilder("Track Results:\n");
                 Track[] tracks = currentGame.GetTracks();
 
-                // Load images for indicators.
+                // Load indicator images.
                 Image imgGreenCheck = Properties.Resources.GreenCheck;
                 Image imgRedX = Properties.Resources.RedX;
                 Image imgBlank = Properties.Resources.Blank;
 
-                // Clear previous debug messages.
-                lblResult.Text = string.Empty;
+                lblResult.Text = string.Empty; // Clear debug text.
 
-                // Process each track's guess.
+                // Process guesses for each visible and enabled track.
                 for (int i = 0; i < tracks.Length; i++)
                 {
+                    if (!guessTextBoxes[i].Visible || !guessTextBoxes[i].Enabled)
+                        continue;
+
                     Track currentTrack = tracks[i];
-                    if (guessTextBoxes[i].Visible)
+                    int guessValue = int.Parse(guessTextBoxes[i].Text.Trim());
+
+                    // Deduct one attempt for every guess.
+                    remainingGuesses[i]--;
+                    currentTrack.SetAllowedAttempts(remainingGuesses[i]);
+                    guessCountLabels[i].Text = $"Guesses: {remainingGuesses[i]}";
+
+                    // Record guess in history.
+                    currentTrack.guessHistory.Add(guessValue);
+                    historyLists[i].Items.Add(guessValue);
+
+                    // Get directional feedback.
+                    string feedback = currentTrack.GetFeedback(guessValue);
+                    feedbackLabels[i].Text = feedback;
+
+                    // Check if the guess is correct.
+                    if (currentTrack.CheckGuess(guessValue))
                     {
-                        int guessValue = int.Parse(guessTextBoxes[i].Text.Trim());
-                        bool guessIsCorrect = currentTrack.CheckGuess(guessValue);
-
-                        // Update the guess history.
-                        currentTrack.guessHistory.Add(guessValue);
-                        historyListBoxes[i].Items.Add(guessValue);
-
-                        // Get and show feedback.
-                        string responseFeedback = currentTrack.GetFeedback(guessValue);
-                        feedbackLabels[i].Text = responseFeedback;
-
-                        if (guessIsCorrect)
-                        {
-                            // If track not already completed, deduct one guess.
-                            if (!completedTracks.ContainsKey(i))
-                            {
-                                remainingGuesses[i]--;
-                                currentTrack.SetAllowedAttempts(remainingGuesses[i]);
-                                guessCountLabels[i].Text = $"Guesses: {remainingGuesses[i]}";
-
-                                trackIndicatorPics[i].Image = imgGreenCheck;
-                                guessTextBoxes[i].Enabled = false;
-                                completedTracks[i] = guessValue;
-                            }
-                        }
-                        else
-                        {
-                            remainingGuesses[i]--;
-                            currentTrack.SetAllowedAttempts(remainingGuesses[i]);
-                            guessCountLabels[i].Text = $"Guesses: {remainingGuesses[i]}";
-
-                            // Check if no guesses left.
-                            if (remainingGuesses[i] <= 0)
-                            {
-                                trackIndicatorPics[i].Image = imgRedX;
-                                guessTextBoxes[i].Enabled = false;
-                                feedbackLabels[i].Text = " | Out of Lives";
-                                debugInfo.AppendLine($"Track {i + 1}: Out of Lives - Game Over");
-
-                                DialogResult restartChoice = MessageBox.Show("Game Over! You've run out of lives on a track. Start over? (Your Save File has been deleted)",
-                                    "Game Over", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                                // Delete save file if exists.
-                                string savePath = Path.Combine(
-                                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                                    "NumberCruncherGame",
-                                    $"gamestate_{currentGame.Player.getInitials()}.json"
-                                );
-                                if (File.Exists(savePath))
-                                {
-                                    File.Delete(savePath);
-                                }
-
-                                if (restartChoice == DialogResult.Yes)
-                                {
-                                    PlayerSetupForm setupForm = new PlayerSetupForm();
-                                    setupForm.Show();
-                                    this.Close();
-                                    return;
-                                }
-                                else
-                                {
-                                    Application.Exit();
-                                    return;
-                                }
-                            }
-                            trackIndicatorPics[i].Image = imgRedX;
-                            debugInfo.AppendLine($"Track {i + 1}: Incorrect (Guessed: {guessValue})");
-                            allTracksCorrect = false;
-                        }
+                        indicatorPictures[i].Image = imgGreenCheck;
+                        guessTextBoxes[i].Enabled = false;  // Finalize the track.
+                        completedTracks[i] = guessValue;
                     }
                     else
                     {
-                        trackIndicatorPics[i].Image = imgBlank;
-                        feedbackLabels[i].Text = string.Empty;
+                        // If incorrect and out of attempts, finalize the track.
+                        if (remainingGuesses[i] <= 0)
+                        {
+                            indicatorPictures[i].Image = imgRedX;
+                            guessTextBoxes[i].Enabled = false;
+                            feedbackLabels[i].Text += " | Out of Lives";
+                            debugInfo.AppendLine($"Track {i + 1}: Out of Lives - Game Over");
+
+                            DialogResult restartChoice = MessageBox.Show(
+                                "Game Over! You've run out of lives on a track. Start over? (Your save file has been deleted)",
+                                "Game Over", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                            // Delete saved game file if exists.
+                            string savePath = Path.Combine(
+                                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                                "NumberCruncherGame",
+                                $"gamestate_{currentGame.Player.getInitials()}.json"
+                            );
+                            if (File.Exists(savePath))
+                                File.Delete(savePath);
+
+                            if (restartChoice == DialogResult.Yes)
+                            {
+                                PlayerSetupForm setupForm = new PlayerSetupForm();
+                                setupForm.Show();
+                                this.Close();
+                                return;
+                            }
+                            else
+                            {
+                                Application.Exit();
+                                return;
+                            }
+                        }
+                        indicatorPictures[i].Image = imgRedX;
+                        debugInfo.AppendLine($"Track {i + 1}: Incorrect (Guessed: {guessValue})");
+                        allTracksCorrect = false;
                     }
                 }
 
+                // Display debugging info.
                 lblResult.Text = debugInfo.ToString();
 
                 // Check if all visible tracks are finalized.
                 bool allFinalized = true;
                 for (int i = 0; i < tracks.Length; i++)
                 {
-                    if (guessTextBoxes[i].Enabled)
+                    if (guessTextBoxes[i].Visible && guessTextBoxes[i].Enabled)
                     {
                         allFinalized = false;
                         break;
                     }
                 }
 
-                if (allFinalized)
+                // Process level completion if every visible track is finalized and all were correct.
+                if (allFinalized && allTracksCorrect)
                 {
-                    // Process level completion.
-                    int[][] allGuesses = historyListBoxes.Select(lb => lb.Items.Cast<int>().ToArray()).ToArray();
+                    int[][] allGuesses = historyLists.Select(lb => lb.Items.Cast<int>().ToArray()).ToArray();
                     int spareGuesses = currentGame.ProcessLevel(allGuesses);
                     currentGame.nextLevel();
-                    currentGame.SaveGame();
 
-                    MessageBox.Show($"Level Complete! Score: {currentGame.Player.getScore()} points. Game saved!",
+                    // Notify the player; remind manual save.
+                    MessageBox.Show(
+                        $"Level Complete! Score: {currentGame.Player.getScore()} points. Remember, you can save your game by clicking the Save button.",
                         "Level Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     lblScore.Text = $"Score: {currentGame.Player.getScore()}";
@@ -318,68 +296,88 @@ namespace NumberCruncherClient
 
                     ReloadForNextLevel();
                 }
+                else if (allFinalized && !allTracksCorrect)
+                {
+                    MessageBox.Show("Some tracks were guessed incorrectly. No score awarded for this level.",
+                        "Try Again", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
 
-                lblResult.Text += allTracksCorrect ? "\nAll tracks correct! You win!" : "\nSome tracks are incorrect. Try again.";
+                lblResult.Text += allTracksCorrect
+                    ? "\nAll tracks correct! You win!"
+                    : "\nSome tracks are incorrect. Try again.";
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error processing guess: " + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error processing guess: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         /// <summary>
-        /// Prepares the UI for the next level by resetting track values and UI controls.
+        /// Helper method to clean up inactive (hidden) track controls.
+        /// Clears text and disables controls that are not visible.
+        /// </summary>
+        private void CleanupInactiveTrackControls()
+        {
+            TextBox[] guessTextBoxes = { txtGuess1, txtGuess2, txtGuess3, txtGuess4, txtGuess5, txtGuess6, txtGuess7 };
+            foreach (var tb in guessTextBoxes)
+            {
+                if (!tb.Visible)
+                {
+                    tb.Clear();
+                    tb.Enabled = false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Resets UI elements for the next level.
+        /// Updates remaining guesses, clears inputs and history, and resets visual indicators.
         /// </summary>
         private void ReloadForNextLevel()
         {
             try
             {
                 UpdateTrackVisibility(selectedDifficulty);
-
-                // Base lives per track based on difficulty.
-                int baseLives = selectedDifficulty switch
+                int baseAttempts = selectedDifficulty switch
                 {
                     Difficulty.EASY => 5,
                     Difficulty.MODERATE => 7,
                     Difficulty.DIFFICULT => 11,
-                    _ => 0
+                    _ => 0,
                 };
 
                 Track[] tracks = currentGame.GetTracks();
                 TextBox[] guessTextBoxes = { txtGuess1, txtGuess2, txtGuess3, txtGuess4, txtGuess5, txtGuess6, txtGuess7 };
-                PictureBox[] trackIndicators = { picTrack1, picTrack2, picTrack3, picTrack4, picTrack5, picTrack6, picTrack7 };
-                ListBox[] historyListBoxes = { lstHistory1, lstHistory2, lstHistory3, lstHistory4, lstHistory5, lstHistory6, lstHistory7 };
-                Label[] guessLabels = { lblGuesses1, lblGuesses2, lblGuesses3, lblGuesses4, lblGuesses5, lblGuesses6, lblGuesses7 };
+                PictureBox[] indicatorPictures = { picTrack1, picTrack2, picTrack3, picTrack4, picTrack5, picTrack6, picTrack7 };
+                ListBox[] historyLists = { lstHistory1, lstHistory2, lstHistory3, lstHistory4, lstHistory5, lstHistory6, lstHistory7 };
+                Label[] guessCountLabels = { lblGuesses1, lblGuesses2, lblGuesses3, lblGuesses4, lblGuesses5, lblGuesses6, lblGuesses7 };
 
                 for (int i = 0; i < tracks.Length; i++)
                 {
                     if (guessTextBoxes[i].Visible)
                     {
-                        // Reset remaining guesses by adding the base number.
-                        remainingGuesses[i] += baseLives;
+                        // Add base attempts to remaining guesses.
+                        remainingGuesses[i] += baseAttempts;
                         tracks[i].SetAllowedAttempts(remainingGuesses[i]);
 
                         guessTextBoxes[i].Enabled = true;
                         guessTextBoxes[i].Clear();
-                        trackIndicators[i].Image = Properties.Resources.Blank;
-                        historyListBoxes[i].Items.Clear();
-                        guessLabels[i].Text = $"Guesses: {remainingGuesses[i]}";
+                        indicatorPictures[i].Image = Properties.Resources.Blank;
+                        historyLists[i].Items.Clear();
+                        guessCountLabels[i].Text = $"Guesses: {remainingGuesses[i]}";
                     }
                 }
-
                 lblResult.Text = string.Empty;
                 completedTracks.Clear();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error setting up next level: " + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error setting up next level: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         /// <summary>
-        /// Exits the game; displays the setup form before closing the current form.
+        /// Closes the current game and returns to the PlayerSetupForm.
         /// </summary>
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -391,15 +389,14 @@ namespace NumberCruncherClient
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error closing game: " + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error closing game: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         /// <summary>
-        /// Generates a special random number by determining the mode from 1000 random values.
+        /// Generates a special random number by computing the mode from 1000 random numbers in the current range.
         /// </summary>
-        /// <returns>A unique mode number within the current range.</returns>
+        /// <returns>A unique mode within the current range.</returns>
         private int GenerateSpecialRandomNumber()
         {
             try
@@ -423,13 +420,11 @@ namespace NumberCruncherClient
                         break;
                 }
 
-                // Generate 1000 random numbers.
                 for (int i = 0; i < 1000; i++)
                 {
                     randomValues.Add(rnd.Next(minRange, maxRange));
                 }
 
-                // Calculate the mode (most frequent number).
                 int computedMode = randomValues.GroupBy(val => val)
                     .OrderByDescending(g => g.Count())
                     .First()
@@ -438,14 +433,14 @@ namespace NumberCruncherClient
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error generating random number: " + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error generating random number: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
         }
 
         /// <summary>
-        /// Restores the game state in the UI from the saved data in the current game.
+        /// Restores UI state from the current game instance by populating guess history,
+        /// resetting textboxes, and updating labels for score, range, and difficulty.
         /// </summary>
         private void RestoreFromGameState()
         {
@@ -453,9 +448,9 @@ namespace NumberCruncherClient
             {
                 Track[] tracks = currentGame.GetTracks();
                 Label[] guessLabels = { lblGuesses1, lblGuesses2, lblGuesses3, lblGuesses4, lblGuesses5, lblGuesses6, lblGuesses7 };
-                PictureBox[] trackIndicators = { picTrack1, picTrack2, picTrack3, picTrack4, picTrack5, picTrack6, picTrack7 };
+                PictureBox[] indicatorPictures = { picTrack1, picTrack2, picTrack3, picTrack4, picTrack5, picTrack6, picTrack7 };
                 TextBox[] guessTextBoxes = { txtGuess1, txtGuess2, txtGuess3, txtGuess4, txtGuess5, txtGuess6, txtGuess7 };
-                ListBox[] historyListBoxes = { lstHistory1, lstHistory2, lstHistory3, lstHistory4, lstHistory5, lstHistory6, lstHistory7 };
+                ListBox[] historyLists = { lstHistory1, lstHistory2, lstHistory3, lstHistory4, lstHistory5, lstHistory6, lstHistory7 };
                 Label[] feedbackLabels = { lblFeedback1, lblFeedback2, lblFeedback3, lblFeedback4, lblFeedback5, lblFeedback6, lblFeedback7 };
 
                 int defaultAttempts = selectedDifficulty switch
@@ -463,24 +458,21 @@ namespace NumberCruncherClient
                     Difficulty.EASY => 5,
                     Difficulty.MODERATE => 7,
                     Difficulty.DIFFICULT => 11,
-                    _ => 0
+                    _ => 0,
                 };
 
-                // For each track, restore remaining guesses and history.
                 for (int i = 0; i < tracks.Length; i++)
                 {
                     remainingGuesses[i] = tracks[i].GetAllowedAttempts();
-
                     guessTextBoxes[i].Enabled = true;
                     guessTextBoxes[i].Clear();
-                    trackIndicators[i].Image = Properties.Resources.Blank;
+                    indicatorPictures[i].Image = Properties.Resources.Blank;
                     feedbackLabels[i].Text = string.Empty;
-                    historyListBoxes[i].Items.Clear();
+                    historyLists[i].Items.Clear();
 
-                    // Display previously recorded guesses.
                     foreach (var guess in tracks[i].guessHistory)
                     {
-                        historyListBoxes[i].Items.Add(guess);
+                        historyLists[i].Items.Add(guess);
                     }
                     guessLabels[i].Text = $"Guesses: {remainingGuesses[i]}";
                 }
@@ -491,13 +483,12 @@ namespace NumberCruncherClient
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error restoring game state: " + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error restoring game state: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         /// <summary>
-        /// Saves the current game state.
+        /// Saves the current game state when the Save button is pressed.
         /// </summary>
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -509,8 +500,7 @@ namespace NumberCruncherClient
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Failed to save game: " + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to save game: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

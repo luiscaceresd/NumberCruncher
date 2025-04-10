@@ -7,7 +7,7 @@ namespace NumberCruncherClient
 {
     /// <summary>
     /// Represents the core logic of the NumberCruncher game.
-    /// Manages player information, levels, game state, scoring, and overall game flow.
+    /// Manages player information, level progression, scoring, and overall game flow.
     /// </summary>
     [Serializable]
     public class NumberCruncherGame
@@ -16,24 +16,24 @@ namespace NumberCruncherClient
         public Player player { get; set; }
         // Level management.
         public LevelManager levelManager { get; set; }
-        // Game state manager for saving and loading.
+        // Game state manager for saving/loading.
         [JsonIgnore] public GameStateManager gameStateManager { get; set; }
         // Scorer calculates the score based on spare guesses.
         [JsonIgnore] public Scorer scorer { get; set; }
-        // Currently selected difficulty.
+        // The selected difficulty level.
         public Difficulty difficulty { get; set; }
-        // Spare guesses carried over to the next level.
+        // Spare guesses carried to the next level.
         public int spareGuessesForNextLevel { get; set; } = 0;
         // Current maximum range for guesses.
         public int currentMaxRange { get; set; }
 
         /// <summary>
-        /// Returns the current maximum number of the guessing range.
+        /// Returns the current maximum guessing range.
         /// </summary>
         public int GetCurrentMaxRange() => currentMaxRange;
 
         /// <summary>
-        /// Initializes a new game instance and sets up game components.
+        /// Initializes a new game instance and sets up essential components.
         /// </summary>
         public NumberCruncherGame()
         {
@@ -49,7 +49,7 @@ namespace NumberCruncherClient
         public Player Player => player;
 
         /// <summary>
-        /// Gets or sets the current game difficulty.
+        /// Gets or sets the game difficulty.
         /// </summary>
         public Difficulty Difficulty
         {
@@ -63,27 +63,26 @@ namespace NumberCruncherClient
         public Track[] GetTracks() => levelManager.GetTracks();
 
         /// <summary>
-        /// Starts a new game by setting up the initial level and range.
+        /// Starts a new game by initializing the maximum range and level 1 tracks.
         /// </summary>
         public void startGame()
         {
             currentMaxRange = difficulty switch
             {
-                Difficulty.EASY => 10,        // Easy: range 1-10
-                Difficulty.MODERATE => 100,    // Moderate: range 1-100
-                Difficulty.DIFFICULT => 1000,   // Difficult: range 1-1000
+                Difficulty.EASY => 10,
+                Difficulty.MODERATE => 100,
+                Difficulty.DIFFICULT => 1000,
                 _ => 10
             };
 
-            // Setup level 1 tracks with no extra attempts.
+            // Set up tracks for level 1 with no extra attempts.
             levelManager.SetupTracks(difficulty, 0, currentMaxRange);
         }
 
         /// <summary>
-        /// Processes a level by evaluating the player's guesses.
-        /// Updates score based on spare guesses and advances the level.
+        /// Processes a level by evaluating the player's guesses, updating score and clearing guess history.
         /// </summary>
-        /// <param name="guessesPerTrack">An array of integer arrays containing guesses per track.</param>
+        /// <param name="guessesPerTrack">Array of guess arrays per track.</param>
         /// <returns>Total spare guesses for the level.</returns>
         public int ProcessLevel(int[][] guessesPerTrack)
         {
@@ -106,14 +105,13 @@ namespace NumberCruncherClient
 
             if (filteredGuesses.Length != activeTracks.Length)
             {
-                throw new ArgumentException($"Number of guess arrays must match number of active tracks. Expected {activeTracks.Length}, got {filteredGuesses.Length}.");
+                throw new ArgumentException($"Expected {activeTracks.Length} guess arrays, but got {filteredGuesses.Length}.");
             }
 
             int totalSpareGuesses = 0;
             for (int i = 0; i < activeTracks.Length; i++)
             {
                 Track track = activeTracks[i];
-
                 if (filteredGuesses[i] == null || filteredGuesses[i].Length == 0)
                 {
                     Console.WriteLine($"Warning: Track {i} has no guesses; defaulting to max attempts.");
@@ -147,19 +145,17 @@ namespace NumberCruncherClient
             player.setLevelsCompleted(player.getLevelsCompleted() + 1);
             spareGuessesForNextLevel = totalSpareGuesses;
 
-            // Clear guess history for the next level.
+            // Clear guess history for each track.
             foreach (var track in levelManager.GetTracks())
             {
                 track.guessHistory.Clear();
             }
-            // Save game state.
-            gameStateManager.SaveState(this);
-
+            // REMOVED: Auto-save is no longer performed.
             return totalSpareGuesses;
         }
 
         /// <summary>
-        /// Advances the game to the next level by increasing the level and recalculating the range.
+        /// Advances the game to the next level by increasing the level number and recalculating the range.
         /// </summary>
         public void nextLevel()
         {
@@ -187,11 +183,12 @@ namespace NumberCruncherClient
                     break;
             }
             levelManager.SetupTracks(difficulty, spareGuessesForNextLevel, currentMaxRange);
-            SaveGame();
+            // REMOVED: Auto-save (SaveGame() call) so that saving is only manual.
         }
 
         /// <summary>
         /// Saves the current game state.
+        /// (This method is only called when the user presses the Save button.)
         /// </summary>
         public void SaveGame()
         {
@@ -201,8 +198,8 @@ namespace NumberCruncherClient
         /// <summary>
         /// Loads a saved game state using the provided player initials.
         /// </summary>
-        /// <param name="playerInitials">The player's initials used when saving.</param>
-        /// <returns>The loaded NumberCruncherGame instance, or null if loading fails.</returns>
+        /// <param name="playerInitials">The player's initials from the save file.</param>
+        /// <returns>The loaded game instance, or null if not found.</returns>
         public static NumberCruncherGame? LoadGame(string playerInitials)
         {
             string path = Path.Combine(
@@ -216,7 +213,7 @@ namespace NumberCruncherClient
         }
 
         /// <summary>
-        /// (Optional) Loads a game using a file dialog.
+        /// Loads a saved game state via a file dialog.
         /// </summary>
         /// <returns>The loaded game instance, or null if loading fails.</returns>
         public static NumberCruncherGame? LoadGameWithDialog()

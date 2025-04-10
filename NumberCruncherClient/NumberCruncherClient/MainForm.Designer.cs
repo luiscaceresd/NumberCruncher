@@ -79,6 +79,7 @@
             lblRange = new Label();
             label1 = new Label();
             btnSave = new Button();
+            label3 = new Label();
             panelTracks.SuspendLayout();
             track7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picTrack7).BeginInit();
@@ -146,6 +147,7 @@
             lstHistory7.Name = "lstHistory7";
             lstHistory7.Size = new Size(110, 154);
             lstHistory7.TabIndex = 1;
+            lstHistory7.TabStop = false;
             // 
             // picTrack7
             // 
@@ -209,6 +211,7 @@
             lstHistory6.Name = "lstHistory6";
             lstHistory6.Size = new Size(110, 154);
             lstHistory6.TabIndex = 1;
+            lstHistory6.TabStop = false;
             // 
             // picTrack6
             // 
@@ -272,6 +275,7 @@
             lstHistory5.Name = "lstHistory5";
             lstHistory5.Size = new Size(110, 154);
             lstHistory5.TabIndex = 1;
+            lstHistory5.TabStop = false;
             // 
             // picTrack5
             // 
@@ -335,6 +339,7 @@
             lstHistory4.Name = "lstHistory4";
             lstHistory4.Size = new Size(110, 154);
             lstHistory4.TabIndex = 1;
+            lstHistory4.TabStop = false;
             // 
             // picTrack4
             // 
@@ -398,6 +403,7 @@
             lstHistory3.Name = "lstHistory3";
             lstHistory3.Size = new Size(110, 154);
             lstHistory3.TabIndex = 1;
+            lstHistory3.TabStop = false;
             // 
             // picTrack3
             // 
@@ -461,6 +467,7 @@
             lstHistory2.Name = "lstHistory2";
             lstHistory2.Size = new Size(110, 154);
             lstHistory2.TabIndex = 1;
+            lstHistory2.TabStop = false;
             // 
             // picTrack2
             // 
@@ -525,6 +532,7 @@
             lstHistory1.Name = "lstHistory1";
             lstHistory1.Size = new Size(110, 154);
             lstHistory1.TabIndex = 1;
+            lstHistory1.TabStop = false;
             // 
             // picTrack1
             // 
@@ -618,12 +626,12 @@
             // 
             // label1
             // 
-            label1.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(959, 336);
+            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(397, 385);
             label1.Name = "label1";
-            label1.Size = new Size(135, 64);
+            label1.Size = new Size(337, 33);
             label1.TabIndex = 16;
-            label1.Text = "Up Arrow = Correct answer is Higher. \r\n\r\nDown Arrow = Correct answer is Lower.";
+            label1.Text = "Up Arrow means the correct answer is Higher. \r\n";
             // 
             // btnSave
             // 
@@ -637,11 +645,21 @@
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
+            // label3
+            // 
+            label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(384, 409);
+            label3.Name = "label3";
+            label3.Size = new Size(327, 28);
+            label3.TabIndex = 19;
+            label3.Text = "Down Arrow means the correct answer is Lower.";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1139, 411);
+            ClientSize = new Size(1167, 446);
+            Controls.Add(label3);
             Controls.Add(btnSave);
             Controls.Add(label1);
             Controls.Add(lblRange);
@@ -734,6 +752,7 @@
         private Label lblRange;
         private Label label1;
         private Button btnSave;
+        private Label label3;
     }
 
 
