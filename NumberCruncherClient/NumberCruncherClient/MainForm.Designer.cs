@@ -269,7 +269,7 @@
             txtGuess5.Location = new Point(6, 365);
             txtGuess5.Name = "txtGuess5";
             txtGuess5.Size = new Size(125, 27);
-            txtGuess5.TabIndex = 0;
+            txtGuess5.TabIndex = 1;
             // 
             // lblGuesses5
             // 
@@ -516,7 +516,7 @@
             lblResult.Location = new Point(12, 25);
             lblResult.Name = "lblResult";
             lblResult.Size = new Size(196, 413);
-            lblResult.TabIndex = 8;
+            lblResult.TabIndex = 1;
             // 
             // btnGuess
             // 

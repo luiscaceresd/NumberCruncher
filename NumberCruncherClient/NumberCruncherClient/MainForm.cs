@@ -169,19 +169,35 @@ namespace NumberCruncherClient
                                 feedbackLabels[i].Text = " | Out of Lives";
                                 debugMessage.AppendLine($"Track {i + 1}: Out of Lives - Game Over");
 
-                                DialogResult result = MessageBox.Show("Game Over! You ran out of lives on the track. Would you like to start over?", "Game Over", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
+                                DialogResult result = MessageBox.Show("Game Over! You ran out of lives on the track. Would you like to start over? (Your Save File has Been Deleted)", "Game Over", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                // Delete the Losing Player's Save File
+                                string path = Path.Combine(
+                                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                                    "NumberCruncherGame",
+                                    $"gamestate_{game.Player.getInitials()}.json"
+                                );
+                                if (File.Exists(path))
+                                {
+                                    File.Delete(path);
+                                }
+                                // Dialog result handling here
                                 if (result == DialogResult.Yes)
                                 {
+                                    // Delete the Losing Player's Save File
+
+
                                     // Show PlayerSetupForm
                                     PlayerSetupForm playerSetupForm = new PlayerSetupForm();
                                     playerSetupForm.Show();
+                                    
 
                                     // Close the current MainForm
                                     this.Close();
                                 }
                                 else
                                 {
+
+
                                     // If the player selects No, just close the application
                                     Application.Exit();
                                 }
@@ -349,7 +365,7 @@ namespace NumberCruncherClient
 
             for (int index = 0; index < tracks.Length; index++)
             {
-                trackLives[index] = lives;
+                trackLives[index] = tracks[index].GetAllowedAttempts();
 
                 textBoxes[index].Enabled = true;
                 textBoxes[index].Clear();

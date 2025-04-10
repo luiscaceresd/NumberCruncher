@@ -57,7 +57,7 @@ namespace NumberCruncherClient
             mainScreen.Show();
 
 
-            // Hide the PlayerSetupForm
+            //Close the PlayerSetupForm
             this.Hide();
         }
 
