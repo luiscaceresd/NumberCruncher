@@ -73,7 +73,6 @@
             lblGuesses1 = new Label();
             lblResult = new Label();
             btnGuess = new Button();
-            btnSave = new Button();
             btnExit = new Button();
             lblScore = new Label();
             lblDifficulty = new Label();
@@ -522,24 +521,13 @@
             // btnGuess
             // 
             btnGuess.Font = new Font("Stencil", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGuess.Location = new Point(406, 461);
+            btnGuess.Location = new Point(540, 461);
             btnGuess.Name = "btnGuess";
             btnGuess.Size = new Size(142, 49);
             btnGuess.TabIndex = 0;
             btnGuess.Text = "Guess";
             btnGuess.UseVisualStyleBackColor = true;
             btnGuess.Click += btnGuess_Click;
-            // 
-            // btnSave
-            // 
-            btnSave.Font = new Font("Stencil", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSave.Location = new Point(554, 461);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(142, 49);
-            btnSave.TabIndex = 1;
-            btnSave.Text = "Save";
-            btnSave.UseVisualStyleBackColor = true;
-            btnSave.Click += btnSave_Click;
             // 
             // btnExit
             // 
@@ -601,7 +589,6 @@
             Controls.Add(lblDifficulty);
             Controls.Add(lblScore);
             Controls.Add(btnExit);
-            Controls.Add(btnSave);
             Controls.Add(btnGuess);
             Controls.Add(lblResult);
             Controls.Add(panelTracks);
@@ -639,7 +626,6 @@
         private Panel panelTracks;
         private Label lblResult;
         private Button btnGuess;
-        private Button btnSave;
         private Button btnExit;
         private TextBox txtGuess1;
         private Label lblGuesses1;

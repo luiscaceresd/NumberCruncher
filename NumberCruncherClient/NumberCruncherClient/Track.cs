@@ -36,7 +36,7 @@ namespace NumberCruncherClient
         private static Random random = new Random();
 
         // List to store the player's guess history
-        public List<int> guessHistory { get; set; } = new List<int>(); 
+        [JsonIgnore] public List<int> guessHistory { get; set; } = new List<int>(); 
 
         /// <summary>
         /// Initializes a new instance of the Track class.

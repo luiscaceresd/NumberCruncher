@@ -27,31 +27,18 @@ namespace NumberCruncherClient
                 );
             Directory.CreateDirectory(directory);
 
-            string path = Path.Combine(directory, "gamestate.json");
-            string json = JsonSerializer.Serialize(game);
+            string path = Path.Combine(directory, $"gamestate_{game.player.getInitials()}.json");
+            string json = JsonSerializer.Serialize(game, new JsonSerializerOptions
+            { 
+                WriteIndented = true,
+                IncludeFields = true
+            });
 
             File.WriteAllText(path, json);
         }
 
 
-        ///<summary>
-        /// Allows the User to make a Manual Save Game at his wishes
-        ///</summary>
-        /// <param name="game">The NumberCruncherGame Instance to Save</param>
-        public void saveStateWithDialog(NumberCruncherGame game)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog()
-            {
-                Filter = "JSON Files (*.json)|*.json",
-                Title = "Save Game State",
-            };
 
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string json = JsonSerializer.Serialize(game);
-                File.WriteAllText(saveFileDialog.FileName, json);
-            }
-        }
         /// <summary>
         /// Loads the game state from the JSON file.
         /// </summary>

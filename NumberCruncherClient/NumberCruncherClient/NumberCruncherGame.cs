@@ -166,7 +166,10 @@ namespace NumberCruncherClient
                 Console.WriteLine("Congratulations! You've completed the game.");
                 return 0;
             }
-
+            foreach (var track in levelManager.GetTracks())
+            {
+                track.guessHistory.Clear();
+            }
             // Save the game state after completing the level.
             gameStateManager.saveState(this);
 

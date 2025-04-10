@@ -116,7 +116,7 @@
             btnLoad.Name = "btnLoad";
             btnLoad.Size = new Size(151, 30);
             btnLoad.TabIndex = 9;
-            btnLoad.Text = "Load";
+            btnLoad.Text = "Resume";
             btnLoad.UseVisualStyleBackColor = true;
             btnLoad.Click += btnLoad_Click;
             // 
@@ -135,7 +135,7 @@
             Controls.Add(lblInitials);
             Name = "PlayerSetupForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "PlayerSetupForm";
+            Text = "Player Setup";
             Load += PlayerSetupForm_Load;
             ResumeLayout(false);
             PerformLayout();

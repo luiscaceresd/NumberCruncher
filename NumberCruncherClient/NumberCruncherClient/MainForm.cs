@@ -227,8 +227,8 @@ namespace NumberCruncherClient
 
                 int spare = game.ProcessLevel(guessesPerTrack);
                 game.nextLevel();
-
-                MessageBox.Show($"Level Complete! You now have {game.Player.getScore()} points.",
+                game.SaveGame();
+                MessageBox.Show($"Level Complete! You now have {game.Player.getScore()} points. Your Game has Been Saved!",
                      "Level Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
@@ -286,11 +286,7 @@ namespace NumberCruncherClient
 
 
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            GameStateManager gsm = new GameStateManager();
-            gsm.saveStateWithDialog(game);
-        }
+
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -340,6 +336,9 @@ namespace NumberCruncherClient
             Track[] tracks = game.GetTracks();
             Label[] guessLabels = {lblGuesses1, lblGuesses2, lblGuesses3, lblGuesses4, lblGuesses5, lblGuesses6, lblGuesses7 };
             PictureBox[] trackIndicators = { picTrack1, picTrack2, picTrack3, picTrack4, picTrack5, picTrack6, picTrack7 };
+            TextBox[] textBoxes = { txtGuess1, txtGuess2, txtGuess3, txtGuess4, txtGuess5, txtGuess6, txtGuess7 };
+            ListBox[] histories = { lstHistory1, lstHistory2, lstHistory3, lstHistory4, lstHistory5, lstHistory6, lstHistory7 };
+            Label[] feedbacks = { lblFeedback1, lblFeedback2, lblFeedback3, lblFeedback4, lblFeedback5, lblFeedback6, lblFeedback7 };
             int lives = selectedDifficulty switch
             {
                 Difficulty.EASY => 5,
@@ -351,6 +350,13 @@ namespace NumberCruncherClient
             for (int index = 0; index < tracks.Length; index++)
             {
                 trackLives[index] = lives;
+
+                textBoxes[index].Enabled = true;
+                textBoxes[index].Clear();
+                trackIndicators[index].Image = Properties.Resources.Blank;
+                feedbacks[index].Text = string.Empty;
+                histories[index].Items.Clear();
+                guessLabels[index].Text = $"Guesses : {lives}";
 
                 guessLabels[index].Text = $"Guesses : {trackLives[index]}";
 
@@ -366,6 +372,7 @@ namespace NumberCruncherClient
 
             lblScore.Text = $"Score : {game.Player.getScore()}";
             lblRange.Text = $"Range: 1 - {game.GetCurrentMaxRange()}";
+            lblDifficulty.Text = $"Difficulty: {game.Difficulty}";
         }
     }
 

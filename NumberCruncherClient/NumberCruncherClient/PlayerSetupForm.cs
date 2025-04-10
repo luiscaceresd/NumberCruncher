@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -67,16 +68,40 @@ namespace NumberCruncherClient
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            NumberCruncherGame? loadedGame = NumberCruncherGame.LoadGameWithDialog();
-            if(loadedGame == null)
+            string initials = txtInitials.Text.Trim();
+
+            if(string.IsNullOrEmpty(initials))
             {
-                MessageBox.Show("Invalid Save Game, Please select a Valid Number Cruncher Save Game.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please enter your initials to load a game.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            string path = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    "NumberCruncherGame",
+                    $"gamestate_{initials}.json"
+                );
+            if (!File.Exists(path))
+            {
+                MessageBox.Show($"There are no games to Load for Initials : {initials}.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            MainForm mainForm = new MainForm(loadedGame, loadedGame.Difficulty);
-            mainForm.Show();
-            this.Hide();
+            try
+            {
+                string json = File.ReadAllText(path);
+                var loadedGame = JsonSerializer.Deserialize<NumberCruncherGame>(json);
+
+                if (loadedGame != null)
+                {
+                    MainForm mainForm = new MainForm(loadedGame, loadedGame.Difficulty);
+                    mainForm.Show();
+                    this.Hide();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Failed to Load the Game. The Save File might be corrupted", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
