@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NumberCruncherClient")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a93540e508a16bf727e1066510bda9592b2029e3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+08e8b8771301cf781fa4887cb2ce2613454ad8d1")]
 [assembly: System.Reflection.AssemblyProductAttribute("NumberCruncherClient")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NumberCruncherClient")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

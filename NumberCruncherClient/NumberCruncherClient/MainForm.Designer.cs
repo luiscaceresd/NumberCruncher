@@ -106,9 +106,10 @@
             panelTracks.Controls.Add(track3);
             panelTracks.Controls.Add(track2);
             panelTracks.Controls.Add(track1);
-            panelTracks.Location = new Point(218, 25);
+            panelTracks.Location = new Point(191, 19);
+            panelTracks.Margin = new Padding(3, 2, 3, 2);
             panelTracks.Name = "panelTracks";
-            panelTracks.Size = new Size(1058, 413);
+            panelTracks.Size = new Size(926, 310);
             panelTracks.TabIndex = 7;
             // 
             // track7
@@ -118,9 +119,11 @@
             track7.Controls.Add(picTrack7);
             track7.Controls.Add(txtGuess7);
             track7.Controls.Add(lblGuesses7);
-            track7.Location = new Point(871, 3);
+            track7.Location = new Point(762, 2);
+            track7.Margin = new Padding(3, 2, 3, 2);
             track7.Name = "track7";
-            track7.Size = new Size(137, 405);
+            track7.Padding = new Padding(3, 2, 3, 2);
+            track7.Size = new Size(120, 304);
             track7.TabIndex = 7;
             track7.TabStop = false;
             // 
@@ -128,43 +131,47 @@
             // 
             lblFeedback7.BorderStyle = BorderStyle.FixedSingle;
             lblFeedback7.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
-            lblFeedback7.Location = new Point(6, 308);
+            lblFeedback7.Location = new Point(5, 231);
             lblFeedback7.Name = "lblFeedback7";
-            lblFeedback7.Size = new Size(125, 54);
+            lblFeedback7.Size = new Size(110, 41);
             lblFeedback7.TabIndex = 12;
             lblFeedback7.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lstHistory7
             // 
             lstHistory7.FormattingEnabled = true;
-            lstHistory7.Location = new Point(6, 101);
+            lstHistory7.ItemHeight = 15;
+            lstHistory7.Location = new Point(5, 76);
+            lstHistory7.Margin = new Padding(3, 2, 3, 2);
             lstHistory7.Name = "lstHistory7";
-            lstHistory7.Size = new Size(125, 204);
+            lstHistory7.Size = new Size(110, 154);
             lstHistory7.TabIndex = 1;
             // 
             // picTrack7
             // 
-            picTrack7.Location = new Point(6, 43);
+            picTrack7.Location = new Point(5, 32);
+            picTrack7.Margin = new Padding(3, 2, 3, 2);
             picTrack7.Name = "picTrack7";
-            picTrack7.Size = new Size(125, 52);
+            picTrack7.Size = new Size(109, 39);
             picTrack7.SizeMode = PictureBoxSizeMode.Zoom;
             picTrack7.TabIndex = 5;
             picTrack7.TabStop = false;
             // 
             // txtGuess7
             // 
-            txtGuess7.Location = new Point(6, 365);
+            txtGuess7.Location = new Point(5, 274);
+            txtGuess7.Margin = new Padding(3, 2, 3, 2);
             txtGuess7.Name = "txtGuess7";
-            txtGuess7.Size = new Size(125, 27);
+            txtGuess7.Size = new Size(110, 23);
             txtGuess7.TabIndex = 0;
             // 
             // lblGuesses7
             // 
             lblGuesses7.BorderStyle = BorderStyle.FixedSingle;
             lblGuesses7.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblGuesses7.Location = new Point(6, 20);
+            lblGuesses7.Location = new Point(5, 15);
             lblGuesses7.Name = "lblGuesses7";
-            lblGuesses7.Size = new Size(125, 20);
+            lblGuesses7.Size = new Size(110, 16);
             lblGuesses7.TabIndex = 2;
             lblGuesses7.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -175,9 +182,11 @@
             track6.Controls.Add(picTrack6);
             track6.Controls.Add(txtGuess6);
             track6.Controls.Add(lblGuesses6);
-            track6.Location = new Point(728, 3);
+            track6.Location = new Point(637, 2);
+            track6.Margin = new Padding(3, 2, 3, 2);
             track6.Name = "track6";
-            track6.Size = new Size(137, 405);
+            track6.Padding = new Padding(3, 2, 3, 2);
+            track6.Size = new Size(120, 304);
             track6.TabIndex = 7;
             track6.TabStop = false;
             // 
@@ -185,43 +194,47 @@
             // 
             lblFeedback6.BorderStyle = BorderStyle.FixedSingle;
             lblFeedback6.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
-            lblFeedback6.Location = new Point(6, 308);
+            lblFeedback6.Location = new Point(5, 231);
             lblFeedback6.Name = "lblFeedback6";
-            lblFeedback6.Size = new Size(125, 54);
+            lblFeedback6.Size = new Size(110, 41);
             lblFeedback6.TabIndex = 11;
             lblFeedback6.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lstHistory6
             // 
             lstHistory6.FormattingEnabled = true;
-            lstHistory6.Location = new Point(6, 101);
+            lstHistory6.ItemHeight = 15;
+            lstHistory6.Location = new Point(5, 76);
+            lstHistory6.Margin = new Padding(3, 2, 3, 2);
             lstHistory6.Name = "lstHistory6";
-            lstHistory6.Size = new Size(125, 204);
+            lstHistory6.Size = new Size(110, 154);
             lstHistory6.TabIndex = 1;
             // 
             // picTrack6
             // 
-            picTrack6.Location = new Point(6, 43);
+            picTrack6.Location = new Point(5, 32);
+            picTrack6.Margin = new Padding(3, 2, 3, 2);
             picTrack6.Name = "picTrack6";
-            picTrack6.Size = new Size(125, 52);
+            picTrack6.Size = new Size(109, 39);
             picTrack6.SizeMode = PictureBoxSizeMode.Zoom;
             picTrack6.TabIndex = 5;
             picTrack6.TabStop = false;
             // 
             // txtGuess6
             // 
-            txtGuess6.Location = new Point(6, 365);
+            txtGuess6.Location = new Point(5, 274);
+            txtGuess6.Margin = new Padding(3, 2, 3, 2);
             txtGuess6.Name = "txtGuess6";
-            txtGuess6.Size = new Size(125, 27);
+            txtGuess6.Size = new Size(110, 23);
             txtGuess6.TabIndex = 0;
             // 
             // lblGuesses6
             // 
             lblGuesses6.BorderStyle = BorderStyle.FixedSingle;
             lblGuesses6.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblGuesses6.Location = new Point(6, 20);
+            lblGuesses6.Location = new Point(5, 15);
             lblGuesses6.Name = "lblGuesses6";
-            lblGuesses6.Size = new Size(125, 20);
+            lblGuesses6.Size = new Size(110, 16);
             lblGuesses6.TabIndex = 2;
             lblGuesses6.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -232,9 +245,11 @@
             track5.Controls.Add(picTrack5);
             track5.Controls.Add(txtGuess5);
             track5.Controls.Add(lblGuesses5);
-            track5.Location = new Point(585, 3);
+            track5.Location = new Point(512, 2);
+            track5.Margin = new Padding(3, 2, 3, 2);
             track5.Name = "track5";
-            track5.Size = new Size(137, 405);
+            track5.Padding = new Padding(3, 2, 3, 2);
+            track5.Size = new Size(120, 304);
             track5.TabIndex = 7;
             track5.TabStop = false;
             // 
@@ -242,43 +257,47 @@
             // 
             lblFeedback5.BorderStyle = BorderStyle.FixedSingle;
             lblFeedback5.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
-            lblFeedback5.Location = new Point(6, 308);
+            lblFeedback5.Location = new Point(5, 231);
             lblFeedback5.Name = "lblFeedback5";
-            lblFeedback5.Size = new Size(125, 54);
+            lblFeedback5.Size = new Size(110, 41);
             lblFeedback5.TabIndex = 10;
             lblFeedback5.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lstHistory5
             // 
             lstHistory5.FormattingEnabled = true;
-            lstHistory5.Location = new Point(6, 101);
+            lstHistory5.ItemHeight = 15;
+            lstHistory5.Location = new Point(5, 76);
+            lstHistory5.Margin = new Padding(3, 2, 3, 2);
             lstHistory5.Name = "lstHistory5";
-            lstHistory5.Size = new Size(125, 204);
+            lstHistory5.Size = new Size(110, 154);
             lstHistory5.TabIndex = 1;
             // 
             // picTrack5
             // 
-            picTrack5.Location = new Point(6, 43);
+            picTrack5.Location = new Point(5, 32);
+            picTrack5.Margin = new Padding(3, 2, 3, 2);
             picTrack5.Name = "picTrack5";
-            picTrack5.Size = new Size(125, 52);
+            picTrack5.Size = new Size(109, 39);
             picTrack5.SizeMode = PictureBoxSizeMode.Zoom;
             picTrack5.TabIndex = 5;
             picTrack5.TabStop = false;
             // 
             // txtGuess5
             // 
-            txtGuess5.Location = new Point(6, 365);
+            txtGuess5.Location = new Point(5, 274);
+            txtGuess5.Margin = new Padding(3, 2, 3, 2);
             txtGuess5.Name = "txtGuess5";
-            txtGuess5.Size = new Size(125, 27);
+            txtGuess5.Size = new Size(110, 23);
             txtGuess5.TabIndex = 1;
             // 
             // lblGuesses5
             // 
             lblGuesses5.BorderStyle = BorderStyle.FixedSingle;
             lblGuesses5.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblGuesses5.Location = new Point(6, 20);
+            lblGuesses5.Location = new Point(5, 15);
             lblGuesses5.Name = "lblGuesses5";
-            lblGuesses5.Size = new Size(125, 20);
+            lblGuesses5.Size = new Size(110, 16);
             lblGuesses5.TabIndex = 2;
             lblGuesses5.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -289,9 +308,11 @@
             track4.Controls.Add(picTrack4);
             track4.Controls.Add(txtGuess4);
             track4.Controls.Add(lblGuesses4);
-            track4.Location = new Point(442, 3);
+            track4.Location = new Point(387, 2);
+            track4.Margin = new Padding(3, 2, 3, 2);
             track4.Name = "track4";
-            track4.Size = new Size(137, 405);
+            track4.Padding = new Padding(3, 2, 3, 2);
+            track4.Size = new Size(120, 304);
             track4.TabIndex = 9;
             track4.TabStop = false;
             // 
@@ -299,43 +320,47 @@
             // 
             lblFeedback4.BorderStyle = BorderStyle.FixedSingle;
             lblFeedback4.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
-            lblFeedback4.Location = new Point(6, 308);
+            lblFeedback4.Location = new Point(5, 231);
             lblFeedback4.Name = "lblFeedback4";
-            lblFeedback4.Size = new Size(125, 54);
+            lblFeedback4.Size = new Size(110, 41);
             lblFeedback4.TabIndex = 9;
             lblFeedback4.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lstHistory4
             // 
             lstHistory4.FormattingEnabled = true;
-            lstHistory4.Location = new Point(6, 101);
+            lstHistory4.ItemHeight = 15;
+            lstHistory4.Location = new Point(5, 76);
+            lstHistory4.Margin = new Padding(3, 2, 3, 2);
             lstHistory4.Name = "lstHistory4";
-            lstHistory4.Size = new Size(125, 204);
+            lstHistory4.Size = new Size(110, 154);
             lstHistory4.TabIndex = 1;
             // 
             // picTrack4
             // 
-            picTrack4.Location = new Point(6, 43);
+            picTrack4.Location = new Point(5, 32);
+            picTrack4.Margin = new Padding(3, 2, 3, 2);
             picTrack4.Name = "picTrack4";
-            picTrack4.Size = new Size(125, 52);
+            picTrack4.Size = new Size(109, 39);
             picTrack4.SizeMode = PictureBoxSizeMode.Zoom;
             picTrack4.TabIndex = 5;
             picTrack4.TabStop = false;
             // 
             // txtGuess4
             // 
-            txtGuess4.Location = new Point(6, 365);
+            txtGuess4.Location = new Point(5, 274);
+            txtGuess4.Margin = new Padding(3, 2, 3, 2);
             txtGuess4.Name = "txtGuess4";
-            txtGuess4.Size = new Size(125, 27);
+            txtGuess4.Size = new Size(110, 23);
             txtGuess4.TabIndex = 0;
             // 
             // lblGuesses4
             // 
             lblGuesses4.BorderStyle = BorderStyle.FixedSingle;
             lblGuesses4.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblGuesses4.Location = new Point(6, 20);
+            lblGuesses4.Location = new Point(5, 15);
             lblGuesses4.Name = "lblGuesses4";
-            lblGuesses4.Size = new Size(125, 20);
+            lblGuesses4.Size = new Size(110, 16);
             lblGuesses4.TabIndex = 2;
             lblGuesses4.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -346,9 +371,11 @@
             track3.Controls.Add(picTrack3);
             track3.Controls.Add(txtGuess3);
             track3.Controls.Add(lblGuesses3);
-            track3.Location = new Point(299, 3);
+            track3.Location = new Point(262, 2);
+            track3.Margin = new Padding(3, 2, 3, 2);
             track3.Name = "track3";
-            track3.Size = new Size(137, 405);
+            track3.Padding = new Padding(3, 2, 3, 2);
+            track3.Size = new Size(120, 304);
             track3.TabIndex = 8;
             track3.TabStop = false;
             // 
@@ -356,43 +383,47 @@
             // 
             lblFeedback3.BorderStyle = BorderStyle.FixedSingle;
             lblFeedback3.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
-            lblFeedback3.Location = new Point(6, 308);
+            lblFeedback3.Location = new Point(5, 231);
             lblFeedback3.Name = "lblFeedback3";
-            lblFeedback3.Size = new Size(125, 54);
+            lblFeedback3.Size = new Size(110, 41);
             lblFeedback3.TabIndex = 8;
             lblFeedback3.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lstHistory3
             // 
             lstHistory3.FormattingEnabled = true;
-            lstHistory3.Location = new Point(6, 101);
+            lstHistory3.ItemHeight = 15;
+            lstHistory3.Location = new Point(5, 76);
+            lstHistory3.Margin = new Padding(3, 2, 3, 2);
             lstHistory3.Name = "lstHistory3";
-            lstHistory3.Size = new Size(125, 204);
+            lstHistory3.Size = new Size(110, 154);
             lstHistory3.TabIndex = 1;
             // 
             // picTrack3
             // 
-            picTrack3.Location = new Point(6, 43);
+            picTrack3.Location = new Point(5, 32);
+            picTrack3.Margin = new Padding(3, 2, 3, 2);
             picTrack3.Name = "picTrack3";
-            picTrack3.Size = new Size(125, 52);
+            picTrack3.Size = new Size(109, 39);
             picTrack3.SizeMode = PictureBoxSizeMode.Zoom;
             picTrack3.TabIndex = 5;
             picTrack3.TabStop = false;
             // 
             // txtGuess3
             // 
-            txtGuess3.Location = new Point(6, 365);
+            txtGuess3.Location = new Point(5, 274);
+            txtGuess3.Margin = new Padding(3, 2, 3, 2);
             txtGuess3.Name = "txtGuess3";
-            txtGuess3.Size = new Size(125, 27);
+            txtGuess3.Size = new Size(110, 23);
             txtGuess3.TabIndex = 0;
             // 
             // lblGuesses3
             // 
             lblGuesses3.BorderStyle = BorderStyle.FixedSingle;
             lblGuesses3.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblGuesses3.Location = new Point(6, 20);
+            lblGuesses3.Location = new Point(5, 15);
             lblGuesses3.Name = "lblGuesses3";
-            lblGuesses3.Size = new Size(125, 20);
+            lblGuesses3.Size = new Size(110, 16);
             lblGuesses3.TabIndex = 2;
             lblGuesses3.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -403,9 +434,11 @@
             track2.Controls.Add(picTrack2);
             track2.Controls.Add(txtGuess2);
             track2.Controls.Add(lblGuesses2);
-            track2.Location = new Point(156, 3);
+            track2.Location = new Point(136, 2);
+            track2.Margin = new Padding(3, 2, 3, 2);
             track2.Name = "track2";
-            track2.Size = new Size(137, 405);
+            track2.Padding = new Padding(3, 2, 3, 2);
+            track2.Size = new Size(120, 304);
             track2.TabIndex = 7;
             track2.TabStop = false;
             // 
@@ -413,43 +446,47 @@
             // 
             lblFeedback2.BorderStyle = BorderStyle.FixedSingle;
             lblFeedback2.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
-            lblFeedback2.Location = new Point(6, 308);
+            lblFeedback2.Location = new Point(5, 231);
             lblFeedback2.Name = "lblFeedback2";
-            lblFeedback2.Size = new Size(125, 54);
+            lblFeedback2.Size = new Size(110, 41);
             lblFeedback2.TabIndex = 7;
             lblFeedback2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lstHistory2
             // 
             lstHistory2.FormattingEnabled = true;
-            lstHistory2.Location = new Point(6, 101);
+            lstHistory2.ItemHeight = 15;
+            lstHistory2.Location = new Point(5, 76);
+            lstHistory2.Margin = new Padding(3, 2, 3, 2);
             lstHistory2.Name = "lstHistory2";
-            lstHistory2.Size = new Size(125, 204);
+            lstHistory2.Size = new Size(110, 154);
             lstHistory2.TabIndex = 1;
             // 
             // picTrack2
             // 
-            picTrack2.Location = new Point(6, 43);
+            picTrack2.Location = new Point(5, 32);
+            picTrack2.Margin = new Padding(3, 2, 3, 2);
             picTrack2.Name = "picTrack2";
-            picTrack2.Size = new Size(125, 52);
+            picTrack2.Size = new Size(109, 39);
             picTrack2.SizeMode = PictureBoxSizeMode.Zoom;
             picTrack2.TabIndex = 5;
             picTrack2.TabStop = false;
             // 
             // txtGuess2
             // 
-            txtGuess2.Location = new Point(6, 365);
+            txtGuess2.Location = new Point(5, 274);
+            txtGuess2.Margin = new Padding(3, 2, 3, 2);
             txtGuess2.Name = "txtGuess2";
-            txtGuess2.Size = new Size(125, 27);
+            txtGuess2.Size = new Size(110, 23);
             txtGuess2.TabIndex = 0;
             // 
             // lblGuesses2
             // 
             lblGuesses2.BorderStyle = BorderStyle.FixedSingle;
             lblGuesses2.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblGuesses2.Location = new Point(6, 20);
+            lblGuesses2.Location = new Point(5, 15);
             lblGuesses2.Name = "lblGuesses2";
-            lblGuesses2.Size = new Size(125, 20);
+            lblGuesses2.Size = new Size(110, 16);
             lblGuesses2.TabIndex = 2;
             lblGuesses2.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -460,9 +497,11 @@
             track1.Controls.Add(picTrack1);
             track1.Controls.Add(txtGuess1);
             track1.Controls.Add(lblGuesses1);
-            track1.Location = new Point(13, 3);
+            track1.Location = new Point(11, 2);
+            track1.Margin = new Padding(3, 2, 3, 2);
             track1.Name = "track1";
-            track1.Size = new Size(137, 405);
+            track1.Padding = new Padding(3, 2, 3, 2);
+            track1.Size = new Size(120, 304);
             track1.TabIndex = 6;
             track1.TabStop = false;
             // 
@@ -471,60 +510,65 @@
             lblFeedback1.Anchor = AnchorStyles.Top;
             lblFeedback1.BorderStyle = BorderStyle.FixedSingle;
             lblFeedback1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblFeedback1.Location = new Point(6, 308);
+            lblFeedback1.Location = new Point(5, 231);
             lblFeedback1.Name = "lblFeedback1";
-            lblFeedback1.Size = new Size(125, 54);
+            lblFeedback1.Size = new Size(110, 41);
             lblFeedback1.TabIndex = 6;
             lblFeedback1.TextAlign = ContentAlignment.TopCenter;
             // 
             // lstHistory1
             // 
             lstHistory1.FormattingEnabled = true;
-            lstHistory1.Location = new Point(6, 101);
+            lstHistory1.ItemHeight = 15;
+            lstHistory1.Location = new Point(5, 76);
+            lstHistory1.Margin = new Padding(3, 2, 3, 2);
             lstHistory1.Name = "lstHistory1";
-            lstHistory1.Size = new Size(125, 204);
+            lstHistory1.Size = new Size(110, 154);
             lstHistory1.TabIndex = 1;
             // 
             // picTrack1
             // 
-            picTrack1.Location = new Point(6, 43);
+            picTrack1.Location = new Point(5, 32);
+            picTrack1.Margin = new Padding(3, 2, 3, 2);
             picTrack1.Name = "picTrack1";
-            picTrack1.Size = new Size(125, 52);
+            picTrack1.Size = new Size(109, 39);
             picTrack1.SizeMode = PictureBoxSizeMode.Zoom;
             picTrack1.TabIndex = 5;
             picTrack1.TabStop = false;
             // 
             // txtGuess1
             // 
-            txtGuess1.Location = new Point(6, 365);
+            txtGuess1.Location = new Point(5, 274);
+            txtGuess1.Margin = new Padding(3, 2, 3, 2);
             txtGuess1.Name = "txtGuess1";
-            txtGuess1.Size = new Size(125, 27);
+            txtGuess1.Size = new Size(110, 23);
             txtGuess1.TabIndex = 0;
             // 
             // lblGuesses1
             // 
             lblGuesses1.BorderStyle = BorderStyle.FixedSingle;
             lblGuesses1.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblGuesses1.Location = new Point(6, 20);
+            lblGuesses1.Location = new Point(5, 15);
             lblGuesses1.Name = "lblGuesses1";
-            lblGuesses1.Size = new Size(125, 20);
+            lblGuesses1.Size = new Size(110, 16);
             lblGuesses1.TabIndex = 2;
             lblGuesses1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblResult
             // 
             lblResult.BorderStyle = BorderStyle.FixedSingle;
-            lblResult.Location = new Point(12, 25);
+            lblResult.Location = new Point(10, 19);
             lblResult.Name = "lblResult";
-            lblResult.Size = new Size(196, 413);
+            lblResult.Size = new Size(172, 310);
             lblResult.TabIndex = 1;
             // 
             // btnGuess
             // 
             btnGuess.Font = new Font("Stencil", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGuess.Location = new Point(540, 461);
+            btnGuess.Location = new Point(472, 346);
+            btnGuess.Margin = new Padding(3, 2, 3, 2);
             btnGuess.Name = "btnGuess";
-            btnGuess.Size = new Size(142, 49);
+            btnGuess.Size = new Size(124, 37);
             btnGuess.TabIndex = 0;
             btnGuess.Text = "Guess";
             btnGuess.UseVisualStyleBackColor = true;
@@ -533,9 +577,10 @@
             // btnExit
             // 
             btnExit.Font = new Font("Stencil", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnExit.Location = new Point(892, 461);
+            btnExit.Location = new Point(780, 346);
+            btnExit.Margin = new Padding(3, 2, 3, 2);
             btnExit.Name = "btnExit";
-            btnExit.Size = new Size(142, 49);
+            btnExit.Size = new Size(124, 37);
             btnExit.TabIndex = 2;
             btnExit.Text = "Exit";
             btnExit.UseVisualStyleBackColor = true;
@@ -545,9 +590,9 @@
             // 
             lblScore.AutoSize = true;
             lblScore.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblScore.Location = new Point(12, 507);
+            lblScore.Location = new Point(10, 380);
             lblScore.Name = "lblScore";
-            lblScore.Size = new Size(26, 27);
+            lblScore.Size = new Size(22, 22);
             lblScore.TabIndex = 13;
             lblScore.Text = "0";
             // 
@@ -555,9 +600,9 @@
             // 
             lblDifficulty.AutoSize = true;
             lblDifficulty.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDifficulty.Location = new Point(12, 456);
+            lblDifficulty.Location = new Point(10, 342);
             lblDifficulty.Name = "lblDifficulty";
-            lblDifficulty.Size = new Size(158, 27);
+            lblDifficulty.Size = new Size(133, 22);
             lblDifficulty.TabIndex = 14;
             lblDifficulty.Text = "Difficulty:";
             // 
@@ -565,36 +610,38 @@
             // 
             lblRange.AutoSize = true;
             lblRange.Font = new Font("Stencil", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblRange.Location = new Point(743, 476);
+            lblRange.Location = new Point(650, 357);
             lblRange.Name = "lblRange";
-            lblRange.Size = new Size(104, 18);
+            lblRange.Size = new Size(84, 14);
             lblRange.TabIndex = 15;
             lblRange.Text = "Max Range:";
             // 
             // label1
             // 
             label1.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(1096, 448);
+            label1.Location = new Point(959, 336);
             label1.Name = "label1";
-            label1.Size = new Size(154, 86);
+            label1.Size = new Size(135, 64);
             label1.TabIndex = 16;
             label1.Text = "Up Arrow = Correct answer is Higher. \r\n\r\nDown Arrow = Correct answer is Lower.";
             // 
             // btnSave
             // 
             btnSave.Font = new Font("Stencil", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSave.Location = new Point(375, 461);
+            btnSave.Location = new Point(328, 346);
+            btnSave.Margin = new Padding(3, 2, 3, 2);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(142, 49);
+            btnSave.Size = new Size(124, 37);
             btnSave.TabIndex = 17;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1302, 548);
+            ClientSize = new Size(1139, 411);
             Controls.Add(btnSave);
             Controls.Add(label1);
             Controls.Add(lblRange);
@@ -604,6 +651,7 @@
             Controls.Add(btnGuess);
             Controls.Add(lblResult);
             Controls.Add(panelTracks);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "NumberCruncher";
